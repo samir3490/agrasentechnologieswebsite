@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import HubSpotModal from "./HubSpotModal";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -16,6 +17,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [quoteOpen, setQuoteOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -63,12 +65,12 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/contact"
-              className="px-5 py-2 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-accent to-accent-secondary hover:opacity-90 transition-opacity duration-200"
+            <button
+              onClick={() => setQuoteOpen(true)}
+              className="px-5 py-2 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-accent to-accent-secondary hover:opacity-90 transition-opacity duration-200 cursor-pointer"
             >
               Get a Quote
-            </Link>
+            </button>
           </div>
 
           <button
@@ -129,17 +131,19 @@ export default function Navbar() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navLinks.length * 0.05 }}
               >
-                <Link
-                  href="/contact"
-                  className="inline-block mt-4 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-accent to-accent-secondary"
+                <button
+                  onClick={() => { setQuoteOpen(true); setMobileOpen(false); }}
+                  className="inline-block mt-4 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-accent to-accent-secondary cursor-pointer"
                 >
                   Get a Quote
-                </Link>
+                </button>
               </motion.div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <HubSpotModal isOpen={quoteOpen} onClose={() => setQuoteOpen(false)} />
     </nav>
   );
 }

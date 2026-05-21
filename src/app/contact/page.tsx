@@ -4,7 +4,7 @@ import ParticleField from "@/components/ParticleField";
 import ScrollReveal from "@/components/ScrollReveal";
 import GradientOrb from "@/components/GradientOrb";
 import SectionHeading from "@/components/SectionHeading";
-import ContactForm from "./ContactForm";
+import HubSpotForm from "@/components/HubSpotForm";
 
 export const metadata: Metadata = {
   title: "Contact | Agrasen Technologies",
@@ -172,7 +172,7 @@ export default function ContactPage() {
                 <h3 className="text-xl font-semibold text-text-primary mb-6">
                   Send Us a Message
                 </h3>
-                <ContactForm />
+                <HubSpotForm id="hs-contact-page" />
               </div>
             </ScrollReveal>
           </div>
