@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -18,15 +19,20 @@ const services = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#020617] border-t border-border">
+    <footer className="bg-[#2C2A25] border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-1">
-              <span className="text-xl font-bold text-accent">Agrasen</span>
-              <span className="text-xl font-bold text-white">Technologies</span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo.png"
+                alt="Agrasen Technologies"
+                width={180}
+                height={48}
+                className="brightness-0 invert"
+              />
             </Link>
-            <p className="text-text-secondary text-sm leading-relaxed">
+            <p className="text-gray-400 text-sm leading-relaxed">
               Delivering innovative IT consulting, application development, and
               strategic business solutions with over 25 years of industry
               experience.
@@ -36,7 +42,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-text-secondary hover:text-accent transition-colors"
+                className="text-gray-400 hover:text-accent transition-colors"
                 aria-label="LinkedIn"
               >
                 <svg
@@ -51,7 +57,7 @@ export default function Footer() {
                 href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-text-secondary hover:text-accent transition-colors"
+                className="text-gray-400 hover:text-accent transition-colors"
                 aria-label="X (Twitter)"
               >
                 <svg
@@ -66,7 +72,7 @@ export default function Footer() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-text-secondary hover:text-accent transition-colors"
+                className="text-gray-400 hover:text-accent transition-colors"
                 aria-label="GitHub"
               >
                 <svg
@@ -81,7 +87,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-text-primary font-semibold mb-4">
+            <h3 className="text-white font-semibold mb-4">
               Quick Links
             </h3>
             <ul className="space-y-2.5">
@@ -89,7 +95,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-text-secondary text-sm hover:text-accent transition-colors"
+                    className="text-gray-400 text-sm hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -99,11 +105,11 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-text-primary font-semibold mb-4">Services</h3>
+            <h3 className="text-white font-semibold mb-4">Services</h3>
             <ul className="space-y-2.5">
               {services.map((service) => (
                 <li key={service}>
-                  <span className="text-text-secondary text-sm">
+                  <span className="text-gray-400 text-sm">
                     {service}
                   </span>
                 </li>
@@ -112,10 +118,10 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-text-primary font-semibold mb-4">
+            <h3 className="text-white font-semibold mb-4">
               Contact Info
             </h3>
-            <div className="space-y-3 text-sm text-text-secondary">
+            <div className="space-y-3 text-sm text-gray-400">
               <p>
                 1317 Edgewater Drive Suite 962
                 <br />
@@ -134,9 +140,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-border">
+      <div className="bg-[#1C1C1E] border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <p className="text-center text-text-secondary text-sm">
+          <p className="text-center text-gray-500 text-sm">
             &copy; 2014&ndash;2026 Agrasen Technologies Inc. All rights
             reserved.
           </p>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import HubSpotModal from "./HubSpotModal";
@@ -36,19 +37,21 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-bg-secondary/95 backdrop-blur-md shadow-lg border-b border-border"
+          ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-border"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <Link href="/" className="flex items-center gap-1">
-            <span className="text-xl lg:text-2xl font-bold text-accent">
-              Agrasen
-            </span>
-            <span className="text-xl lg:text-2xl font-bold text-white">
-              Technologies
-            </span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="Agrasen Technologies"
+              width={160}
+              height={40}
+              className="h-8 lg:h-10 w-auto"
+              priority
+            />
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
@@ -104,7 +107,7 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.3 }}
-            className="fixed top-16 right-0 bottom-0 w-72 bg-bg-secondary border-l border-border md:hidden"
+            className="fixed top-16 right-0 bottom-0 w-72 bg-white border-l border-border md:hidden"
           >
             <div className="flex flex-col p-6 gap-4">
               {navLinks.map((link, index) => (

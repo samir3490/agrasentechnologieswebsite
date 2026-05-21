@@ -121,8 +121,8 @@ export default function ServicesPage() {
     <main className="min-h-screen">
       {/* Hero */}
       <section className="relative min-h-[40vh] flex items-center bg-bg-secondary overflow-hidden">
-        <GradientOrb size={300} className="top-0 -right-32 opacity-40" delay={0} />
-        <GradientOrb color1="#818cf8" color2="#6366f1" size={250} className="bottom-0 -left-24 opacity-30" delay={2} />
+        <GradientOrb color1="#D4A017" color2="#E8C547" size={300} className="top-0 -right-32 opacity-40" delay={0} />
+        <GradientOrb color1="#D4A017" color2="#B8860B" size={250} className="bottom-0 -left-24 opacity-30" delay={2} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 w-full">
           <ScrollReveal>
@@ -153,7 +153,7 @@ export default function ServicesPage() {
           <div className="mt-14 grid md:grid-cols-2 gap-6">
             {services.map((s, i) => (
               <ScrollReveal key={s.title} delay={i * 0.08}>
-                <div className="glass rounded-2xl p-8 h-full group hover:border-accent/50 hover:scale-[1.02] transition-all duration-300 hover:shadow-[0_0_30px_rgba(56,189,248,0.08)]">
+                <div className="glass rounded-2xl p-8 h-full group hover:border-accent/50 hover:scale-[1.02] transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,160,23,0.08)]">
                   <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors duration-300">
                     {s.icon}
                   </div>

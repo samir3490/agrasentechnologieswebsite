@@ -59,8 +59,8 @@ export default function PrivacyPolicyPage() {
         <GradientOrb
           className="-top-32 -right-32"
           size={380}
-          color1="#38bdf8"
-          color2="#818cf8"
+          color1="#D4A017"
+          color2="#B8860B"
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

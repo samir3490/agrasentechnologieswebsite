@@ -72,8 +72,8 @@ export default function BlogPage() {
         <GradientOrb
           className="-top-32 -left-32"
           size={420}
-          color1="#818cf8"
-          color2="#38bdf8"
+          color1="#D4A017"
+          color2="#B8860B"
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -141,8 +141,8 @@ export default function BlogPage() {
               <GradientOrb
                 className="-bottom-20 -right-20"
                 size={300}
-                color1="#38bdf8"
-                color2="#818cf8"
+                color1="#D4A017"
+                color2="#B8860B"
                 delay={2}
               />
 

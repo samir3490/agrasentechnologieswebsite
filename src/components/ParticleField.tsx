@@ -30,7 +30,7 @@ export default function ParticleField({ className = "" }: ParticleFieldProps) {
         vx: (Math.random() - 0.5) * 0.4,
         vy: (Math.random() - 0.5) * 0.4,
         radius: Math.random() * 1 + 1,
-        opacity: Math.random() * 0.5 + 0.2,
+        opacity: Math.random() * 0.3 + 0.1,
       });
     }
     particlesRef.current = particles;
@@ -59,7 +59,7 @@ export default function ParticleField({ className = "" }: ParticleFieldProps) {
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(56, 189, 248, ${p.opacity})`;
+      ctx.fillStyle = `rgba(212, 160, 23, ${p.opacity})`;
       ctx.fill();
 
       for (let j = i + 1; j < particles.length; j++) {
@@ -69,11 +69,11 @@ export default function ParticleField({ className = "" }: ParticleFieldProps) {
         const dist = Math.sqrt(dx * dx + dy * dy);
 
         if (dist < connectionDistance) {
-          const lineOpacity = (1 - dist / connectionDistance) * 0.15;
+          const lineOpacity = (1 - dist / connectionDistance) * 0.08;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(other.x, other.y);
-          ctx.strokeStyle = `rgba(56, 189, 248, ${lineOpacity})`;
+          ctx.strokeStyle = `rgba(212, 160, 23, ${lineOpacity})`;
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }

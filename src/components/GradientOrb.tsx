@@ -11,8 +11,8 @@ interface GradientOrbProps {
 }
 
 export default function GradientOrb({
-  color1 = "#38bdf8",
-  color2 = "#6366f1",
+  color1 = "#D4A017",
+  color2 = "#B8860B",
   size = 400,
   className = "",
   delay = 0,
@@ -27,7 +27,7 @@ export default function GradientOrb({
       }}
       animate={{
         scale: [0.8, 1.2, 0.8],
-        opacity: [0.3, 0.6, 0.3],
+        opacity: [0.1, 0.25, 0.1],
       }}
       transition={{
         duration: 10,

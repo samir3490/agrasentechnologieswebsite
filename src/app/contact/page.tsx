@@ -94,8 +94,8 @@ export default function ContactPage() {
         <GradientOrb
           className="-top-32 -right-32"
           size={420}
-          color1="#38bdf8"
-          color2="#818cf8"
+          color1="#D4A017"
+          color2="#B8860B"
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -185,12 +185,12 @@ export default function ContactPage() {
           <ScrollReveal>
             <div className="relative glass rounded-2xl overflow-hidden h-72 md:h-96 flex flex-col items-center justify-center">
               <div className="absolute inset-0 opacity-10">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(56,189,248,0.15),transparent_70%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(212,160,23,0.15),transparent_70%)]" />
                 <div
                   className="absolute inset-0"
                   style={{
                     backgroundImage:
-                      "radial-gradient(circle, rgba(56,189,248,0.25) 1px, transparent 1px)",
+                      "radial-gradient(circle, rgba(212,160,23,0.25) 1px, transparent 1px)",
                     backgroundSize: "32px 32px",
                   }}
                 />

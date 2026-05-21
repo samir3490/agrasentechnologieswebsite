@@ -70,8 +70,8 @@ export default function AboutPage() {
     <main className="min-h-screen">
       {/* Hero */}
       <section className="relative min-h-[40vh] flex items-center bg-bg-secondary overflow-hidden">
-        <GradientOrb size={300} className="top-0 -left-32 opacity-40" delay={0} />
-        <GradientOrb color1="#818cf8" color2="#6366f1" size={250} className="bottom-0 -right-24 opacity-30" delay={2} />
+        <GradientOrb color1="#D4A017" color2="#B8860B" size={300} className="top-0 -left-32 opacity-40" delay={0} />
+        <GradientOrb color1="#E8C547" color2="#D4A017" size={250} className="bottom-0 -right-24 opacity-30" delay={2} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 w-full">
           <ScrollReveal>
@@ -185,7 +185,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 lg:py-28 bg-bg-secondary border-t border-accent/30">
+      <section className="py-20 lg:py-28 bg-bg-secondary border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal>
             <h2 className="text-3xl sm:text-4xl font-bold gradient-text">

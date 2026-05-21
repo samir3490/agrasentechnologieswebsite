@@ -81,15 +81,15 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <ParticleField />
         <GradientOrb
-          color1="#38bdf8"
-          color2="#0ea5e9"
+          color1="#D4A017"
+          color2="#B8860B"
           size={500}
           className="top-[-10%] left-[-10%]"
           delay={0}
         />
         <GradientOrb
-          color1="#818cf8"
-          color2="#6366f1"
+          color1="#E8C547"
+          color2="#D4A017"
           size={450}
           className="bottom-[-10%] right-[-10%]"
           delay={2}
@@ -121,7 +121,7 @@ export default function Home() {
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="#contact"
-                className="px-8 py-3.5 rounded-lg bg-accent text-bg-primary font-semibold hover:bg-accent/90 transition-colors"
+                className="px-8 py-3.5 rounded-lg bg-accent text-white font-semibold hover:bg-accent/90 transition-colors"
               >
                 Get Started
               </a>
@@ -187,35 +187,35 @@ export default function Home() {
               <div className="glass rounded-2xl p-10 flex flex-col items-center justify-center min-h-[400px] relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
                   <svg className="w-full h-full" viewBox="0 0 200 200" fill="none">
-                    <circle cx="40" cy="40" r="2" fill="#38bdf8" />
-                    <circle cx="80" cy="30" r="1.5" fill="#818cf8" />
-                    <circle cx="120" cy="50" r="2" fill="#38bdf8" />
-                    <circle cx="160" cy="35" r="1" fill="#818cf8" />
-                    <circle cx="60" cy="80" r="1.5" fill="#38bdf8" />
-                    <circle cx="100" cy="90" r="2" fill="#818cf8" />
-                    <circle cx="140" cy="75" r="1.5" fill="#38bdf8" />
-                    <circle cx="30" cy="120" r="2" fill="#818cf8" />
-                    <circle cx="70" cy="130" r="1" fill="#38bdf8" />
-                    <circle cx="110" cy="140" r="2" fill="#818cf8" />
-                    <circle cx="150" cy="125" r="1.5" fill="#38bdf8" />
-                    <circle cx="50" cy="160" r="1.5" fill="#818cf8" />
-                    <circle cx="90" cy="170" r="2" fill="#38bdf8" />
-                    <circle cx="130" cy="165" r="1" fill="#818cf8" />
-                    <circle cx="170" cy="155" r="2" fill="#38bdf8" />
-                    <line x1="40" y1="40" x2="80" y2="30" stroke="#38bdf8" strokeWidth="0.3" />
-                    <line x1="80" y1="30" x2="120" y2="50" stroke="#818cf8" strokeWidth="0.3" />
-                    <line x1="120" y1="50" x2="160" y2="35" stroke="#38bdf8" strokeWidth="0.3" />
-                    <line x1="60" y1="80" x2="100" y2="90" stroke="#818cf8" strokeWidth="0.3" />
-                    <line x1="100" y1="90" x2="140" y2="75" stroke="#38bdf8" strokeWidth="0.3" />
-                    <line x1="40" y1="40" x2="60" y2="80" stroke="#38bdf8" strokeWidth="0.3" />
-                    <line x1="80" y1="30" x2="100" y2="90" stroke="#818cf8" strokeWidth="0.3" />
-                    <line x1="120" y1="50" x2="140" y2="75" stroke="#38bdf8" strokeWidth="0.3" />
-                    <line x1="30" y1="120" x2="70" y2="130" stroke="#818cf8" strokeWidth="0.3" />
-                    <line x1="70" y1="130" x2="110" y2="140" stroke="#38bdf8" strokeWidth="0.3" />
-                    <line x1="110" y1="140" x2="150" y2="125" stroke="#818cf8" strokeWidth="0.3" />
-                    <line x1="50" y1="160" x2="90" y2="170" stroke="#38bdf8" strokeWidth="0.3" />
-                    <line x1="90" y1="170" x2="130" y2="165" stroke="#818cf8" strokeWidth="0.3" />
-                    <line x1="130" y1="165" x2="170" y2="155" stroke="#38bdf8" strokeWidth="0.3" />
+                    <circle cx="40" cy="40" r="2" fill="#D4A017" />
+                    <circle cx="80" cy="30" r="1.5" fill="#B8860B" />
+                    <circle cx="120" cy="50" r="2" fill="#D4A017" />
+                    <circle cx="160" cy="35" r="1" fill="#B8860B" />
+                    <circle cx="60" cy="80" r="1.5" fill="#D4A017" />
+                    <circle cx="100" cy="90" r="2" fill="#B8860B" />
+                    <circle cx="140" cy="75" r="1.5" fill="#D4A017" />
+                    <circle cx="30" cy="120" r="2" fill="#B8860B" />
+                    <circle cx="70" cy="130" r="1" fill="#D4A017" />
+                    <circle cx="110" cy="140" r="2" fill="#B8860B" />
+                    <circle cx="150" cy="125" r="1.5" fill="#D4A017" />
+                    <circle cx="50" cy="160" r="1.5" fill="#B8860B" />
+                    <circle cx="90" cy="170" r="2" fill="#D4A017" />
+                    <circle cx="130" cy="165" r="1" fill="#B8860B" />
+                    <circle cx="170" cy="155" r="2" fill="#D4A017" />
+                    <line x1="40" y1="40" x2="80" y2="30" stroke="#D4A017" strokeWidth="0.3" />
+                    <line x1="80" y1="30" x2="120" y2="50" stroke="#B8860B" strokeWidth="0.3" />
+                    <line x1="120" y1="50" x2="160" y2="35" stroke="#D4A017" strokeWidth="0.3" />
+                    <line x1="60" y1="80" x2="100" y2="90" stroke="#B8860B" strokeWidth="0.3" />
+                    <line x1="100" y1="90" x2="140" y2="75" stroke="#D4A017" strokeWidth="0.3" />
+                    <line x1="40" y1="40" x2="60" y2="80" stroke="#D4A017" strokeWidth="0.3" />
+                    <line x1="80" y1="30" x2="100" y2="90" stroke="#B8860B" strokeWidth="0.3" />
+                    <line x1="120" y1="50" x2="140" y2="75" stroke="#D4A017" strokeWidth="0.3" />
+                    <line x1="30" y1="120" x2="70" y2="130" stroke="#B8860B" strokeWidth="0.3" />
+                    <line x1="70" y1="130" x2="110" y2="140" stroke="#D4A017" strokeWidth="0.3" />
+                    <line x1="110" y1="140" x2="150" y2="125" stroke="#B8860B" strokeWidth="0.3" />
+                    <line x1="50" y1="160" x2="90" y2="170" stroke="#D4A017" strokeWidth="0.3" />
+                    <line x1="90" y1="170" x2="130" y2="165" stroke="#B8860B" strokeWidth="0.3" />
+                    <line x1="130" y1="165" x2="170" y2="155" stroke="#D4A017" strokeWidth="0.3" />
                   </svg>
                 </div>
                 <p className="text-5xl font-bold gradient-text relative z-10">25+</p>
@@ -293,17 +293,17 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="relative py-24 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-accent-secondary/5 to-accent/10" />
+        <div className="absolute inset-0 bg-bg-secondary" />
         <GradientOrb
-          color1="#38bdf8"
-          color2="#818cf8"
+          color1="#D4A017"
+          color2="#B8860B"
           size={300}
           className="top-[-20%] left-[10%]"
           delay={1}
         />
         <GradientOrb
-          color1="#818cf8"
-          color2="#38bdf8"
+          color1="#E8C547"
+          color2="#D4A017"
           size={250}
           className="bottom-[-20%] right-[10%]"
           delay={3}
@@ -324,7 +324,7 @@ export default function Home() {
           <ScrollReveal delay={0.2}>
             <a
               href="#contact"
-              className="inline-block mt-8 px-8 py-3.5 rounded-lg bg-white text-bg-primary font-semibold hover:bg-text-primary transition-colors"
+              className="inline-block mt-8 px-8 py-3.5 rounded-lg bg-accent text-white font-semibold hover:bg-accent/90 transition-colors"
             >
               Schedule a Consultation
             </a>
