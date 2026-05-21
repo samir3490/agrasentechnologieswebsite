@@ -38,7 +38,7 @@ const contactCards = [
     label: "USA Office",
     lines: [
       "Agrasen Technologies Inc.",
-      "1317 Edgewater Drive Suite 962",
+      "1317 Edgewater Drive Suite 536",
       "Orlando, FL 32804",
     ],
   },
@@ -60,8 +60,7 @@ const contactCards = [
       </svg>
     ),
     label: "Email Us",
-    lines: ["samir.agrawal@agrasentechnologies.com"],
-    href: "mailto:samir.agrawal@agrasentechnologies.com",
+    lines: ["samir dot agrawal at agrasentechnologies dot com"],
   },
   {
     key: "hours",
@@ -141,24 +140,14 @@ export default function ContactPage() {
                         <h3 className="font-semibold text-text-primary mb-1">
                           {card.label}
                         </h3>
-                        {card.lines.map((line) =>
-                          card.href ? (
-                            <a
-                              key={line}
-                              href={card.href}
-                              className="block text-sm text-text-secondary hover:text-accent transition-colors break-all"
-                            >
-                              {line}
-                            </a>
-                          ) : (
+                        {card.lines.map((line) => (
                             <p
                               key={line}
                               className="text-sm text-text-secondary"
                             >
                               {line}
                             </p>
-                          )
-                        )}
+                        ))}
                       </div>
                     </div>
                   </ScrollReveal>

@@ -44,9 +44,9 @@ const sections = [
     content: `If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:
 
 Agrasen Technologies Inc.
-1317 Edgewater Drive Suite 962
+1317 Edgewater Drive Suite 536
 Orlando, FL 32804
-Email: samir.agrawal@agrasentechnologies.com`,
+Email: samir dot agrawal at agrasentechnologies dot com`,
   },
 ];
 

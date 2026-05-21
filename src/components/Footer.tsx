@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
-
 const quickLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
@@ -23,18 +21,17 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="space-y-4">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/logo.png"
-                alt="Agrasen Technologies"
-                width={180}
-                height={48}
-                className="brightness-0 invert"
-              />
+            <Link href="/" className="inline-block">
+              <span className="text-2xl font-bold text-white">
+                Agrasen Technologies
+              </span>
+              <span className="block text-xs tracking-[0.25em] uppercase text-accent mt-0.5">
+                IT Consulting Services
+              </span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               Delivering innovative IT consulting, application development, and
-              strategic business solutions with over 25 years of industry
+              strategic business solutions with over 15 years of industry
               experience.
             </p>
             <div className="flex items-center gap-4 pt-2">
@@ -123,17 +120,12 @@ export default function Footer() {
             </h3>
             <div className="space-y-3 text-sm text-gray-400">
               <p>
-                1317 Edgewater Drive Suite 962
+                1317 Edgewater Drive Suite 536
                 <br />
                 Orlando, FL 32804
               </p>
-              <p>
-                <a
-                  href="mailto:samir.agrawal@agrasentechnologies.com"
-                  className="hover:text-accent transition-colors"
-                >
-                  samir.agrawal@agrasentechnologies.com
-                </a>
+              <p className="hover:text-accent transition-colors">
+                samir dot agrawal at agrasentechnologies dot com
               </p>
             </div>
           </div>

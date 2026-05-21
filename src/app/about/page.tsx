@@ -7,7 +7,7 @@ import SectionHeading from "@/components/SectionHeading";
 export const metadata: Metadata = {
   title: "About | Agrasen Technologies",
   description:
-    "Learn about Agrasen Technologies — an Orlando-based IT consulting firm founded by Samir Agrawal with over 25 years of experience in enterprise technology, QuickBase, Smartsheet, and low-code solutions.",
+    "Learn about Agrasen Technologies — an Orlando-based IT consulting firm founded by Samir Agrawal with over 15 years of experience in enterprise technology, QuickBase, Smartsheet, and low-code solutions.",
 };
 
 const milestones = [
@@ -84,7 +84,7 @@ export default function AboutPage() {
               About Agrasen Technologies
             </h1>
             <p className="mt-4 text-lg text-text-secondary max-w-2xl">
-              Over 25 years of IT expertise — helping businesses transform through technology, strategy, and low-code innovation.
+              Over 15 years of IT expertise — helping businesses transform through technology, strategy, and low-code innovation.
             </p>
           </ScrollReveal>
         </div>
@@ -102,7 +102,7 @@ export default function AboutPage() {
           <div className="mt-12 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <ScrollReveal direction="left" className="space-y-5 text-text-secondary leading-relaxed">
               <p>
-                Agrasen Technologies was founded by <strong className="text-text-primary">Samir Agrawal</strong>, a seasoned IT professional with over 25 years of hands-on experience across diverse industries and technologies.
+                Agrasen Technologies was founded by <strong className="text-text-primary">Samir Agrawal</strong>, a seasoned IT professional with over 15 years of hands-on experience across diverse industries and technologies.
               </p>
               <p>
                 Samir&apos;s career began at <strong className="text-text-primary">GE Lighting</strong> — Thomas Edison&apos;s company — where he built a strong foundation in manufacturing IT, enterprise systems, and the discipline of large-scale operations.
@@ -151,7 +151,7 @@ export default function AboutPage() {
                 <h3 className="text-2xl font-bold text-text-primary">Samir Agrawal</h3>
                 <p className="text-accent font-medium mt-1">CEO &amp; Founder</p>
                 <p className="mt-4 text-text-secondary leading-relaxed">
-                  With over 25 years in enterprise technology spanning manufacturing, media, and consulting, Samir brings a rare blend of technical depth and business acumen. His experience at GE Lighting and Universal Music Group shaped a hands-on, results-driven approach to IT that defines Agrasen Technologies today. He specializes in QuickBase and Smartsheet development, low-code application platforms, and strategic IT consulting.
+                  With over 15 years in enterprise technology spanning manufacturing, media, and consulting, Samir brings a rare blend of technical depth and business acumen. His experience at GE Lighting and Universal Music Group shaped a hands-on, results-driven approach to IT that defines Agrasen Technologies today. He specializes in QuickBase and Smartsheet development, low-code application platforms, and strategic IT consulting.
                 </p>
               </div>
             </div>

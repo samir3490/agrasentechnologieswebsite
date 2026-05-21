@@ -4,7 +4,7 @@ import GradientOrb from "@/components/GradientOrb";
 import SectionHeading from "@/components/SectionHeading";
 
 const stats = [
-  { value: "25+", label: "Years Experience" },
+  { value: "15+", label: "Years Experience" },
   { value: "550+", label: "Happy Clients" },
   { value: "650+", label: "Projects Delivered" },
   { value: "100%", label: "Client Satisfaction" },
@@ -218,9 +218,9 @@ export default function Home() {
                     <line x1="130" y1="165" x2="170" y2="155" stroke="#D4A017" strokeWidth="0.3" />
                   </svg>
                 </div>
-                <p className="text-5xl font-bold gradient-text relative z-10">25+</p>
+                <p className="text-5xl font-bold gradient-text relative z-10">15+</p>
                 <p className="mt-3 text-xl text-text-primary font-semibold relative z-10">
-                  Years of IT Excellence
+                  Years of IT Consulting
                 </p>
                 <div className="mt-6 flex gap-3 relative z-10">
                   <span className="px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20">
