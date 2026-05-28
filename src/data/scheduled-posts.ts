@@ -2,43 +2,6 @@ import { BlogPost } from "./posts";
 
 export const scheduledPosts: BlogPost[] = [
   {
-    slug: "low-code-platforms-changing-business-2026",
-    title: "5 Low-Code Platforms That Are Changing Business in 2026",
-    date: "2026-05-28",
-    author: "Samir Agrawal",
-    category: "Low-Code Development",
-    image: "/blog/blog-low-code.jpg",
-    excerpt:
-      "Low-code platforms are no longer just for prototyping — they're powering mission-critical business applications. Here are five platforms leading the charge in 2026 and why your business should pay attention.",
-    content: `
-<p>A few years ago, suggesting that a non-developer could build a business application would have earned you skeptical looks. Today, low-code platforms are powering everything from internal workflow tools to customer-facing portals — and they're doing it faster and cheaper than traditional development. As an IT consulting CEO who has guided dozens of businesses through technology adoption, I can tell you: the low-code revolution is real, and it's accelerating.</p>
-
-<p>Here are five platforms that are genuinely changing how businesses operate in 2026.</p>
-
-<h2>1. QuickBase</h2>
-<p>QuickBase has carved out a strong niche among operations-heavy businesses. It excels at connecting people, data, and workflows into a unified system without requiring a single line of code. What sets QuickBase apart is its focus on complex relational data — if your business runs on interconnected processes (think supply chain management, project tracking, or inventory), QuickBase handles that beautifully. Its governance features also make it appealing for larger organizations that need IT oversight without bottlenecking innovation.</p>
-
-<h2>2. Smartsheet</h2>
-<p>If your team already thinks in spreadsheets, Smartsheet is the natural evolution. It takes the familiar grid interface and layers on automation, resource management, dashboards, and collaboration features. Smartsheet shines in project management and cross-departmental coordination. It's not as deep as QuickBase for relational data, but for teams that need to get organized fast, it's hard to beat. The learning curve is gentle, and the ROI is almost immediate.</p>
-
-<h2>3. Microsoft Power Apps</h2>
-<p>For businesses already embedded in the Microsoft ecosystem — Teams, SharePoint, Dynamics 365, Azure — Power Apps is the obvious choice. It integrates seamlessly with the tools your team already uses, and the combination of Power Apps, Power Automate, and Power BI creates a genuinely powerful low-code suite. The canvas apps give you pixel-level control, while model-driven apps let you build data-rich applications quickly. The downside? It can get complex fast, and licensing can be confusing.</p>
-
-<h2>4. Mendix</h2>
-<p>Mendix occupies the sweet spot between low-code simplicity and enterprise-grade capability. It's designed for organizations that need more than a simple workflow tool — think complex integrations, microservices architecture, and multi-cloud deployment. Mendix's visual modeling environment is sophisticated enough for professional developers yet accessible enough for citizen developers with some training. If you're building applications that need to scale, Mendix deserves a serious look.</p>
-
-<h2>5. OutSystems</h2>
-<p>OutSystems is the powerhouse of the low-code world. It's built for high-performance, enterprise-scale applications with full lifecycle management — from development through testing, deployment, and monitoring. OutSystems generates real, optimized code under the hood, which means your applications perform like traditionally developed software. The trade-off is a steeper learning curve and higher cost, but for businesses that need serious applications without the traditional development timeline, it's a compelling option.</p>
-
-<h2>Why Low-Code Matters Now</h2>
-<p>The appeal isn't just speed — though building an app in weeks instead of months is powerful. Low-code matters because it democratizes technology creation. Your operations manager, your HR lead, your sales director — they understand their problems better than any outside developer ever could. Low-code gives them the tools to solve those problems directly, with IT providing guardrails rather than gatekeeping.</p>
-
-<p>That said, low-code isn't a silver bullet. Complex integrations, heavy customization, and high-security requirements may still demand traditional development. The smartest businesses use low-code strategically — for the 80% of applications that don't need custom code — and invest their development budget where it truly matters.</p>
-
-<p>If you're still building every internal tool from scratch, it's time to reconsider. The right low-code platform can transform your team's ability to innovate — and your bottom line.</p>
-`,
-  },
-  {
     slug: "quickbase-vs-smartsheet",
     title: "QuickBase vs Smartsheet: Which Is Right for Your Business?",
     date: "2026-06-04",
