@@ -2,62 +2,6 @@ import { BlogPost } from "./posts";
 
 export const scheduledPosts: BlogPost[] = [
   {
-    slug: "quickbase-vs-smartsheet",
-    title: "QuickBase vs Smartsheet: Which Is Right for Your Business?",
-    date: "2026-06-04",
-    author: "Samir Agrawal",
-    category: "Tools Comparison",
-    image: "/blog/blog-productivity-tools.jpg",
-    excerpt:
-      "QuickBase and Smartsheet are both powerful work management platforms, but they serve different needs. Here's an honest comparison to help you choose the right tool for your business.",
-    content: `
-<p>Two of the most common platforms I'm asked about are QuickBase and Smartsheet. Both are excellent tools, both have loyal followings, and both can transform how your team works. But they're not interchangeable. Choosing the wrong one can mean months of frustration and wasted budget. Having implemented both across various organizations, here's my honest breakdown.</p>
-
-<h2>The Core Difference</h2>
-<p>At their heart, QuickBase and Smartsheet solve different problems. <strong>Smartsheet</strong> is a work management platform built around a spreadsheet-like interface. It's designed for project management, task tracking, and team collaboration. <strong>QuickBase</strong> is a low-code application platform built around relational databases. It's designed for building custom business applications that connect data, people, and processes.</p>
-
-<p>Think of it this way: Smartsheet helps you manage work. QuickBase helps you build the systems that manage work.</p>
-
-<h2>Features Comparison</h2>
-
-<h3>Data Handling</h3>
-<p>QuickBase wins hands down for complex, relational data. If you need to track how customers relate to orders, orders relate to inventory, and inventory relates to suppliers — QuickBase handles that natively. Smartsheet works with flat or mildly hierarchical data. It's great for task lists, Gantt charts, and dashboards, but it struggles when data relationships get complex.</p>
-
-<h3>User Experience</h3>
-<p>Smartsheet wins on accessibility. If someone can use Excel, they can use Smartsheet within hours. QuickBase requires more onboarding — building apps involves understanding tables, forms, relationships, and automation rules. It's not difficult, but it's a steeper curve.</p>
-
-<h3>Automation</h3>
-<p>Both platforms offer solid automation. Smartsheet's automations are straightforward — trigger-based workflows that send alerts, request approvals, move rows, or update fields. QuickBase's automations are more powerful and can span across multiple tables and applications, but they require more setup. For simple workflows, Smartsheet is faster. For complex, multi-step business processes, QuickBase is more capable.</p>
-
-<h3>Reporting & Dashboards</h3>
-<p>QuickBase's reporting is deeply tied to its relational data model, allowing you to build cross-table reports and summary dashboards with ease. Smartsheet's dashboards are visually appealing and easy to build, but they're somewhat limited when pulling data across multiple sheets.</p>
-
-<h2>Pricing Approach</h2>
-<p>Smartsheet offers tiered pricing starting with a per-user model that's accessible for small teams. QuickBase's pricing is higher and based on the number of users and the plan tier, making it a bigger commitment. For small teams with straightforward needs, Smartsheet is more cost-effective. For organizations that need a true application platform, QuickBase's price reflects its deeper capabilities.</p>
-
-<h2>When to Choose Smartsheet</h2>
-<ul>
-<li>Your primary need is project management and task tracking</li>
-<li>Your team is comfortable with spreadsheets and needs fast adoption</li>
-<li>You need strong Gantt chart and timeline visualization</li>
-<li>Your data is relatively flat — task lists, schedules, trackers</li>
-<li>Budget is a primary concern and your team is small</li>
-</ul>
-
-<h2>When to Choose QuickBase</h2>
-<ul>
-<li>You need custom business applications, not just project tracking</li>
-<li>Your data is relational — customers, orders, products, suppliers</li>
-<li>You need complex, multi-step workflow automation</li>
-<li>IT governance and role-based access control are important</li>
-<li>You're replacing multiple disconnected spreadsheets and tools</li>
-</ul>
-
-<h2>The Bottom Line</h2>
-<p>There's no universal winner here — just the right fit for your situation. If you need a fast, intuitive way to manage projects and collaborate, start with Smartsheet. If you need to build interconnected business systems without traditional development, invest in QuickBase. And if you're unsure, start by mapping out what you actually need the tool to do — the answer usually becomes clear.</p>
-`,
-  },
-  {
     slug: "ai-chatbots-revolutionizing-customer-service",
     title: "How AI Chatbots Are Revolutionizing Customer Service",
     date: "2026-06-11",
