@@ -1,4 +1,9 @@
 import Link from "next/link";
+const legalLinks = [
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/terms-of-service", label: "Terms of Service" },
+];
+
 const quickLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
@@ -19,7 +24,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#2C2A25] border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           <div className="space-y-4">
             <Link href="/" className="inline-block">
               <span className="text-2xl font-bold text-white">
@@ -115,6 +120,22 @@ export default function Footer() {
           </div>
 
           <div>
+            <h3 className="text-white font-semibold mb-4">Legal</h3>
+            <ul className="space-y-2.5">
+              {legalLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 text-sm hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
             <h3 className="text-white font-semibold mb-4">
               Contact Info
             </h3>
@@ -134,10 +155,27 @@ export default function Footer() {
 
       <div className="bg-[#1C1C1E] border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <p className="text-center text-gray-500 text-sm">
-            &copy; 2014&ndash;2026 Agrasen Technologies Inc. All rights
-            reserved.
-          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm text-gray-500">
+            <p>
+              &copy; 2014&ndash;2026 Agrasen Technologies Inc. All rights
+              reserved.
+            </p>
+            <span className="hidden sm:inline text-gray-600">|</span>
+            <div className="flex items-center gap-4">
+              <Link
+                href="/privacy-policy"
+                className="hover:text-accent transition-colors"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="/terms-of-service"
+                className="hover:text-accent transition-colors"
+              >
+                Terms of Service
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

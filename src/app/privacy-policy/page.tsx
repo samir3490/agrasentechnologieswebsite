@@ -12,36 +12,123 @@ export const metadata: Metadata = {
 
 const sections = [
   {
+    heading: "Introduction",
+    content: `Agrasen Technologies Inc. ("Agrasen Technologies," "we," "us," or "our") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard information when you visit agrasentechnologies.com (the "Site"), contact us, subscribe to our communications, or use our IT consulting and related services.
+
+By using our Site or services, you agree to the collection and use of information in accordance with this policy.`,
+  },
+  {
     heading: "Information We Collect",
-    content: `We may collect personal information that you voluntarily provide when using our website or services. This includes your name, email address, phone number, company name, and any other details you share through our contact forms or during consultations. We also automatically collect certain technical data such as your IP address, browser type, operating system, referring URLs, and browsing behavior on our site through cookies and similar technologies.`,
+    content: `We may collect the following categories of information:
+
+Personal Information You Provide
+• Name, email address, phone number, and company name
+• Messages and details submitted through contact forms, quote requests, or consultations
+• Billing and project-related information when you engage our services
+
+Automatically Collected Information
+• IP address, browser type, device type, and operating system
+• Pages visited, time spent on pages, and referring URLs
+• Cookie identifiers and similar tracking technologies
+
+Information from Third Parties
+• Analytics and marketing tools (such as Google Analytics and HubSpot)
+• Professional networking platforms if you connect with us through those channels`,
   },
   {
     heading: "How We Use Your Information",
-    content: `The information we collect is used to provide and improve our IT consulting, application development, and business advisory services. Specifically, we use your data to respond to inquiries and service requests, deliver the services you have engaged us for, send relevant updates about our offerings (with your consent), improve website functionality and user experience, comply with legal obligations, and protect against fraudulent or unauthorized activity.`,
+    content: `We use collected information to:
+
+• Respond to inquiries, quote requests, and service-related communications
+• Deliver IT consulting, development, and advisory services you request
+• Send newsletters, updates, or marketing communications (with your consent where required)
+• Improve our Site, services, and customer experience
+• Analyze Site traffic and user behavior
+• Maintain security and prevent fraud or abuse
+• Comply with legal obligations and enforce our agreements
+
+We process information based on legitimate business interests, contractual necessity, your consent, or legal requirements, as applicable.`,
   },
   {
-    heading: "Information Sharing",
-    content: `Agrasen Technologies does not sell, rent, or trade your personal information to third parties for their marketing purposes. We may share your data with trusted service providers who assist in operating our website and delivering our services, but only under strict confidentiality agreements. We may also disclose information if required by law, regulation, or legal process, or to protect the rights, property, or safety of Agrasen Technologies, our clients, or others.`,
+    heading: "Cookies and Tracking Technologies",
+    content: `Our Site uses cookies and similar technologies to operate effectively and understand how visitors use our content. These may include:
+
+• Essential cookies required for Site functionality
+• Analytics cookies to measure traffic and performance
+• Marketing and chat cookies (including HubSpot) to support lead communication and customer support
+
+You can manage cookie preferences through your browser settings. Disabling cookies may limit certain Site features. Where required by law, we will obtain consent before placing non-essential cookies.`,
+  },
+  {
+    heading: "Information Sharing and Disclosure",
+    content: `We do not sell your personal information. We may share information with:
+
+• Service providers who assist with hosting, analytics, email, CRM, payment processing, or IT infrastructure, under confidentiality obligations
+• Professional advisors (legal, accounting) when necessary
+• Law enforcement or regulatory authorities when required by law or to protect rights and safety
+• Successor entities in connection with a merger, acquisition, or business transfer
+
+All third-party partners are expected to handle data in accordance with applicable privacy laws and our contractual requirements.`,
+  },
+  {
+    heading: "Data Retention",
+    content: `We retain personal information only as long as necessary to fulfill the purposes described in this policy, unless a longer retention period is required or permitted by law. Retention periods may vary based on:
+
+• The nature of our relationship with you
+• Legal, tax, and accounting requirements
+• Ongoing business or contractual needs
+
+When information is no longer needed, we take reasonable steps to delete or anonymize it.`,
   },
   {
     heading: "Data Security",
-    content: `We implement industry-standard technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include encrypted data transmission (SSL/TLS), secure server infrastructure, access controls, and regular security assessments. While no method of internet transmission or electronic storage is 100% secure, we strive to use commercially reasonable means to protect your data.`,
+    content: `We implement administrative, technical, and organizational safeguards designed to protect your information, including:
+
+• SSL/TLS encryption for data transmitted through our Site
+• Access controls and authentication for internal systems
+• Secure hosting and infrastructure practices
+• Periodic review of security measures
+
+No method of transmission or storage is completely secure. While we strive to protect your information, we cannot guarantee absolute security.`,
   },
   {
-    heading: "Cookies",
-    content: `Our website uses cookies and similar tracking technologies to enhance your browsing experience and analyze site traffic. Cookies are small data files stored on your device. You can control cookie settings through your browser preferences; however, disabling cookies may affect certain features of our website. We use essential cookies for site functionality and analytics cookies to understand how visitors interact with our site so we can continue to improve it.`,
+    heading: "Your Privacy Rights",
+    content: `Depending on your location, you may have rights regarding your personal information, including the right to:
+
+• Access the personal information we hold about you
+• Request correction of inaccurate information
+• Request deletion of your information, subject to legal exceptions
+• Opt out of marketing communications
+• Restrict or object to certain processing activities
+• Request a portable copy of your data where applicable
+
+To exercise these rights, contact us using the information below. We will respond within the timeframe required by applicable law.`,
+  },
+  {
+    heading: "California Privacy Rights (CCPA/CPRA)",
+    content: `If you are a California resident, you may have additional rights under the California Consumer Privacy Act (CCPA) and California Privacy Rights Act (CPRA), including the right to know what personal information we collect, request deletion, and opt out of the sale or sharing of personal information.
+
+Agrasen Technologies does not sell personal information. To submit a privacy request, contact us at the address below. We will verify your identity before processing requests.`,
+  },
+  {
+    heading: "Children's Privacy",
+    content: `Our Site and services are not directed to individuals under the age of 16. We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us and we will take steps to delete it promptly.`,
+  },
+  {
+    heading: "International Users",
+    content: `Agrasen Technologies is based in the United States. If you access our Site from outside the U.S., your information may be transferred to, stored, and processed in the United States or other countries where our service providers operate. By using our Site, you consent to such transfers subject to applicable law.`,
   },
   {
     heading: "Third-Party Links",
-    content: `Our website may contain links to external websites operated by third parties. We are not responsible for the privacy practices or content of those sites. We encourage you to review the privacy policies of any third-party website you visit. Inclusion of a link does not imply endorsement of the linked site by Agrasen Technologies.`,
+    content: `Our Site may contain links to third-party websites or services. We are not responsible for the privacy practices of those third parties. We encourage you to review their privacy policies before providing any personal information.`,
   },
   {
     heading: "Changes to This Policy",
-    content: `We may update this Privacy Policy from time to time to reflect changes in our practices, technologies, or legal requirements. When we make material changes, we will update the "Last Updated" date at the top of this page. We encourage you to review this policy periodically to stay informed about how we are protecting your information.`,
+    content: `We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements. When we make material changes, we will update the "Last Updated" date at the top of this page. We encourage you to review this policy periodically.`,
   },
   {
     heading: "Contact Us",
-    content: `If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:
+    content: `If you have questions about this Privacy Policy or wish to exercise your privacy rights, please contact us:
 
 Agrasen Technologies Inc.
 1317 Edgewater Drive Suite 536
@@ -53,7 +140,6 @@ Email: samir dot agrawal at agrasentechnologies dot com`,
 export default function PrivacyPolicyPage() {
   return (
     <main className="min-h-screen bg-bg-primary">
-      {/* ─── Hero ─── */}
       <section className="relative overflow-hidden py-28 md:py-36">
         <ParticleField />
         <GradientOrb
@@ -82,16 +168,13 @@ export default function PrivacyPolicyPage() {
         </div>
       </section>
 
-      {/* ─── Content ─── */}
       <section className="py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <p className="text-text-secondary leading-relaxed mb-12">
               At Agrasen Technologies Inc., we are committed to protecting your
-              privacy. This Privacy Policy explains how we collect, use,
-              disclose, and safeguard your information when you visit our website
-              or engage with our services. Please read this policy carefully. By
-              using our site, you consent to the practices described herein.
+              privacy. This Privacy Policy explains how we handle your personal
+              information when you visit our website or work with us.
             </p>
           </ScrollReveal>
 
