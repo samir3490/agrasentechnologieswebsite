@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ParticleField from "@/components/ParticleField";
 import ScrollReveal from "@/components/ScrollReveal";
 import GradientOrb from "@/components/GradientOrb";
@@ -119,12 +120,12 @@ export default function Home() {
 
           <ScrollReveal delay={0.4}>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="#contact"
+              <Link
+                href="/contact"
                 className="px-8 py-3.5 rounded-lg bg-accent text-white font-semibold hover:bg-accent/90 transition-colors"
               >
                 Get Started
-              </a>
+              </Link>
               <a
                 href="#services"
                 className="px-8 py-3.5 rounded-lg border border-border text-text-primary font-semibold hover:border-accent hover:text-accent transition-colors"
@@ -322,12 +323,12 @@ export default function Home() {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               className="inline-block mt-8 px-8 py-3.5 rounded-lg bg-accent text-white font-semibold hover:bg-accent/90 transition-colors"
             >
               Schedule a Consultation
-            </a>
+            </Link>
           </ScrollReveal>
         </div>
       </section>
