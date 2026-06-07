@@ -19,11 +19,17 @@ declare global {
 }
 
 const PORTAL_ID = "7145941";
-const FORM_ID = "6eb36758-b2d9-4bb6-b6c1-dd496fa9fbd7";
+const DEFAULT_FORM_ID = "6eb36758-b2d9-4bb6-b6c1-dd496fa9fbd7";
 const REGION = "na1";
 const SCRIPT_SRC = "//js.hsforms.net/forms/embed/v2.js";
 
-export default function HubSpotForm({ id = "hs-contact" }: { id?: string }) {
+export default function HubSpotForm({
+  id = "hs-contact",
+  formId = DEFAULT_FORM_ID,
+}: {
+  id?: string;
+  formId?: string;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const createdRef = useRef(false);
 
@@ -35,7 +41,7 @@ export default function HubSpotForm({ id = "hs-contact" }: { id?: string }) {
       createdRef.current = true;
       window.hbspt.forms.create({
         portalId: PORTAL_ID,
-        formId: FORM_ID,
+        formId,
         region: REGION,
         target: `#${id}`,
       });
@@ -51,7 +57,11 @@ export default function HubSpotForm({ id = "hs-contact" }: { id?: string }) {
     ) as HTMLScriptElement | null;
 
     if (existing) {
-      existing.addEventListener("load", createForm);
+      if (window.hbspt) {
+        createForm();
+      } else {
+        existing.addEventListener("load", createForm);
+      }
       return;
     }
 
@@ -61,7 +71,7 @@ export default function HubSpotForm({ id = "hs-contact" }: { id?: string }) {
     script.async = true;
     script.onload = createForm;
     document.head.appendChild(script);
-  }, [id]);
+  }, [id, formId]);
 
   return (
     <div
