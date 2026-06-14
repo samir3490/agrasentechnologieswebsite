@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { requireAuth, requireAccountAccess, requireAccountWrite } from "@/lib/arm/auth/account-access";
 import { getAdminDb } from "@/lib/arm/firebase/admin";
+import { writeAuditLog } from "@/lib/arm/audit/log";
 
 const settingsSchema = z.object({
   notificationEmail: z.string().email().optional(),
@@ -58,6 +59,13 @@ export async function PATCH(request: Request, { params }: RouteParams) {
     }
 
     await ref.update({ settings });
+
+    await writeAuditLog(getAdminDb(), accountId, {
+      action: "settings.updated",
+      actorUserId: user.uid,
+      actorEmail: user.email,
+      summary: "Updated workspace notification settings",
+    });
 
     if (parsed.data.googleCalendarSyncEnabled === true) {
       const { syncAccountToGoogleCalendar } = await import("@/lib/arm/calendar/sync");

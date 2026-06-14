@@ -13,6 +13,7 @@ import type { Contact, AccountSettings } from "@/lib/arm/types";
 import { enrichContactHealth } from "@/lib/arm/health/score";
 import { enrichContactLocation } from "@/lib/arm/map/geocode";
 import { resolveIntegrations } from "@/lib/arm/integrations/resolve";
+import { writeAuditLog } from "@/lib/arm/audit/log";
 
 type RouteParams = { params: Promise<{ id: string; cid: string }> };
 
@@ -80,6 +81,15 @@ export async function PATCH(request: Request, { params }: RouteParams) {
     await syncContactEventsAndReminders(db, accountId, cid, merged, settings);
     await maybeSyncGoogleCalendarForContact(db, accountId, cid, merged, settings);
 
+    await writeAuditLog(db, accountId, {
+      action: "contact.updated",
+      actorUserId: user.uid,
+      actorEmail: user.email,
+      resourceType: "contact",
+      resourceId: cid,
+      summary: `Updated contact ${merged.firstName}${merged.lastName ? ` ${merged.lastName}` : ""}`,
+    });
+
     return NextResponse.json(enrichContactHealth(merged));
   } catch (e) {
     const message = e instanceof Error ? e.message : "Failed to update contact";
@@ -104,9 +114,20 @@ export async function DELETE(_request: Request, { params }: RouteParams) {
     const accountSnap = await db.doc(`ripAccounts/${accountId}`).get();
     const settings = (accountSnap.data()?.settings || {}) as AccountSettings;
 
+    const contact = snap.data() as Contact;
     await maybeRemoveGoogleCalendarForContact(db, accountId, cid, settings);
     await removeContactEventsAndReminders(db, accountId, cid);
     await ref.delete();
+
+    await writeAuditLog(db, accountId, {
+      action: "contact.deleted",
+      actorUserId: user.uid,
+      actorEmail: user.email,
+      resourceType: "contact",
+      resourceId: cid,
+      summary: `Deleted contact ${contact.firstName}${contact.lastName ? ` ${contact.lastName}` : ""}`,
+    });
+
     return NextResponse.json({ ok: true });
   } catch (e) {
     const message = e instanceof Error ? e.message : "Failed to delete contact";

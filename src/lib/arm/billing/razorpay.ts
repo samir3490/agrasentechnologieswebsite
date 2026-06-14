@@ -2,6 +2,7 @@ import crypto from "crypto";
 import type { Firestore } from "firebase-admin/firestore";
 import { BILLING_PLANS, PLAN_LIMITS } from "@/lib/arm/constants/plans";
 import type { AccountPlan } from "@/lib/arm/types";
+import { writeAuditLog } from "@/lib/arm/audit/log";
 
 export function isRazorpayConfigured() {
   return Boolean(process.env.RAZORPAY_KEY_ID?.trim() && process.env.RAZORPAY_KEY_SECRET?.trim());
@@ -78,6 +79,13 @@ export async function upgradeAccountPlan(
       razorpayPaymentId: paymentId,
       activePlan: plan,
     },
+  });
+
+  await writeAuditLog(db, accountId, {
+    action: "billing.upgraded",
+    actorUserId: "system",
+    summary: `Workspace upgraded to ${plan} plan`,
+    metadata: { paymentId, plan },
   });
 }
 

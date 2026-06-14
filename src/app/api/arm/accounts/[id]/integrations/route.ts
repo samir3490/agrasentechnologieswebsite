@@ -7,6 +7,7 @@ import { requireAuth, requireAccountAdmin, requireAccountAccess } from "@/lib/ar
 import { getAdminDb } from "@/lib/arm/firebase/admin";
 import { getMaskedWorkspaceIntegrations, saveWorkspaceIntegrations } from "@/lib/arm/integrations/store";
 import { isIntegrationsEncryptionConfigured } from "@/lib/arm/integrations/crypto";
+import { writeAuditLog } from "@/lib/arm/audit/log";
 
 const patchSchema = z.object({
   openaiApiKey: z.string().optional(),
@@ -86,6 +87,12 @@ export async function PATCH(request: Request, { params }: RouteParams) {
     if (parsed.data.clearGoogleOAuthClientSecret) input.googleOAuthClientSecret = "";
 
     await saveWorkspaceIntegrations(getAdminDb(), accountId, input, user.uid);
+    await writeAuditLog(getAdminDb(), accountId, {
+      action: "integrations.updated",
+      actorUserId: user.uid,
+      actorEmail: user.email,
+      summary: "Updated workspace connection keys",
+    });
     const masked = await getMaskedWorkspaceIntegrations(getAdminDb(), accountId);
     return NextResponse.json(masked);
   } catch (e) {

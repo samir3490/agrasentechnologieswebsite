@@ -19,7 +19,7 @@ Legend: `[x]` done · `[ ]` not done · `[ ]` **YOUR ACTION** = you must configu
 - [x] Firebase client env vars on Vercel
 - [x] Firebase Admin credentials on Vercel
 - [ ] **YOUR ACTION** — Firebase Auth → Authorized domains: `agrasentechnologies.com`, `www.agrasentechnologies.com`
-- [ ] **YOUR ACTION** — Deploy Firestore rules from `firebase-agrasen/firestore.rules` after each rules change
+- [x] **YOUR ACTION** — Deploy Firestore rules from `firebase-agrasen/firestore.rules` after each rules change *(you confirmed done)*
 
 ---
 
@@ -135,10 +135,27 @@ Each **workspace** is independent: its own plan, contact limit, and API connecti
 
 ## Phase 8 — Enterprise & compliance
 
-- [ ] Audit logs UI
-- [ ] GDPR data export
-- [ ] WhatsApp / push notifications
-- [ ] Multi-workspace admin tools
+- [x] Audit logs (contact, settings, team, billing, export)
+- [x] Audit log UI in Settings → Compliance
+- [x] GDPR workspace data export (JSON download)
+- [x] Team management (add/remove members, roles)
+- [x] WhatsApp share from message drafts (wa.me link — no API key)
+- [x] Setup checklist with Test buttons for each integration
+- [ ] Push notifications (future)
+- [ ] WhatsApp Business API (future — optional enterprise)
+
+---
+
+## Customer integration guide (self-service)
+
+Each workspace owner can configure everything in **Settings** without contacting support:
+
+1. **Setup checklist** — step-by-step with links to OpenAI, Mapbox, Resend, Google Cloud
+2. **Test** buttons — verify each connection before going live
+3. **Connections** — paste API keys (encrypted per workspace)
+4. **Google Calendar** — connect personal Google account after OAuth app is saved
+
+Platform operator env vars are **optional defaults** — customers can use 100% their own keys.
 
 ---
 

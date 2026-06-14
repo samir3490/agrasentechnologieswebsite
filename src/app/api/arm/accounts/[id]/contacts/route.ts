@@ -10,6 +10,7 @@ import type { Contact, RelationshipType, AccountSettings } from "@/lib/arm/types
 import { enrichContactHealth } from "@/lib/arm/health/score";
 import { enrichContactLocation } from "@/lib/arm/map/geocode";
 import { resolveIntegrations } from "@/lib/arm/integrations/resolve";
+import { writeAuditLog } from "@/lib/arm/audit/log";
 
 type RouteParams = { params: Promise<{ id: string }> };
 
@@ -105,6 +106,15 @@ export async function POST(request: Request, { params }: RouteParams) {
     const fullContact = { id: ref.id, ...contact } as Contact;
     await syncContactEventsAndReminders(db, accountId, ref.id, fullContact, settings);
     await maybeSyncGoogleCalendarForContact(db, accountId, ref.id, fullContact, settings);
+
+    await writeAuditLog(db, accountId, {
+      action: "contact.created",
+      actorUserId: user.uid,
+      actorEmail: user.email,
+      resourceType: "contact",
+      resourceId: ref.id,
+      summary: `Created contact ${parsed.data.firstName}${parsed.data.lastName ? ` ${parsed.data.lastName}` : ""}`,
+    });
 
     return NextResponse.json({ id: ref.id, ...contact });
   } catch (e) {

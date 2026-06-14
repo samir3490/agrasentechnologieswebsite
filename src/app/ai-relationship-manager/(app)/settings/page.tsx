@@ -7,6 +7,9 @@ import { useAuth } from "@/components/arm/auth/AuthProvider";
 import { DEFAULT_REMINDER_INTERVALS } from "@/lib/arm/constants/plans";
 import { WorkspaceIntegrationsPanel } from "@/components/arm/settings/WorkspaceIntegrationsPanel";
 import { BillingPanel } from "@/components/arm/settings/BillingPanel";
+import { ConnectionSetupGuide } from "@/components/arm/settings/ConnectionSetupGuide";
+import { TeamPanel } from "@/components/arm/settings/TeamPanel";
+import { CompliancePanel } from "@/components/arm/settings/CompliancePanel";
 
 interface AccountSettingsForm {
   notificationEmail: string;
@@ -106,6 +109,14 @@ export default function SettingsPage() {
         </p>
       </section>
 
+      {currentAccount && (
+        <ConnectionSetupGuide
+          accountId={currentAccount.id}
+          getIdToken={getIdToken}
+          isAdmin={Boolean(isAdmin)}
+        />
+      )}
+
       <form onSubmit={handleSave} className="glass-card rounded-2xl p-6 space-y-4">
         <h2 className="font-semibold">Notifications</h2>
         {loading ? (
@@ -161,6 +172,16 @@ export default function SettingsPage() {
             isAdmin={Boolean(isAdmin)}
           />
           <BillingPanel
+            accountId={currentAccount.id}
+            getIdToken={getIdToken}
+            isAdmin={Boolean(isAdmin)}
+          />
+          <TeamPanel
+            accountId={currentAccount.id}
+            getIdToken={getIdToken}
+            isAdmin={Boolean(isAdmin)}
+          />
+          <CompliancePanel
             accountId={currentAccount.id}
             getIdToken={getIdToken}
             isAdmin={Boolean(isAdmin)}

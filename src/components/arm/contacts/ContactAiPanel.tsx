@@ -184,10 +184,18 @@ function MessageDraftPanel({
             </p>
           )}
           <p className="whitespace-pre-wrap text-slate-700">{draft.body}</p>
-          <div className="flex gap-2 pt-2">
+          <div className="flex flex-wrap gap-2 pt-2">
             <button type="button" onClick={copy} className="btn-secondary text-xs py-1.5">
               {copied ? "Copied!" : "Copy to clipboard"}
             </button>
+            <a
+              href={`https://wa.me/?text=${encodeURIComponent(draft.body)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary text-xs py-1.5 inline-flex items-center"
+            >
+              Open in WhatsApp
+            </a>
             <span className="text-xs text-slate-400 self-center capitalize">{draft.channel}</span>
           </div>
         </div>

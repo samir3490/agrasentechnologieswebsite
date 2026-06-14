@@ -5,6 +5,7 @@ import { requireAuth, requireAccountWrite } from "@/lib/arm/auth/account-access"
 import { getAdminDb } from "@/lib/arm/firebase/admin";
 import { interactionCreateSchema } from "@/lib/arm/validation/contact";
 import { computeHealthScore } from "@/lib/arm/health/score";
+import { writeAuditLog } from "@/lib/arm/audit/log";
 
 type RouteParams = { params: Promise<{ id: string; cid: string }> };
 
@@ -64,6 +65,15 @@ export async function POST(request: Request, { params }: RouteParams) {
       healthScore: health.score,
       healthLabel: health.label,
       updatedAt: now,
+    });
+
+    await writeAuditLog(db, accountId, {
+      action: "interaction.logged",
+      actorUserId: user.uid,
+      actorEmail: user.email,
+      resourceType: "contact",
+      resourceId: cid,
+      summary: `Logged ${parsed.data.type} interaction`,
     });
 
     return NextResponse.json({ id: ref.id, ...interaction });
