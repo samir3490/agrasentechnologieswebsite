@@ -5,6 +5,10 @@ import { requireAuth, requireAccountAccess, requireAccountWrite } from "@/lib/ar
 import { getAdminDb } from "@/lib/arm/firebase/admin";
 import { contactUpdateSchema } from "@/lib/arm/validation/contact";
 import { syncContactEventsAndReminders, removeContactEventsAndReminders } from "@/lib/arm/reminders/sync";
+import {
+  maybeRemoveGoogleCalendarForContact,
+  maybeSyncGoogleCalendarForContact,
+} from "@/lib/arm/calendar/sync";
 import type { Contact, AccountSettings } from "@/lib/arm/types";
 
 type RouteParams = { params: Promise<{ id: string; cid: string }> };
@@ -54,6 +58,7 @@ export async function PATCH(request: Request, { params }: RouteParams) {
     const accountSnap = await db.doc(`ripAccounts/${accountId}`).get();
     const settings = (accountSnap.data()?.settings || {}) as AccountSettings;
     await syncContactEventsAndReminders(db, accountId, cid, merged, settings);
+    await maybeSyncGoogleCalendarForContact(db, accountId, cid, merged, settings);
 
     return NextResponse.json(merged);
   } catch (e) {
@@ -76,6 +81,10 @@ export async function DELETE(_request: Request, { params }: RouteParams) {
       return NextResponse.json({ error: "Contact not found" }, { status: 404 });
     }
 
+    const accountSnap = await db.doc(`ripAccounts/${accountId}`).get();
+    const settings = (accountSnap.data()?.settings || {}) as AccountSettings;
+
+    await maybeRemoveGoogleCalendarForContact(db, accountId, cid, settings);
     await removeContactEventsAndReminders(db, accountId, cid);
     await ref.delete();
     return NextResponse.json({ ok: true });

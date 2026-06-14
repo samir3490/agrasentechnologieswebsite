@@ -1,7 +1,8 @@
 "use client";
 
 import { armPath, armApi } from "@/lib/arm/paths";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { useAuth } from "@/components/arm/auth/AuthProvider";
 import { DEFAULT_REMINDER_INTERVALS } from "@/lib/arm/constants/plans";
 
@@ -143,7 +144,212 @@ export default function SettingsPage() {
           </>
         )}
       </form>
+
+      <Suspense fallback={<section className="glass-card rounded-2xl p-6 text-sm text-slate-500">Loading calendar settings...</section>}>
+        <GoogleCalendarSection accountId={currentAccount?.id} getIdToken={getIdToken} />
+      </Suspense>
     </div>
+  );
+}
+
+const CALENDAR_MESSAGES: Record<string, string> = {
+  connected: "Google Calendar connected. Birthdays and anniversaries are syncing.",
+  denied: "Google Calendar connection was cancelled.",
+  error: "Could not connect Google Calendar. Try again.",
+  not_configured: "Google Calendar is not configured on the server yet.",
+  no_refresh: "Could not get calendar access. Disconnect in Google Account settings and try again.",
+  invalid: "Invalid calendar connection response.",
+};
+
+function GoogleCalendarSection({
+  accountId,
+  getIdToken,
+}: {
+  accountId?: string;
+  getIdToken: () => Promise<string | null>;
+}) {
+  const searchParams = useSearchParams();
+  const [status, setStatus] = useState<{
+    configured: boolean;
+    connected: boolean;
+    connectedEmail: string | null;
+    syncEnabled: boolean;
+    lastSyncAt: string | null;
+  } | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [busy, setBusy] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const loadStatus = useCallback(async () => {
+    if (!accountId) return;
+    setLoading(true);
+    try {
+      const token = await getIdToken();
+      const res = await fetch(
+        armApi(`/integrations/google-calendar/status?accountId=${encodeURIComponent(accountId)}`),
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      if (res.ok) setStatus(await res.json());
+    } finally {
+      setLoading(false);
+    }
+  }, [accountId, getIdToken]);
+
+  useEffect(() => {
+    loadStatus();
+  }, [loadStatus]);
+
+  useEffect(() => {
+    const result = searchParams.get("calendar");
+    if (result && CALENDAR_MESSAGES[result]) {
+      setMessage(CALENDAR_MESSAGES[result]!);
+      if (result === "connected") loadStatus();
+    }
+  }, [searchParams, loadStatus]);
+
+  async function connect() {
+    if (!accountId) return;
+    setBusy(true);
+    setMessage("");
+    try {
+      const token = await getIdToken();
+      const res = await fetch(
+        armApi(`/integrations/google-calendar/auth-url?accountId=${encodeURIComponent(accountId)}`),
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      window.location.href = data.url;
+    } catch (e) {
+      setMessage(e instanceof Error ? e.message : "Could not start Google connect.");
+      setBusy(false);
+    }
+  }
+
+  async function disconnect() {
+    setBusy(true);
+    setMessage("");
+    try {
+      const token = await getIdToken();
+      const res = await fetch(armApi("/integrations/google-calendar/status"), {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!res.ok) throw new Error("Disconnect failed");
+      setMessage("Google Calendar disconnected.");
+      await loadStatus();
+    } catch {
+      setMessage("Could not disconnect Google Calendar.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function toggleSync(enabled: boolean) {
+    if (!accountId) return;
+    setBusy(true);
+    setMessage("");
+    try {
+      const token = await getIdToken();
+      const res = await fetch(armApi(`/accounts/${accountId}/settings`), {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ googleCalendarSyncEnabled: enabled }),
+      });
+      if (!res.ok) throw new Error("Update failed");
+      setMessage(enabled ? "Calendar sync enabled for this workspace." : "Calendar sync paused.");
+      await loadStatus();
+    } catch {
+      setMessage("Could not update calendar sync.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function syncNow() {
+    if (!accountId) return;
+    setBusy(true);
+    setMessage("");
+    try {
+      const token = await getIdToken();
+      const res = await fetch(armApi("/integrations/google-calendar/sync"), {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ accountId }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      setMessage(`Synced ${data.synced} calendar events across ${data.contacts} contacts.`);
+      await loadStatus();
+    } catch (e) {
+      setMessage(e instanceof Error ? e.message : "Sync failed.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <section className="glass-card rounded-2xl p-6 space-y-4">
+      <div>
+        <h2 className="font-semibold">Google Calendar</h2>
+        <p className="mt-1 text-sm text-slate-500">
+          Export birthdays and anniversaries to your Google Calendar as yearly events.
+        </p>
+      </div>
+
+      {loading ? (
+        <p className="text-sm text-slate-500">Loading...</p>
+      ) : !status?.configured ? (
+        <p className="text-sm text-amber-700">Calendar integration is not configured on the server yet.</p>
+      ) : (
+        <>
+          <p className="text-sm text-slate-600">
+            {status.connected
+              ? `Connected as ${status.connectedEmail ?? "Google account"}`
+              : "Not connected"}
+          </p>
+          {status.connected && (
+            <label className="flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={status.syncEnabled}
+                disabled={busy}
+                onChange={(e) => toggleSync(e.target.checked)}
+              />
+              Sync this workspace to Google Calendar
+            </label>
+          )}
+          {status.lastSyncAt && (
+            <p className="text-xs text-slate-400">
+              Last sync: {new Date(status.lastSyncAt).toLocaleString()}
+            </p>
+          )}
+          <div className="flex flex-wrap gap-2">
+            {!status.connected ? (
+              <button type="button" onClick={connect} disabled={busy} className="btn-primary text-sm">
+                {busy ? "Redirecting..." : "Connect Google Calendar"}
+              </button>
+            ) : (
+              <>
+                <button type="button" onClick={syncNow} disabled={busy || !status.syncEnabled} className="btn-secondary text-sm">
+                  Sync now
+                </button>
+                <button type="button" onClick={disconnect} disabled={busy} className="btn-secondary text-sm">
+                  Disconnect
+                </button>
+              </>
+            )}
+          </div>
+        </>
+      )}
+      {message && <p className="text-sm text-indigo-600">{message}</p>}
+    </section>
   );
 }
 

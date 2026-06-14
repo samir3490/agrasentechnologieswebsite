@@ -11,6 +11,7 @@ const settingsSchema = z.object({
   dailyDigestEnabled: z.boolean().optional(),
   digestHour: z.number().min(0).max(23).optional(),
   reminderIntervals: z.array(z.number().min(0).max(365)).optional(),
+  googleCalendarSyncEnabled: z.boolean().optional(),
 });
 
 type RouteParams = { params: Promise<{ id: string }> };
@@ -49,7 +50,21 @@ export async function PATCH(request: Request, { params }: RouteParams) {
 
     const current = snap.data()?.settings ?? {};
     const settings = { ...current, ...parsed.data };
+
+    if (parsed.data.googleCalendarSyncEnabled === true) {
+      settings.googleCalendarSyncedBy = user.uid;
+    } else if (parsed.data.googleCalendarSyncEnabled === false) {
+      settings.googleCalendarSyncedBy = null;
+    }
+
     await ref.update({ settings });
+
+    if (parsed.data.googleCalendarSyncEnabled === true) {
+      const { syncAccountToGoogleCalendar } = await import("@/lib/arm/calendar/sync");
+      await syncAccountToGoogleCalendar(getAdminDb(), accountId, user.uid).catch((e) => {
+        console.error("Google Calendar sync after enable failed:", e);
+      });
+    }
 
     return NextResponse.json({ settings });
   } catch (e) {

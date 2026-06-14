@@ -5,6 +5,7 @@ import { requireAuth, requireAccountAccess } from "@/lib/arm/auth/account-access
 import { getAdminDb } from "@/lib/arm/firebase/admin";
 import { contactCreateSchema } from "@/lib/arm/validation/contact";
 import { syncContactEventsAndReminders } from "@/lib/arm/reminders/sync";
+import { maybeSyncGoogleCalendarForContact } from "@/lib/arm/calendar/sync";
 import type { Contact, RelationshipType, AccountSettings } from "@/lib/arm/types";
 
 type RouteParams = { params: Promise<{ id: string }> };
@@ -92,7 +93,9 @@ export async function POST(request: Request, { params }: RouteParams) {
     await ref.set(contact);
 
     const settings = (account.settings || {}) as AccountSettings;
-    await syncContactEventsAndReminders(db, accountId, ref.id, { id: ref.id, ...contact } as Contact, settings);
+    const fullContact = { id: ref.id, ...contact } as Contact;
+    await syncContactEventsAndReminders(db, accountId, ref.id, fullContact, settings);
+    await maybeSyncGoogleCalendarForContact(db, accountId, ref.id, fullContact, settings);
 
     return NextResponse.json({ id: ref.id, ...contact });
   } catch (e) {

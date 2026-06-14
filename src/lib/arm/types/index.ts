@@ -32,6 +32,9 @@ export interface AccountSettings {
   notificationEmail?: string;
   emailRemindersEnabled?: boolean;
   dailyDigestEnabled?: boolean;
+  googleCalendarSyncEnabled?: boolean;
+  googleCalendarSyncedBy?: string;
+  googleCalendarLastSyncAt?: string;
 }
 
 export type EventType = "birthday" | "anniversary";
