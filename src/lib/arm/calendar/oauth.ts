@@ -1,4 +1,5 @@
 import crypto from "crypto";
+import type { GoogleOAuthConfig } from "@/lib/arm/integrations/types";
 
 const STATE_TTL_MS = 15 * 60 * 1000;
 
@@ -34,7 +35,9 @@ export function verifyOAuthState(state: string): OAuthStatePayload {
   return payload;
 }
 
-export function getGoogleOAuthConfig() {
+export function getGoogleOAuthConfig(config?: GoogleOAuthConfig) {
+  if (config) return config;
+
   const clientId = process.env.GOOGLE_OAUTH_CLIENT_ID?.trim();
   const clientSecret = process.env.GOOGLE_OAUTH_CLIENT_SECRET?.trim();
   const appUrl = (process.env.NEXT_PUBLIC_APP_URL?.trim() || "https://agrasentechnologies.com").replace(
@@ -42,17 +45,18 @@ export function getGoogleOAuthConfig() {
     ""
   );
   if (!clientId || !clientSecret) {
-    throw new Error("Google Calendar OAuth is not configured on the server.");
+    throw new Error("Google Calendar OAuth is not configured.");
   }
   return {
     clientId,
     clientSecret,
     redirectUri: `${appUrl}/api/arm/integrations/google-calendar/callback`,
+    source: "platform" as const,
   };
 }
 
-export function buildGoogleAuthUrl(state: string) {
-  const { clientId, redirectUri } = getGoogleOAuthConfig();
+export function buildGoogleAuthUrl(state: string, config?: GoogleOAuthConfig) {
+  const { clientId, redirectUri } = getGoogleOAuthConfig(config);
   const params = new URLSearchParams({
     client_id: clientId,
     redirect_uri: redirectUri,
@@ -65,8 +69,8 @@ export function buildGoogleAuthUrl(state: string) {
   return `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
 }
 
-export async function exchangeCodeForTokens(code: string) {
-  const { clientId, clientSecret, redirectUri } = getGoogleOAuthConfig();
+export async function exchangeCodeForTokens(code: string, config?: GoogleOAuthConfig) {
+  const { clientId, clientSecret, redirectUri } = getGoogleOAuthConfig(config);
   const res = await fetch("https://oauth2.googleapis.com/token", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -91,8 +95,8 @@ export async function exchangeCodeForTokens(code: string) {
   return data;
 }
 
-export async function refreshAccessToken(refreshToken: string) {
-  const { clientId, clientSecret } = getGoogleOAuthConfig();
+export async function refreshAccessToken(refreshToken: string, config?: GoogleOAuthConfig) {
+  const { clientId, clientSecret } = getGoogleOAuthConfig(config);
   const res = await fetch("https://oauth2.googleapis.com/token", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },

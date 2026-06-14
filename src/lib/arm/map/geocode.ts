@@ -1,19 +1,30 @@
+import type { ResolvedIntegrations } from "@/lib/arm/integrations/types";
+
 const MAPBOX_GEOCODE = "https://api.mapbox.com/geocoding/v5/mapbox.places";
 
-export function isMapboxConfigured() {
-  return Boolean(getMapboxToken());
+export function isMapboxConfigured(integrations?: ResolvedIntegrations) {
+  return Boolean(getMapboxToken(integrations));
 }
 
-export function getMapboxToken() {
-  return process.env.MAPBOX_ACCESS_TOKEN?.trim() || process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN?.trim();
+export function getMapboxToken(integrations?: ResolvedIntegrations) {
+  return (
+    integrations?.mapbox.accessToken?.trim() ||
+    process.env.MAPBOX_ACCESS_TOKEN?.trim() ||
+    process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN?.trim()
+  );
 }
 
-export function getPublicMapboxToken() {
-  return process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN?.trim() || process.env.MAPBOX_ACCESS_TOKEN?.trim();
+export function getPublicMapboxToken(integrations?: ResolvedIntegrations) {
+  return getMapboxToken(integrations);
 }
 
-export async function geocodePlace(city?: string, state?: string, country?: string) {
-  const token = getMapboxToken();
+export async function geocodePlace(
+  city?: string,
+  state?: string,
+  country?: string,
+  integrations?: ResolvedIntegrations
+) {
+  const token = getMapboxToken(integrations);
   if (!token) return null;
 
   const query = [city, state, country].filter(Boolean).join(", ");
@@ -37,18 +48,21 @@ export async function geocodePlace(city?: string, state?: string, country?: stri
   };
 }
 
-export async function enrichContactLocation(location?: {
-  city?: string;
-  state?: string;
-  country?: string;
-  lat?: number;
-  lng?: number;
-}) {
+export async function enrichContactLocation(
+  location?: {
+    city?: string;
+    state?: string;
+    country?: string;
+    lat?: number;
+    lng?: number;
+  },
+  integrations?: ResolvedIntegrations
+) {
   if (!location) return undefined;
   if (location.lat != null && location.lng != null) return location;
   if (!location.city && !location.state) return location;
 
-  const geo = await geocodePlace(location.city, location.state, location.country);
+  const geo = await geocodePlace(location.city, location.state, location.country, integrations);
   if (!geo) return location;
 
   return {

@@ -3,17 +3,14 @@ export const dynamic = "force-dynamic";
 
 import { NextRequest, NextResponse } from "next/server";
 import { armPath } from "@/lib/arm/paths";
-import {
-  exchangeCodeForTokens,
-  isGoogleCalendarConfigured,
-  verifyOAuthState,
-} from "@/lib/arm/calendar/oauth";
+import { exchangeCodeForTokens, verifyOAuthState } from "@/lib/arm/calendar/oauth";
 import {
   fetchGoogleUserEmail,
   saveGoogleCalendarIntegration,
 } from "@/lib/arm/calendar/google-client";
 import { getAdminDb } from "@/lib/arm/firebase/admin";
 import { syncAccountToGoogleCalendar } from "@/lib/arm/calendar/sync";
+import { resolveGoogleOAuthForAccount } from "@/lib/arm/integrations/resolve";
 
 function redirectToSettings(request: NextRequest, query: string) {
   const base = (process.env.NEXT_PUBLIC_APP_URL?.trim() || new URL(request.url).origin).replace(/\/$/, "");
@@ -22,10 +19,6 @@ function redirectToSettings(request: NextRequest, query: string) {
 
 export async function GET(request: NextRequest) {
   try {
-    if (!isGoogleCalendarConfigured()) {
-      return redirectToSettings(request, "not_configured");
-    }
-
     const { searchParams } = new URL(request.url);
     const code = searchParams.get("code");
     const state = searchParams.get("state");
@@ -39,7 +32,8 @@ export async function GET(request: NextRequest) {
     }
 
     const payload = verifyOAuthState(state);
-    const tokens = await exchangeCodeForTokens(code);
+    const oauthConfig = await resolveGoogleOAuthForAccount(payload.accountId);
+    const tokens = await exchangeCodeForTokens(code, oauthConfig);
     if (!tokens.refresh_token) {
       return redirectToSettings(request, "no_refresh");
     }
@@ -52,6 +46,8 @@ export async function GET(request: NextRequest) {
       calendarId: "primary",
       connectedEmail: email,
       connectedAt: new Date().toISOString(),
+      oauthSource: oauthConfig.source === "workspace" ? "workspace" : "platform",
+      oauthClientId: oauthConfig.clientId,
     });
 
     const accountRef = db.doc(`ripAccounts/${payload.accountId}`);

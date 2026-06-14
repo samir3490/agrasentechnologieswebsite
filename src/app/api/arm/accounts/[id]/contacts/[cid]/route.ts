@@ -12,6 +12,7 @@ import {
 import type { Contact, AccountSettings } from "@/lib/arm/types";
 import { enrichContactHealth } from "@/lib/arm/health/score";
 import { enrichContactLocation } from "@/lib/arm/map/geocode";
+import { resolveIntegrations } from "@/lib/arm/integrations/resolve";
 
 type RouteParams = { params: Promise<{ id: string; cid: string }> };
 
@@ -67,7 +68,8 @@ export async function PATCH(request: Request, { params }: RouteParams) {
         delete merged.lat;
         delete merged.lng;
       }
-      updates.location = await enrichContactLocation(merged);
+      const integrations = await resolveIntegrations(accountId);
+      updates.location = await enrichContactLocation(merged, integrations);
     }
 
     await ref.update(updates);

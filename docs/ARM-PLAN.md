@@ -108,12 +108,28 @@ Legend: `[x]` done · `[ ]` not done · `[ ]` **YOUR ACTION** = you must configu
 
 ---
 
-## Phase 7 — Billing (Razorpay)
+## Phase 7 — Billing (Razorpay) + multi-tenant BYOK
 
-- [ ] Pro / Business plans
-- [ ] Razorpay checkout + webhooks
-- [ ] Plan limits enforcement upgrade path
-- [ ] **YOUR ACTION** — `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `RAZORPAY_WEBHOOK_SECRET`
+Each **workspace** is independent: its own plan, contact limit, and API connections. Users can bring their own keys (BYOK) so the product works for anyone — not only the platform operator.
+
+### Multi-tenant connections (BYOK)
+
+- [x] Per-workspace integrations stored encrypted (`ripAccounts/{id}/private/integrations`)
+- [x] Settings → **Connections** UI (OpenAI, Mapbox, News, Email, Google OAuth)
+- [x] Workspace keys override platform env defaults
+- [x] Map, AI, news, email cron, geocoding resolve per workspace
+- [x] Google Calendar supports workspace OAuth app or platform default
+- [ ] **YOUR ACTION** — Set `INTEGRATIONS_ENCRYPTION_KEY` on Vercel (32+ char secret) to enable saving workspace keys
+
+### Billing
+
+- [x] Pro / Business plans with Razorpay checkout
+- [x] Webhook + payment verification
+- [x] Per-workspace plan & contact limit upgrade
+- [x] Settings → **Plan & billing** UI
+- [ ] **YOUR ACTION** — `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `RAZORPAY_WEBHOOK_SECRET` (platform operator billing)
+- [ ] **YOUR ACTION** — Razorpay webhook URL: `https://agrasentechnologies.com/api/arm/billing/webhook`
+- [ ] **YOUR ACTION** — Test upgrade flow on a workspace
 
 ---
 
@@ -146,8 +162,9 @@ Legend: `[x]` done · `[ ]` not done · `[ ]` **YOUR ACTION** = you must configu
 | `NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN` | Map page | **Your action** |
 | `MAPBOX_ACCESS_TOKEN` | Geocoding | **Your action** |
 | `NEWS_API_KEY` | News (optional) | **Optional — RSS works without** |
-| `CRON_SECRET` | Cron auth | **Your action** |
-| `ALERT_EMAIL` | Error alerts | **Optional** |
+| `INTEGRATIONS_ENCRYPTION_KEY` | Workspace BYOK secrets | **Your action** |
+| `RAZORPAY_KEY_ID/SECRET/WEBHOOK_SECRET` | Platform billing | **Your action** |
+| Workspace Connections (Settings) | Per-tenant API keys | **Each user/org** |
 
 ---
 

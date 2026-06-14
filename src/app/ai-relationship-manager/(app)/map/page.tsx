@@ -16,7 +16,25 @@ export default function NetworkMapPage() {
   const [contacts, setContacts] = useState<MapContact[]>([]);
   const [loading, setLoading] = useState(true);
   const [mapError, setMapError] = useState("");
-  const token = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN?.trim();
+  const [token, setToken] = useState<string | null>(null);
+  const [mapSource, setMapSource] = useState("");
+
+  useEffect(() => {
+    if (!currentAccount) return;
+    (async () => {
+      const authToken = await getIdToken();
+      const configRes = await fetch(armApi(`/accounts/${currentAccount.id}/integrations/client-config`), {
+        headers: { Authorization: `Bearer ${authToken}` },
+      });
+      if (configRes.ok) {
+        const config = await configRes.json();
+        setToken(config.mapboxToken || process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN?.trim() || null);
+        setMapSource(config.mapboxSource || "");
+      } else {
+        setToken(process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN?.trim() || null);
+      }
+    })();
+  }, [currentAccount, getIdToken]);
 
   useEffect(() => {
     if (!currentAccount) return;
@@ -109,8 +127,8 @@ export default function NetworkMapPage() {
 
       {!token ? (
         <div className="glass-card rounded-2xl p-6 text-sm text-amber-800 bg-amber-50/80 border border-amber-100">
-          Map requires <code className="text-xs">NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN</code> on Vercel. Contacts
-          with city/state are still listed below. Add a Mapbox token and redeploy to enable the interactive map.
+          Map requires a Mapbox token. Add one in <strong>Settings → Connections</strong> for this workspace, or
+          ask the platform operator to set a default token.
         </div>
       ) : mapped.length === 0 && !loading ? (
         <div className="glass-card rounded-2xl p-6 text-sm text-slate-600">

@@ -1,3 +1,4 @@
+import type { ResolvedIntegrations } from "@/lib/arm/integrations/types";
 import type { Contact, GiftSuggestion } from "@/lib/arm/types";
 import { buildAmazonInSearchUrlWithBudget } from "@/lib/arm/gifts/amazon-search";
 import { chatJson, isOpenAiConfigured } from "./openai";
@@ -60,11 +61,12 @@ function heuristicGifts(contact: Contact, occasion: GiftOccasion): GiftSuggestio
 
 export async function generateGiftSuggestions(
   contact: Contact,
-  occasion: GiftOccasion = "general"
+  occasion: GiftOccasion = "general",
+  integrations?: ResolvedIntegrations
 ): Promise<{ suggestions: GiftSuggestion[]; source: "openai" | "heuristic" }> {
   const maxBudget = contact.gifting?.budgetMax;
 
-  if (!isOpenAiConfigured()) {
+  if (!isOpenAiConfigured(integrations)) {
     return { suggestions: heuristicGifts(contact, occasion), source: "heuristic" };
   }
 
@@ -75,7 +77,7 @@ Rules: exactly 4 suggestions; searchQuery must work on Amazon.in (product keywor
   const user = `Occasion: ${occasion}\n\nContact:\n${contactContext(contact)}`;
 
   try {
-    const parsed = await chatJson<{ suggestions: GiftSuggestion[] }>(system, user);
+    const parsed = await chatJson<{ suggestions: GiftSuggestion[] }>(system, user, integrations);
     const suggestions = (parsed.suggestions || []).slice(0, 5).map((s) => ({
       title: s.title,
       category: s.category || "Gift",

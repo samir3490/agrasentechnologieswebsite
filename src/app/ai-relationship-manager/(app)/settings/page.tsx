@@ -5,6 +5,8 @@ import { useEffect, useState, useCallback, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { useAuth } from "@/components/arm/auth/AuthProvider";
 import { DEFAULT_REMINDER_INTERVALS } from "@/lib/arm/constants/plans";
+import { WorkspaceIntegrationsPanel } from "@/components/arm/settings/WorkspaceIntegrationsPanel";
+import { BillingPanel } from "@/components/arm/settings/BillingPanel";
 
 interface AccountSettingsForm {
   notificationEmail: string;
@@ -15,7 +17,9 @@ interface AccountSettingsForm {
 }
 
 export default function SettingsPage() {
-  const { user, currentAccount, getIdToken } = useAuth();
+  const { user, currentAccount, getIdToken, accounts } = useAuth();
+  const isAdmin = accounts.find((a) => a.id === currentAccount?.id)?.role === "owner" ||
+    accounts.find((a) => a.id === currentAccount?.id)?.role === "admin";
   const [form, setForm] = useState<AccountSettingsForm>({
     notificationEmail: user?.email ?? "",
     emailRemindersEnabled: true,
@@ -148,6 +152,21 @@ export default function SettingsPage() {
       <Suspense fallback={<section className="glass-card rounded-2xl p-6 text-sm text-slate-500">Loading calendar settings...</section>}>
         <GoogleCalendarSection accountId={currentAccount?.id} getIdToken={getIdToken} />
       </Suspense>
+
+      {currentAccount && (
+        <>
+          <WorkspaceIntegrationsPanel
+            accountId={currentAccount.id}
+            getIdToken={getIdToken}
+            isAdmin={Boolean(isAdmin)}
+          />
+          <BillingPanel
+            accountId={currentAccount.id}
+            getIdToken={getIdToken}
+            isAdmin={Boolean(isAdmin)}
+          />
+        </>
+      )}
     </div>
   );
 }
@@ -306,7 +325,7 @@ function GoogleCalendarSection({
       {loading ? (
         <p className="text-sm text-slate-500">Loading...</p>
       ) : !status?.configured ? (
-        <p className="text-sm text-amber-700">Calendar integration is not configured on the server yet.</p>
+        <p className="text-sm text-amber-700">Add your Google OAuth app in Connections below, or ask the platform operator to set platform keys.</p>
       ) : (
         <>
           <p className="text-sm text-slate-600">

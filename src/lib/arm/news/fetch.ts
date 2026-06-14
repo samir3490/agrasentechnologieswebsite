@@ -1,3 +1,5 @@
+import type { ResolvedIntegrations } from "@/lib/arm/integrations/types";
+
 export type NewsQueryType = "company" | "location";
 
 export type RawNewsArticle = {
@@ -9,8 +11,12 @@ export type RawNewsArticle = {
   imageUrl?: string;
 };
 
-export function isNewsApiConfigured() {
-  return Boolean(process.env.NEWS_API_KEY?.trim());
+export function isNewsApiConfigured(integrations?: ResolvedIntegrations) {
+  return Boolean(getNewsApiKey(integrations));
+}
+
+function getNewsApiKey(integrations?: ResolvedIntegrations) {
+  return integrations?.news.apiKey?.trim() || process.env.NEWS_API_KEY?.trim();
 }
 
 export function buildContactNewsQueries(contact: {
@@ -35,16 +41,24 @@ export function buildContactNewsQueries(contact: {
   return queries;
 }
 
-export async function fetchNewsForQuery(query: string, limit = 5): Promise<RawNewsArticle[]> {
-  if (isNewsApiConfigured()) {
-    const fromApi = await fetchFromNewsApi(query, limit);
+export async function fetchNewsForQuery(
+  query: string,
+  limit = 5,
+  integrations?: ResolvedIntegrations
+): Promise<RawNewsArticle[]> {
+  if (isNewsApiConfigured(integrations)) {
+    const fromApi = await fetchFromNewsApi(query, limit, integrations);
     if (fromApi.length > 0) return fromApi;
   }
   return fetchFromGoogleNewsRss(query, limit);
 }
 
-async function fetchFromNewsApi(query: string, limit: number): Promise<RawNewsArticle[]> {
-  const key = process.env.NEWS_API_KEY!.trim();
+async function fetchFromNewsApi(
+  query: string,
+  limit: number,
+  integrations?: ResolvedIntegrations
+): Promise<RawNewsArticle[]> {
+  const key = getNewsApiKey(integrations)!;
   const url = new URL("https://newsapi.org/v2/everything");
   url.searchParams.set("q", query);
   url.searchParams.set("pageSize", String(limit));
@@ -129,4 +143,11 @@ function decodeXml(text: string | undefined) {
 
 function stripHtml(html: string) {
   return html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+}
+
+export function getNewsSourceLabel(integrations?: ResolvedIntegrations) {
+  if (isNewsApiConfigured(integrations)) {
+    return integrations?.news.source === "workspace" ? "newsapi-workspace" : "newsapi-platform";
+  }
+  return "google-rss";
 }

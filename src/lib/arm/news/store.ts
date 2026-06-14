@@ -1,7 +1,8 @@
 import type { Firestore } from "firebase-admin/firestore";
 import { createHash } from "crypto";
 import type { Contact, NewsItem } from "@/lib/arm/types";
-import { buildContactNewsQueries, fetchNewsForQuery, isNewsApiConfigured, type NewsQueryType } from "./fetch";
+import { buildContactNewsQueries, fetchNewsForQuery, getNewsSourceLabel } from "./fetch";
+import type { ResolvedIntegrations } from "@/lib/arm/integrations/types";
 
 function urlDocId(url: string) {
   return createHash("sha256").update(url).digest("hex").slice(0, 32);
@@ -20,19 +21,28 @@ export async function getNewsForContact(db: Firestore, accountId: string, contac
     .slice(0, limit);
 }
 
-export async function fetchAndStoreContactNews(db: Firestore, accountId: string, contact: Contact) {
+export async function fetchAndStoreContactNews(
+  db: Firestore,
+  accountId: string,
+  contact: Contact,
+  integrations?: ResolvedIntegrations
+) {
   const queries = buildContactNewsQueries(contact);
   if (queries.length === 0) {
-    return { stored: 0, queries: [], source: isNewsApiConfigured() ? "newsapi" : "google-rss" as const };
+    return {
+      stored: 0,
+      queries: [],
+      source: getNewsSourceLabel(integrations),
+    };
   }
 
   const now = new Date().toISOString();
   const batch = db.batch();
   let stored = 0;
-  const source = isNewsApiConfigured() ? ("newsapi" as const) : ("google-rss" as const);
+  const source = getNewsSourceLabel(integrations);
 
   for (const { queryType, query } of queries) {
-    const articles = await fetchNewsForQuery(query, 5);
+    const articles = await fetchNewsForQuery(query, 5, integrations);
     for (const article of articles) {
       const id = urlDocId(article.url);
       const ref = db.doc(`ripAccounts/${accountId}/newsItems/${id}`);
@@ -62,4 +72,4 @@ export async function fetchAndStoreContactNews(db: Firestore, accountId: string,
   return { stored, queries, source };
 }
 
-export type { NewsQueryType };
+export type { NewsQueryType } from "./fetch";

@@ -6,6 +6,7 @@ import { z } from "zod";
 import { requireAuth, requireAccountAccess } from "@/lib/arm/auth/account-access";
 import { getAdminDb } from "@/lib/arm/firebase/admin";
 import { generateMessageDraft } from "@/lib/arm/ai/messages";
+import { resolveIntegrations } from "@/lib/arm/integrations/resolve";
 import type { Contact } from "@/lib/arm/types";
 
 const bodySchema = z.object({
@@ -31,7 +32,8 @@ export async function POST(request: Request, { params }: RouteParams) {
     if (!snap.exists) return NextResponse.json({ error: "Contact not found" }, { status: 404 });
 
     const contact = { id: snap.id, ...snap.data() } as Contact;
-    const result = await generateMessageDraft(contact, parsed.data.purpose, parsed.data.tone);
+    const integrations = await resolveIntegrations(accountId);
+    const result = await generateMessageDraft(contact, parsed.data.purpose, parsed.data.tone, integrations);
 
     return NextResponse.json(result);
   } catch (e) {

@@ -27,6 +27,10 @@ export async function requireAccountWrite(accountId: string, userId: string) {
   return requireAccountAccess(accountId, userId, ["owner", "admin", "member"]);
 }
 
+export async function requireAccountAdmin(accountId: string, userId: string) {
+  return requireAccountAccess(accountId, userId, ["owner", "admin"]);
+}
+
 export async function getUserAccounts(userId: string) {
   const db = getAdminDb();
   const memberships = await db.collection(`ripUsers/${userId}/accountMemberships`).get();

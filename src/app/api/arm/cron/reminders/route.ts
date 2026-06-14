@@ -3,7 +3,8 @@ export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from "next/server";
 import { getAdminDb } from "@/lib/arm/firebase/admin";
 import { isCronAuthorized } from "@/lib/arm/cron/auth";
-import { sendEmail, isPlatformEmailConfigured } from "@/lib/arm/notifications/email";
+import { sendEmailWithIntegrations, isEmailConfigured } from "@/lib/arm/notifications/email";
+import { resolveIntegrations } from "@/lib/arm/integrations/resolve";
 import type { Reminder, AccountSettings } from "@/lib/arm/types";
 
 export const maxDuration = 120;
@@ -38,20 +39,18 @@ export async function GET(request: NextRequest) {
   let skipped = 0;
   const errors: string[] = [];
 
-  if (!isPlatformEmailConfigured()) {
-    return NextResponse.json({
-      ok: false,
-      error: "Email not configured",
-      hint: "Set RESEND_API_KEY or SMTP_* on Vercel",
-    });
-  }
-
   for (const accountDoc of accountsSnap.docs) {
     const accountId = accountDoc.id;
     const account = accountDoc.data();
     const settings = (account.settings || {}) as AccountSettings;
 
     if (settings.emailRemindersEnabled === false) continue;
+
+    const integrations = await resolveIntegrations(accountId);
+    if (!isEmailConfigured(integrations)) {
+      skipped++;
+      continue;
+    }
 
     const ownerSnap = await db
       .collection(`ripAccounts/${accountId}/members`)
@@ -77,12 +76,15 @@ export async function GET(request: NextRequest) {
       if (reminder.dueAt > now) continue;
 
       const { html, text } = reminderBody(reminder);
-      const result = await sendEmail({
-        to,
-        subject: reminderSubject(reminder),
-        html,
-        text,
-      });
+      const result = await sendEmailWithIntegrations(
+        {
+          to,
+          subject: reminderSubject(reminder),
+          html,
+          text,
+        },
+        integrations
+      );
 
       if (result.ok) {
         await remDoc.ref.update({ status: "sent", sentAt: now });

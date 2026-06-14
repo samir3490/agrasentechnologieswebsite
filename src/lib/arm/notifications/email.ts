@@ -1,1 +1,6 @@
-export { sendEmail, isPlatformEmailConfigured } from "./send";
+export {
+  sendEmail,
+  sendEmailWithIntegrations,
+  isPlatformEmailConfigured,
+  isEmailConfigured,
+} from "./send";

@@ -4,8 +4,8 @@ export const dynamic = "force-dynamic";
 import { NextResponse } from "next/server";
 import { requireAuth, requireAccountAccess } from "@/lib/arm/auth/account-access";
 import { getGoogleCalendarIntegration } from "@/lib/arm/calendar/google-client";
-import { isGoogleCalendarConfigured } from "@/lib/arm/calendar/oauth";
 import { getAdminDb } from "@/lib/arm/firebase/admin";
+import { isGoogleCalendarConfiguredForResolved, resolveIntegrations } from "@/lib/arm/integrations/resolve";
 import type { AccountSettings } from "@/lib/arm/types";
 
 export async function GET(request: Request) {
@@ -22,9 +22,11 @@ export async function GET(request: Request) {
     const integration = await getGoogleCalendarIntegration(db, user.uid);
     const accountSnap = await db.doc(`ripAccounts/${accountId}`).get();
     const settings = (accountSnap.data()?.settings ?? {}) as AccountSettings;
+    const resolved = await resolveIntegrations(accountId);
 
     return NextResponse.json({
-      configured: isGoogleCalendarConfigured(),
+      configured: isGoogleCalendarConfiguredForResolved(resolved),
+      oauthSource: resolved.googleOAuth.source,
       connected: Boolean(integration),
       connectedEmail: integration?.connectedEmail ?? null,
       syncEnabled:

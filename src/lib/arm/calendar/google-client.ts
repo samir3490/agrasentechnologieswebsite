@@ -1,11 +1,14 @@
 import type { Firestore } from "firebase-admin/firestore";
 import { refreshAccessToken } from "./oauth";
+import { resolveGoogleOAuthForAccount } from "@/lib/arm/integrations/resolve";
 
 export interface GoogleCalendarIntegration {
   refreshToken: string;
   calendarId: string;
   connectedEmail?: string;
   connectedAt: string;
+  oauthSource?: "platform" | "workspace";
+  oauthClientId?: string;
 }
 
 export interface CalendarEventMap {
@@ -41,10 +44,22 @@ export async function deleteGoogleCalendarIntegration(db: Firestore, userId: str
   await db.doc(INTEGRATION_PATH(userId)).delete();
 }
 
-export async function getAccessTokenForUser(db: Firestore, userId: string) {
+export async function getAccessTokenForUser(db: Firestore, userId: string, accountId: string) {
   const integration = await getGoogleCalendarIntegration(db, userId);
   if (!integration) return null;
-  const accessToken = await refreshAccessToken(integration.refreshToken);
+
+  let oauthConfig;
+  if (integration.oauthSource === "platform") {
+    oauthConfig = undefined;
+  } else {
+    try {
+      oauthConfig = await resolveGoogleOAuthForAccount(accountId);
+    } catch {
+      oauthConfig = undefined;
+    }
+  }
+
+  const accessToken = await refreshAccessToken(integration.refreshToken, oauthConfig);
   return { accessToken, calendarId: integration.calendarId || "primary" };
 }
 

@@ -45,7 +45,7 @@ export async function syncContactToGoogleCalendar(
     return { synced: 0, skipped: true };
   }
 
-  const auth = await getAccessTokenForUser(db, userId);
+  const auth = await getAccessTokenForUser(db, userId, accountId);
   if (!auth) return { synced: 0, skipped: true };
 
   const events = buildEventsFromContact(accountId, contactId, contact, settings);
@@ -130,7 +130,7 @@ export async function removeContactFromGoogleCalendar(
   const settings = (accountSnap.data()?.settings || {}) as AccountSettings;
   if (!settings.googleCalendarSyncEnabled || settings.googleCalendarSyncedBy !== userId) return;
 
-  const auth = await getAccessTokenForUser(db, userId);
+  const auth = await getAccessTokenForUser(db, userId, accountId);
   if (!auth) return;
 
   const mapCol = db.collection(`ripAccounts/${accountId}/calendarMap`);

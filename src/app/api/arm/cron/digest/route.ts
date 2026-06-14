@@ -5,7 +5,8 @@ import { getAdminDb } from "@/lib/arm/firebase/admin";
 import { isCronAuthorized } from "@/lib/arm/cron/auth";
 import { buildDailyDigest, digestToHtml, digestToText } from "@/lib/arm/reminders/digest";
 import { toDateKey } from "@/lib/arm/reminders/dates";
-import { sendEmail, isPlatformEmailConfigured } from "@/lib/arm/notifications/email";
+import { sendEmailWithIntegrations, isEmailConfigured, isPlatformEmailConfigured } from "@/lib/arm/notifications/email";
+import { resolveIntegrations } from "@/lib/arm/integrations/resolve";
 import type { Contact, AccountSettings } from "@/lib/arm/types";
 
 export const maxDuration = 120;
@@ -37,7 +38,10 @@ export async function GET(request: NextRequest) {
     await db.doc(`ripAccounts/${accountId}/digests/${today}`).set(digest);
     digests++;
 
-    if (settings.dailyDigestEnabled === false || !emailEnabled) continue;
+    if (settings.dailyDigestEnabled === false) continue;
+
+    const integrations = await resolveIntegrations(accountId);
+    if (!isEmailConfigured(integrations)) continue;
 
     const hasContent =
       digest.birthdays.length + digest.anniversaries.length + digest.suggestedOutreach.length > 0;
@@ -54,12 +58,15 @@ export async function GET(request: NextRequest) {
       process.env.ALERT_EMAIL;
     if (!to) continue;
 
-    const result = await sendEmail({
-      to,
-      subject: `RIP Daily Digest — ${accountName}`,
-      html: digestToHtml(digest, accountName),
-      text: digestToText(digest, accountName),
-    });
+    const result = await sendEmailWithIntegrations(
+      {
+        to,
+        subject: `AI Relationship Manager Daily Digest — ${accountName}`,
+        html: digestToHtml(digest, accountName),
+        text: digestToText(digest, accountName),
+      },
+      integrations
+    );
 
     if (result.ok) emailed++;
     else errors.push(`${accountId}: ${result.error}`);

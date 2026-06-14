@@ -6,6 +6,7 @@ import { requireAuth, requireAccountAccess } from "@/lib/arm/auth/account-access
 import { getAdminDb } from "@/lib/arm/firebase/admin";
 import { fetchAndStoreContactNews, getNewsForContact } from "@/lib/arm/news/store";
 import { buildContactNewsQueries } from "@/lib/arm/news/fetch";
+import { resolveIntegrations } from "@/lib/arm/integrations/resolve";
 import type { Contact } from "@/lib/arm/types";
 
 type RouteParams = { params: Promise<{ id: string; cid: string }> };
@@ -33,7 +34,8 @@ export async function POST(request: Request, { params }: RouteParams) {
       );
     }
 
-    const result = await fetchAndStoreContactNews(db, accountId, contact);
+    const integrations = await resolveIntegrations(accountId);
+    const result = await fetchAndStoreContactNews(db, accountId, contact, integrations);
     const items = await getNewsForContact(db, accountId, cid);
 
     return NextResponse.json({ ...result, items });

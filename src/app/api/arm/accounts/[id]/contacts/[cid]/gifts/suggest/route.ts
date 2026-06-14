@@ -5,6 +5,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { requireAuth, requireAccountAccess } from "@/lib/arm/auth/account-access";
 import { getAdminDb } from "@/lib/arm/firebase/admin";
+import { resolveIntegrations } from "@/lib/arm/integrations/resolve";
 import { generateGiftSuggestions } from "@/lib/arm/ai/gifts";
 import type { Contact } from "@/lib/arm/types";
 
@@ -30,7 +31,8 @@ export async function POST(request: Request, { params }: RouteParams) {
     if (!snap.exists) return NextResponse.json({ error: "Contact not found" }, { status: 404 });
 
     const contact = { id: snap.id, ...snap.data() } as Contact;
-    const result = await generateGiftSuggestions(contact, parsed.data.occasion ?? "general");
+    const integrations = await resolveIntegrations(accountId);
+    const result = await generateGiftSuggestions(contact, parsed.data.occasion ?? "general", integrations);
 
     return NextResponse.json(result);
   } catch (e) {

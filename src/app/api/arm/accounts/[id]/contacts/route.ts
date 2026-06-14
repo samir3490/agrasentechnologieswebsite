@@ -9,6 +9,7 @@ import { maybeSyncGoogleCalendarForContact } from "@/lib/arm/calendar/sync";
 import type { Contact, RelationshipType, AccountSettings } from "@/lib/arm/types";
 import { enrichContactHealth } from "@/lib/arm/health/score";
 import { enrichContactLocation } from "@/lib/arm/map/geocode";
+import { resolveIntegrations } from "@/lib/arm/integrations/resolve";
 
 type RouteParams = { params: Promise<{ id: string }> };
 
@@ -87,7 +88,8 @@ export async function POST(request: Request, { params }: RouteParams) {
     const now = new Date().toISOString();
     const ref = db.collection(`ripAccounts/${accountId}/contacts`).doc();
 
-    const location = await enrichContactLocation(parsed.data.location);
+    const integrations = await resolveIntegrations(accountId);
+    const location = await enrichContactLocation(parsed.data.location, integrations);
     const contact = {
       ...parsed.data,
       ...(location ? { location } : {}),

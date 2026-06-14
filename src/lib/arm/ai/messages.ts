@@ -1,3 +1,4 @@
+import type { ResolvedIntegrations } from "@/lib/arm/integrations/types";
 import type { Contact } from "@/lib/arm/types";
 import { chatJson, isOpenAiConfigured } from "./openai";
 import { contactDisplayName } from "@/lib/arm/reminders/events";
@@ -37,9 +38,10 @@ function heuristicDraft(contact: Contact, purpose: MessagePurpose): MessageDraft
 export async function generateMessageDraft(
   contact: Contact,
   purpose: MessagePurpose,
-  tone = "warm and concise"
+  tone = "warm and concise",
+  integrations?: ResolvedIntegrations
 ): Promise<{ draft: MessageDraft; source: "openai" | "heuristic" }> {
-  if (!isOpenAiConfigured()) {
+  if (!isOpenAiConfigured(integrations)) {
     return { draft: heuristicDraft(contact, purpose), source: "heuristic" };
   }
 
@@ -50,7 +52,7 @@ Keep under 80 words, natural, Indian English OK, no placeholders like [Name] —
   const user = `Purpose: ${purpose}\nTone: ${tone}\n\nContact:\n${contactContext(contact)}`;
 
   try {
-    const parsed = await chatJson<MessageDraft>(system, user);
+    const parsed = await chatJson<MessageDraft>(system, user, integrations);
     if (parsed.body?.trim()) {
       return {
         draft: {

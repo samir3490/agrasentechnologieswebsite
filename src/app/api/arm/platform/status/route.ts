@@ -8,6 +8,8 @@ import { isOpenAiConfigured } from "@/lib/arm/ai/openai";
 import { isPlatformEmailConfigured } from "@/lib/arm/notifications/send";
 import { getPublicMapboxToken, isMapboxConfigured } from "@/lib/arm/map/geocode";
 import { isNewsApiConfigured } from "@/lib/arm/news/fetch";
+import { isIntegrationsEncryptionConfigured } from "@/lib/arm/integrations/crypto";
+import { isRazorpayConfigured } from "@/lib/arm/billing/razorpay";
 
 export async function GET(request: Request) {
   try {
@@ -19,7 +21,10 @@ export async function GET(request: Request) {
       mapbox: isMapboxConfigured(),
       mapboxPublic: Boolean(getPublicMapboxToken()),
       newsApi: isNewsApiConfigured(),
+      integrationsEncryption: isIntegrationsEncryptionConfigured(),
+      razorpay: isRazorpayConfigured(),
       cronSecret: Boolean(process.env.CRON_SECRET?.trim()),
+      multiTenant: true,
     });
   } catch (e) {
     const message = e instanceof Error ? e.message : "Unauthorized";

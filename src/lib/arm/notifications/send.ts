@@ -1,3 +1,5 @@
+import type { ResolvedIntegrations } from "@/lib/arm/integrations/types";
+
 export interface SendEmailResult {
   ok: boolean;
   error?: string;
@@ -13,25 +15,41 @@ interface SendEmailParams {
 }
 
 export async function sendEmail(params: SendEmailParams): Promise<SendEmailResult> {
-  const resendKey = process.env.RESEND_API_KEY;
+  return sendEmailWithIntegrations(params);
+}
+
+export async function sendEmailWithIntegrations(
+  params: SendEmailParams,
+  integrations?: ResolvedIntegrations
+): Promise<SendEmailResult> {
+  const resendKey = integrations?.email.resendApiKey || process.env.RESEND_API_KEY;
   if (resendKey) {
-    return sendViaResend(resendKey, params);
+    const from =
+      params.from ||
+      integrations?.email.from ||
+      process.env.EMAIL_FROM ||
+      "AI Relationship Manager <onboarding@resend.dev>";
+    return sendViaResend(resendKey, { ...params, from });
   }
 
-  const smtpHost = process.env.SMTP_HOST;
-  const smtpUser = process.env.SMTP_USER;
-  const smtpPass = process.env.SMTP_PASS;
+  const smtp = integrations?.email.smtp;
+  const smtpHost = smtp?.host || process.env.SMTP_HOST;
+  const smtpUser = smtp?.user || process.env.SMTP_USER;
+  const smtpPass = smtp?.pass || process.env.SMTP_PASS;
   if (smtpHost && smtpUser && smtpPass) {
     return sendViaSmtp(params, {
       host: smtpHost,
-      port: Number(process.env.SMTP_PORT || 587),
-      secure: process.env.SMTP_SECURE === "true" || Number(process.env.SMTP_PORT) === 465,
+      port: smtp?.port ?? Number(process.env.SMTP_PORT || 587),
+      secure: smtp?.secure ?? (Number(process.env.SMTP_PORT) === 465),
       user: smtpUser,
       pass: smtpPass,
     });
   }
 
-  return { ok: false, error: "No email configured. Set RESEND_API_KEY or SMTP_* env vars." };
+  return {
+    ok: false,
+    error: "No email configured. Add workspace email in Settings → Connections, or set platform RESEND/SMTP env vars.",
+  };
 }
 
 export function isPlatformEmailConfigured(): boolean {
@@ -41,8 +59,15 @@ export function isPlatformEmailConfigured(): boolean {
   );
 }
 
+export function isEmailConfigured(integrations?: ResolvedIntegrations): boolean {
+  return Boolean(
+    integrations?.email.configured ||
+      isPlatformEmailConfigured()
+  );
+}
+
 async function sendViaResend(apiKey: string, params: SendEmailParams): Promise<SendEmailResult> {
-  const from = params.from || process.env.EMAIL_FROM || "RIP <onboarding@resend.dev>";
+  const from = params.from || process.env.EMAIL_FROM || "AI Relationship Manager <onboarding@resend.dev>";
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -76,7 +101,7 @@ async function sendViaSmtp(
     auth: { user: smtp.user, pass: smtp.pass },
   });
 
-  const from = params.from || `"RIP" <${smtp.user}>`;
+  const from = params.from || `"AI Relationship Manager" <${smtp.user}>`;
   try {
     await transporter.sendMail({
       from,
