@@ -226,6 +226,23 @@ export interface GiftSuggestion {
   budgetHint?: string;
 }
 
+export type NewsQueryType = "company" | "location";
+
+export interface NewsItem {
+  id: string;
+  accountId: string;
+  contactId: string;
+  queryType: NewsQueryType;
+  query: string;
+  title: string;
+  description?: string | null;
+  url: string;
+  source?: string | null;
+  publishedAt?: string | null;
+  imageUrl?: string | null;
+  fetchedAt: string;
+}
+
 export interface AccountMembership {
   id: string;
   name: string;

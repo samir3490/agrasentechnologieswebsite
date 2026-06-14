@@ -7,6 +7,7 @@ import { isGoogleCalendarConfigured } from "@/lib/arm/calendar/oauth";
 import { isOpenAiConfigured } from "@/lib/arm/ai/openai";
 import { isPlatformEmailConfigured } from "@/lib/arm/notifications/send";
 import { getPublicMapboxToken, isMapboxConfigured } from "@/lib/arm/map/geocode";
+import { isNewsApiConfigured } from "@/lib/arm/news/fetch";
 
 export async function GET(request: Request) {
   try {
@@ -17,6 +18,7 @@ export async function GET(request: Request) {
       googleCalendar: isGoogleCalendarConfigured(),
       mapbox: isMapboxConfigured(),
       mapboxPublic: Boolean(getPublicMapboxToken()),
+      newsApi: isNewsApiConfigured(),
       cronSecret: Boolean(process.env.CRON_SECRET?.trim()),
     });
   } catch (e) {

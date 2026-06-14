@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import { useAuth } from "@/components/arm/auth/AuthProvider";
 import { ContactForm } from "@/components/arm/contacts/ContactForm";
 import { ContactAiPanel } from "@/components/arm/contacts/ContactAiPanel";
+import { ContactNewsPanel } from "@/components/arm/contacts/ContactNewsPanel";
 import { HealthBadge } from "@/components/arm/contacts/HealthBadge";
 import type { Contact, Interaction } from "@/lib/arm/types";
 
@@ -162,11 +163,18 @@ export default function ContactDetailPage() {
       )}
 
       {!editing && currentAccount && (
-        <ContactAiPanel
-          accountId={currentAccount.id}
-          contact={contact}
-          getIdToken={getIdToken}
-        />
+        <>
+          <ContactNewsPanel
+            accountId={currentAccount.id}
+            contact={contact}
+            getIdToken={getIdToken}
+          />
+          <ContactAiPanel
+            accountId={currentAccount.id}
+            contact={contact}
+            getIdToken={getIdToken}
+          />
+        </>
       )}
 
       <section className="glass-card rounded-2xl p-6">

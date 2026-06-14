@@ -99,10 +99,12 @@ Legend: `[x]` done · `[ ]` not done · `[ ]` **YOUR ACTION** = you must configu
 
 ## Phase 6 — Company & location news
 
-- [ ] News fetch for contact company/city
-- [ ] Store in `ripAccounts/{id}/newsItems`
-- [ ] UI on contact detail
-- [ ] **YOUR ACTION** — News API key (e.g. `NEWS_API_KEY`) when implemented
+- [x] News fetch for contact company/city
+- [x] Store in `ripAccounts/{id}/newsItems`
+- [x] UI on contact detail (Refresh news button)
+- [x] Google News RSS fallback (works without API key)
+- [ ] **YOUR ACTION** — Optional `NEWS_API_KEY` on Vercel for NewsAPI.org (richer results in production)
+- [ ] **YOUR ACTION** — Test: open contact with company/city → Refresh news → confirm headlines
 
 ---
 
@@ -143,6 +145,7 @@ Legend: `[x]` done · `[ ]` not done · `[ ]` **YOUR ACTION** = you must configu
 | `RESEND_API_KEY` or `SMTP_*` | Email reminders | **Your action** |
 | `NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN` | Map page | **Your action** |
 | `MAPBOX_ACCESS_TOKEN` | Geocoding | **Your action** |
+| `NEWS_API_KEY` | News (optional) | **Optional — RSS works without** |
 | `CRON_SECRET` | Cron auth | **Your action** |
 | `ALERT_EMAIL` | Error alerts | **Optional** |
 
