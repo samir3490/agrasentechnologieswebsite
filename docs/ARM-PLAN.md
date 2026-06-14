@@ -18,7 +18,7 @@ Legend: `[x]` done · `[ ]` not done · `[ ]` **YOUR ACTION** = you must configu
 - [x] Webpack build + `firebase-admin` v13 for Vercel
 - [x] Firebase client env vars on Vercel
 - [x] Firebase Admin credentials on Vercel
-- [ ] **YOUR ACTION** — Firebase Auth → Authorized domains: `agrasentechnologies.com`, `www.agrasentechnologies.com`
+- [x] **YOUR ACTION** — Firebase Auth → Authorized domains: `agrasentechnologies.com`, `www.agrasentechnologies.com` *(you confirmed done)*
 - [x] **YOUR ACTION** — Deploy Firestore rules from `firebase-agrasen/firestore.rules` after each rules change *(you confirmed done)*
 
 ---
@@ -179,7 +179,7 @@ Platform operator env vars are **optional defaults** — customers can use 100% 
 - [x] Products page canonical + internal link fix (no `_blank` for ARM)
 - [x] Product detail page `/products/ai-relationship-manager` (SEO)
 - [x] **YOUR ACTION** — Submit sitemap in [Google Search Console](https://search.google.com/search-console) *(you confirmed done)*
-- [ ] **YOUR ACTION** — Verify `agrasentechnologies.com` + `www` property in Search Console
+- [x] **YOUR ACTION** — Verify `agrasentechnologies.com` + `www` property in Search Console *(you confirmed done)*
 
 ---
 
