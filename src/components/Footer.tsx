@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { products } from "@/data/products";
+
 const legalLinks = [
   { href: "/privacy-policy", label: "Privacy Policy" },
   { href: "/terms-of-service", label: "Terms of Service" },
@@ -8,6 +10,7 @@ const quickLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
+  { href: "/products", label: "Products" },
   { href: "/blog", label: "Blog" },
   { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact" },
@@ -25,7 +28,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#2C2A25] border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-10">
           <div className="space-y-4">
             <Link href="/" className="inline-block">
               <span className="text-2xl font-bold text-white">
@@ -104,6 +107,41 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-white font-semibold mb-4">Products</h3>
+            <ul className="space-y-2.5">
+              {products.map((product) => (
+                <li key={product.id}>
+                  {product.href && product.status === "available" ? (
+                    <a
+                      href={product.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 text-sm hover:text-white transition-colors"
+                    >
+                      {product.name}
+                    </a>
+                  ) : (
+                    <Link
+                      href="/products"
+                      className="text-gray-400 text-sm hover:text-white transition-colors"
+                    >
+                      {product.name}
+                    </Link>
+                  )}
+                </li>
+              ))}
+              <li>
+                <Link
+                  href="/products"
+                  className="text-gray-400 text-sm hover:text-accent transition-colors"
+                >
+                  View all products
+                </Link>
+              </li>
             </ul>
           </div>
 
