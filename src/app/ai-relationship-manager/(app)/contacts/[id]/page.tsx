@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useAuth } from "@/components/arm/auth/AuthProvider";
 import { ContactForm } from "@/components/arm/contacts/ContactForm";
+import { ContactAiPanel } from "@/components/arm/contacts/ContactAiPanel";
+import { HealthBadge } from "@/components/arm/contacts/HealthBadge";
 import type { Contact, Interaction } from "@/lib/arm/types";
 
 export default function ContactDetailPage() {
@@ -106,6 +108,9 @@ export default function ContactDetailPage() {
                 {t}
               </span>
             ))}
+            {contact.healthLabel && (
+              <HealthBadge label={contact.healthLabel} score={contact.healthScore} />
+            )}
           </div>
         </div>
         <button type="button" onClick={() => setEditing(!editing)} className="btn-secondary">
@@ -154,6 +159,14 @@ export default function ContactDetailPage() {
             />
           </section>
         </div>
+      )}
+
+      {!editing && currentAccount && (
+        <ContactAiPanel
+          accountId={currentAccount.id}
+          contact={contact}
+          getIdToken={getIdToken}
+        />
       )}
 
       <section className="glass-card rounded-2xl p-6">

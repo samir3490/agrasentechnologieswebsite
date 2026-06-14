@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { requireAuth, requireAccountWrite } from "@/lib/arm/auth/account-access";
 import { getAdminDb } from "@/lib/arm/firebase/admin";
 import { interactionCreateSchema } from "@/lib/arm/validation/contact";
+import { computeHealthScore } from "@/lib/arm/health/score";
 
 type RouteParams = { params: Promise<{ id: string; cid: string }> };
 
@@ -57,8 +58,11 @@ export async function POST(request: Request, { params }: RouteParams) {
     };
 
     await ref.set(interaction);
+    const health = computeHealthScore(parsed.data.date);
     await contactRef.update({
       lastInteractionAt: parsed.data.date,
+      healthScore: health.score,
+      healthLabel: health.label,
       updatedAt: now,
     });
 

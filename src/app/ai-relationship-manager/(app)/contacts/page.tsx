@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useAuth } from "@/components/arm/auth/AuthProvider";
 import { ContactForm } from "@/components/arm/contacts/ContactForm";
+import { HealthBadge } from "@/components/arm/contacts/HealthBadge";
 import { RELATIONSHIP_TYPES } from "@/lib/arm/constants/plans";
 import type { Contact } from "@/lib/arm/types";
 
@@ -122,12 +123,13 @@ function ContactsContent() {
                   {[c.location.city, c.location.state].filter(Boolean).join(", ")}
                 </p>
               )}
-              <div className="mt-3 flex flex-wrap gap-1">
+              <div className="mt-3 flex flex-wrap gap-1 items-center">
                 {(c.relationshipTypes || []).slice(0, 3).map((t) => (
                   <span key={t} className="badge badge-muted">
                     {t}
                   </span>
                 ))}
+                {c.healthLabel && <HealthBadge label={c.healthLabel} compact />}
               </div>
             </Link>
           ))}

@@ -7,6 +7,7 @@ import { contactCreateSchema } from "@/lib/arm/validation/contact";
 import { syncContactEventsAndReminders } from "@/lib/arm/reminders/sync";
 import { maybeSyncGoogleCalendarForContact } from "@/lib/arm/calendar/sync";
 import type { Contact, RelationshipType, AccountSettings } from "@/lib/arm/types";
+import { enrichContactHealth } from "@/lib/arm/health/score";
 
 type RouteParams = { params: Promise<{ id: string }> };
 
@@ -43,7 +44,10 @@ export async function GET(request: Request, { params }: RouteParams) {
 
     contacts.sort((a, b) => a.firstName.localeCompare(b.firstName));
 
-    return NextResponse.json({ contacts, total: contacts.length });
+    return NextResponse.json({
+      contacts: contacts.map((c) => enrichContactHealth(c)),
+      total: contacts.length,
+    });
   } catch (e) {
     const message = e instanceof Error ? e.message : "Failed to fetch contacts";
     const status = message === "Unauthorized" ? 401 : message === "Forbidden" ? 403 : 500;

@@ -10,6 +10,7 @@ import {
   maybeSyncGoogleCalendarForContact,
 } from "@/lib/arm/calendar/sync";
 import type { Contact, AccountSettings } from "@/lib/arm/types";
+import { enrichContactHealth, computeHealthScore } from "@/lib/arm/health/score";
 
 type RouteParams = { params: Promise<{ id: string; cid: string }> };
 
@@ -24,7 +25,7 @@ export async function GET(_request: Request, { params }: RouteParams) {
       return NextResponse.json({ error: "Contact not found" }, { status: 404 });
     }
 
-    return NextResponse.json({ id: snap.id, ...snap.data() });
+    return NextResponse.json(enrichContactHealth({ id: snap.id, ...snap.data() } as Contact));
   } catch (e) {
     const message = e instanceof Error ? e.message : "Failed to fetch contact";
     const status = message === "Unauthorized" ? 401 : message === "Forbidden" ? 403 : 500;
@@ -60,7 +61,7 @@ export async function PATCH(request: Request, { params }: RouteParams) {
     await syncContactEventsAndReminders(db, accountId, cid, merged, settings);
     await maybeSyncGoogleCalendarForContact(db, accountId, cid, merged, settings);
 
-    return NextResponse.json(merged);
+    return NextResponse.json(enrichContactHealth(merged));
   } catch (e) {
     const message = e instanceof Error ? e.message : "Failed to update contact";
     const status = message === "Unauthorized" ? 401 : message === "Forbidden" ? 403 : 500;

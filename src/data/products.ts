@@ -43,7 +43,7 @@ export const products: Product[] = [
       "Birthday & anniversary reminders with daily digest emails",
       "Modes for personal life, business, and NGO relationship management",
       "Interaction logging and relationship health insights",
-      "AI gift suggestions with Amazon.in search links (coming soon)",
+      "AI gift suggestions with Amazon.in search links",
     ],
     audiences: ["Individuals", "Families", "Sales teams", "NGOs", "Community leaders"],
   },

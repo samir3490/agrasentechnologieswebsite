@@ -9,6 +9,7 @@ import type { DailyDigest } from "@/lib/arm/types";
 export default function DashboardPage() {
   const { currentAccount, getIdToken } = useAuth();
   const [contactsTotal, setContactsTotal] = useState(0);
+  const [needsAttention, setNeedsAttention] = useState(0);
   const [digest, setDigest] = useState<DailyDigest | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -24,6 +25,10 @@ export default function DashboardPage() {
       if (contactsRes.ok) {
         const data = await contactsRes.json();
         setContactsTotal(data.total ?? 0);
+        const contacts = (data.contacts || []) as { healthLabel?: string }[];
+        setNeedsAttention(
+          contacts.filter((c) => c.healthLabel === "weak" || c.healthLabel === "dormant").length
+        );
       }
       if (digestRes.ok) {
         setDigest(await digestRes.json());
@@ -55,8 +60,8 @@ export default function DashboardPage() {
           value={loading ? "—" : String(digest?.anniversaries.length ?? 0)}
         />
         <StatCard
-          label="Reach out"
-          value={loading ? "—" : String(digest?.suggestedOutreach.length ?? 0)}
+          label="Need attention"
+          value={loading ? "—" : String(needsAttention)}
         />
       </div>
 
