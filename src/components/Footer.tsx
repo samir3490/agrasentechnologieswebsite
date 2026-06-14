@@ -115,15 +115,13 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {products.map((product) => (
                 <li key={product.id}>
-                  {product.href && product.status === "available" ? (
-                    <a
-                      href={product.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  {product.status === "available" ? (
+                    <Link
+                      href={`/products/${product.id}`}
                       className="text-gray-400 text-sm hover:text-white transition-colors"
                     >
                       {product.name}
-                    </a>
+                    </Link>
                   ) : (
                     <Link
                       href="/products"

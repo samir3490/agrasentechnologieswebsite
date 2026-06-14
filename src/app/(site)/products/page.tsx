@@ -97,14 +97,23 @@ export default function ProductsPage() {
                     ))}
                   </ul>
 
-                  <div className="mt-8 pt-6 border-t border-border">
+                  <div className="mt-8 pt-6 border-t border-border flex flex-wrap gap-3">
+                    {product.status === "available" && (
+                      <Link
+                        href={`/products/${product.id}`}
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-accent border border-accent/40 hover:bg-accent/5 transition-colors duration-200"
+                      >
+                        Learn more
+                        <span aria-hidden>→</span>
+                      </Link>
+                    )}
                     {product.href && product.status === "available" ? (
                       product.href.startsWith("/") ? (
                         <Link
                           href={product.href}
                           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-accent to-accent-secondary hover:opacity-90 transition-opacity duration-200"
                         >
-                          {product.ctaLabel ?? "Learn more"}
+                          {product.ctaLabel ?? "Try it free"}
                           <span aria-hidden>→</span>
                         </Link>
                       ) : (

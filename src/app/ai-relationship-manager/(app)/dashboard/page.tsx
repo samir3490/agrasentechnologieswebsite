@@ -1,12 +1,23 @@
 "use client";
 
 import { armPath, armApi } from "@/lib/arm/paths";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useAuth } from "@/components/arm/auth/AuthProvider";
 import type { DailyDigest } from "@/lib/arm/types";
 
 export default function DashboardPage() {
+  return (
+    <Suspense fallback={<p className="text-sm text-slate-500">Loading dashboard...</p>}>
+      <DashboardContent />
+    </Suspense>
+  );
+}
+
+function DashboardContent() {
+  const searchParams = useSearchParams();
+  const showWelcome = searchParams.get("welcome") === "1";
   const { currentAccount, getIdToken } = useAuth();
   const [contactsTotal, setContactsTotal] = useState(0);
   const [needsAttention, setNeedsAttention] = useState(0);
@@ -39,6 +50,24 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-8 animate-fade-in">
+      {showWelcome && (
+        <section className="glass-card rounded-2xl border border-indigo-200 bg-indigo-50/50 p-6">
+          <h2 className="font-semibold text-slate-900">Welcome to {currentAccount?.name}</h2>
+          <p className="mt-2 text-sm text-slate-600">
+            Add your first contact, then open Settings to connect email, calendar, and optional AI
+            tools — each step has a Test button so you know everything works.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <Link href={`${armPath("/contacts")}?new=1`} className="btn-primary py-2">
+              Add first contact
+            </Link>
+            <Link href={armPath("/settings")} className="btn-secondary py-2">
+              Open setup checklist
+            </Link>
+          </div>
+        </section>
+      )}
+
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Dashboard</h1>

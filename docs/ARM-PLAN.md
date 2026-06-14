@@ -177,14 +177,16 @@ Platform operator env vars are **optional defaults** — customers can use 100% 
 - [x] ARM landing page metadata, Open Graph, canonical URL
 - [x] JSON-LD (SoftwareApplication + FAQ) on ARM landing
 - [x] Products page canonical + internal link fix (no `_blank` for ARM)
-- [ ] **YOUR ACTION** — Submit sitemap in [Google Search Console](https://search.google.com/search-console)
+- [x] Product detail page `/products/ai-relationship-manager` (SEO)
+- [x] **YOUR ACTION** — Submit sitemap in [Google Search Console](https://search.google.com/search-console) *(you confirmed done)*
 - [ ] **YOUR ACTION** — Verify `agrasentechnologies.com` + `www` property in Search Console
 
 ---
 
 ## Deprecated / optional cleanup
 
-- [ ] Retire or redirect `rip-theta.vercel.app` (standalone RIP Vercel project)
+- [ ] Retire or redirect `rip-theta.vercel.app` — see [RIP-THETA-REDIRECT.md](./RIP-THETA-REDIRECT.md)
+- [x] Post-onboarding welcome banner → setup checklist + add contact
 - [x] Align user-facing email/digest copy to “AI Relationship Manager”
 
 ---

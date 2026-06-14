@@ -31,7 +31,7 @@ export default function OnboardingPage() {
       const data = await parseJsonResponse<{ error?: string }>(res);
       if (!res.ok) throw new Error(data.error || "Failed to create workspace");
       await refreshAccounts();
-      router.push(armPath("/dashboard"));
+      router.push(`${armPath("/dashboard")}?welcome=1`);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Something went wrong");
     } finally {
