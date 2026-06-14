@@ -36,6 +36,25 @@ Information from Third Parties
 • Professional networking platforms if you connect with us through those channels`,
   },
   {
+    heading: "AI Relationship Manager",
+    content: `Our AI Relationship Manager product ("ARM," available at agrasentechnologies.com/ai-relationship-manager) is a personal CRM service. When you create an account or use ARM, we additionally process:
+
+Account and authentication data
+• Email address and profile information from Google or email sign-in (via Firebase Authentication)
+• Workspace name and team membership roles
+
+CRM data you enter
+• Contact names, birthdays, anniversaries, notes, interaction history, and related fields you choose to store
+• Notification preferences and integration settings for your workspace
+
+Workspace API connections (optional)
+• If you add third-party API keys in Settings → Connections, they are stored encrypted per workspace. Keys are used only to provide features you enable (e.g., OpenAI, Mapbox, email, Google Calendar, news).
+
+We use Firebase (Google Cloud) for authentication and data storage. Features you enable may send data to your configured providers (OpenAI, Mapbox, Resend/SMTP, Google Calendar, NewsAPI, or Google News RSS).
+
+Workspace owners can export workspace data (JSON) from Settings → Compliance. To delete your ARM account or workspace data, contact us using the information at the end of this policy.`,
+  },
+  {
     heading: "How We Use Your Information",
     content: `We use collected information to:
 

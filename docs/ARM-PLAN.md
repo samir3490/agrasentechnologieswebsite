@@ -141,6 +141,10 @@ Each **workspace** is independent: its own plan, contact limit, and API connecti
 - [x] Team management (add/remove members, roles)
 - [x] WhatsApp share from message drafts (wa.me link — no API key)
 - [x] Setup checklist with Test buttons for each integration
+- [x] Automated test suite (`npm test`, `npm run test:arm-smoke`) — see [ARM-TESTING.md](./ARM-TESTING.md)
+- [x] GitHub Actions CI for ARM unit tests
+- [x] Privacy policy section for ARM product data
+- [x] Platform integration setup guide — [ARM-INTEGRATIONS-SETUP.md](./ARM-INTEGRATIONS-SETUP.md)
 - [ ] Push notifications (future)
 - [ ] WhatsApp Business API (future — optional enterprise)
 
