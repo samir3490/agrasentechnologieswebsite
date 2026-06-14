@@ -85,7 +85,7 @@ function GiftSuggestionsPanel({
       </div>
       {source && source !== "error" && (
         <p className="text-xs text-slate-400">
-          {source === "openai" ? "Powered by AI" : "Template suggestions (add OPENAI_API_KEY for AI)"}
+          {source === "openai" ? "Powered by AI" : "Template suggestions (add OpenAI key in Settings → Connections)"}
         </p>
       )}
       <ul className="space-y-3">

@@ -21,8 +21,9 @@ function reminderBody(r: Reminder): { html: string; text: string } {
     r.daysBefore === 0
       ? `is today (${r.eventDate})`
       : `is on ${r.eventDate} (${r.daysBefore} days away)`;
-  const text = `${r.contactName}'s ${label} ${when}. Open RIP to view contact details and gift ideas.`;
-  const html = `<p>${text}</p><p style="color:#64748b;font-size:12px">Relationship Intelligence Platform</p>`;
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") || "https://agrasentechnologies.com";
+  const text = `${r.contactName}'s ${label} ${when}. Open AI Relationship Manager: ${appUrl}/ai-relationship-manager/dashboard`;
+  const html = `<p>${text}</p><p style="color:#64748b;font-size:12px">AI Relationship Manager by Agrasen Technologies</p>`;
   return { html, text };
 }
 

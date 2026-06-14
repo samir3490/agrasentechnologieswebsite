@@ -159,10 +159,33 @@ Platform operator env vars are **optional defaults** — customers can use 100% 
 
 ---
 
+## Phase 9 — Security & SEO
+
+### Security
+
+- [x] HTTP security headers (HSTS, X-Frame-Options, nosniff, Referrer-Policy)
+- [x] API rate limiting on `/api/arm/*` (120 req/min per IP)
+- [x] Request body size limit (1 MB) on ARM API writes
+- [x] App routes (`dashboard`, `contacts`, etc.) excluded from search indexing
+- [x] `security.txt` at `/.well-known/security.txt`
+- [ ] Optional: strict Content-Security-Policy (requires tuning for Firebase/Mapbox/Razorpay)
+
+### SEO
+
+- [x] `robots.txt` — allow marketing pages, block private app + `/api/`
+- [x] `sitemap.xml` — site pages, products, ARM landing, signup, blog posts
+- [x] ARM landing page metadata, Open Graph, canonical URL
+- [x] JSON-LD (SoftwareApplication + FAQ) on ARM landing
+- [x] Products page canonical + internal link fix (no `_blank` for ARM)
+- [ ] **YOUR ACTION** — Submit sitemap in [Google Search Console](https://search.google.com/search-console)
+- [ ] **YOUR ACTION** — Verify `agrasentechnologies.com` + `www` property in Search Console
+
+---
+
 ## Deprecated / optional cleanup
 
 - [ ] Retire or redirect `rip-theta.vercel.app` (standalone RIP Vercel project)
-- [ ] Align all user-facing copy from “RIP” to “AI Relationship Manager”
+- [x] Align user-facing email/digest copy to “AI Relationship Manager”
 
 ---
 

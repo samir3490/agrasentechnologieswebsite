@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { SITE_URL } from "@/lib/site-url";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,6 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Agrasen Technologies | IT Consulting & Application Development",
   description:
     "Agrasen Technologies delivers innovative IT consulting, application development on QuickBase & Smartsheet, and strategic business solutions. Based in Orlando, FL with over 15 years of industry experience.",

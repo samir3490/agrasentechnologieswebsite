@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   title: "Products | Agrasen Technologies",
   description:
     "Explore software products from Agrasen Technologies, including AI Relationship Manager — an AI-powered personal CRM for contacts, birthdays, reminders, and relationship intelligence.",
+  alternates: { canonical: "https://agrasentechnologies.com/products" },
+  openGraph: {
+    title: "Products | Agrasen Technologies",
+    url: "https://agrasentechnologies.com/products",
+    type: "website",
+  },
 };
 
 export default function ProductsPage() {
@@ -93,15 +99,25 @@ export default function ProductsPage() {
 
                   <div className="mt-8 pt-6 border-t border-border">
                     {product.href && product.status === "available" ? (
-                      <a
-                        href={product.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-accent to-accent-secondary hover:opacity-90 transition-opacity duration-200"
-                      >
-                        {product.ctaLabel ?? "Learn more"}
-                        <span aria-hidden>→</span>
-                      </a>
+                      product.href.startsWith("/") ? (
+                        <Link
+                          href={product.href}
+                          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-accent to-accent-secondary hover:opacity-90 transition-opacity duration-200"
+                        >
+                          {product.ctaLabel ?? "Learn more"}
+                          <span aria-hidden>→</span>
+                        </Link>
+                      ) : (
+                        <a
+                          href={product.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-accent to-accent-secondary hover:opacity-90 transition-opacity duration-200"
+                        >
+                          {product.ctaLabel ?? "Learn more"}
+                          <span aria-hidden>→</span>
+                        </a>
+                      )
                     ) : (
                       <Link
                         href="/contact"

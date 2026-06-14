@@ -94,17 +94,17 @@ export function digestToHtml(digest: DailyDigest, accountName: string): string {
   };
 
   return `
-    <h2>Your RIP daily digest — ${accountName}</h2>
+    <h2>Your AI Relationship Manager daily digest — ${accountName}</h2>
     <p>${digest.date}</p>
     ${section("Birthdays", digest.birthdays)}
     ${section("Anniversaries", digest.anniversaries)}
     ${section("Suggested outreach", digest.suggestedOutreach)}
-    <p style="color:#64748b;font-size:12px">Sent by Relationship Intelligence Platform</p>
+    <p style="color:#64748b;font-size:12px">AI Relationship Manager by Agrasen Technologies</p>
   `.trim();
 }
 
 export function digestToText(digest: DailyDigest, accountName: string): string {
-  const lines = [`Your RIP daily digest — ${accountName}`, digest.date, ""];
+  const lines = [`Your AI Relationship Manager daily digest — ${accountName}`, digest.date, ""];
 
   const add = (title: string, items: DigestItem[]) => {
     if (!items.length) return;

@@ -1,0 +1,6 @@
+Contact: mailto:contact@agrasentechnologies.com
+Preferred-Languages: en
+Policy: https://agrasentechnologies.com/privacy-policy
+Canonical: https://agrasentechnologies.com/.well-known/security.txt
+
+# AI Relationship Manager — report security issues to the address above.
