@@ -10,6 +10,7 @@ import { SITE } from "@/lib/arm/site";
 const NAV = [
   { href: armPath("/dashboard"), label: "Dashboard" },
   { href: armPath("/contacts"), label: "Contacts" },
+  { href: armPath("/map"), label: "Map" },
   { href: armPath("/settings"), label: "Settings" },
 ];
 

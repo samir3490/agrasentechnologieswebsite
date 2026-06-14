@@ -10,7 +10,8 @@ import {
   maybeSyncGoogleCalendarForContact,
 } from "@/lib/arm/calendar/sync";
 import type { Contact, AccountSettings } from "@/lib/arm/types";
-import { enrichContactHealth, computeHealthScore } from "@/lib/arm/health/score";
+import { enrichContactHealth } from "@/lib/arm/health/score";
+import { enrichContactLocation } from "@/lib/arm/map/geocode";
 
 type RouteParams = { params: Promise<{ id: string; cid: string }> };
 
@@ -52,10 +53,26 @@ export async function PATCH(request: Request, { params }: RouteParams) {
       return NextResponse.json({ error: "Contact not found" }, { status: 404 });
     }
 
-    const updates = { ...parsed.data, updatedAt: new Date().toISOString() };
+    const existing = snap.data() as Contact;
+    const updates: Record<string, unknown> = { ...parsed.data, updatedAt: new Date().toISOString() };
+
+    if (parsed.data.location !== undefined) {
+      const merged = { ...existing.location, ...parsed.data.location };
+      const locTextChanged =
+        (parsed.data.location.city !== undefined && parsed.data.location.city !== existing.location?.city) ||
+        (parsed.data.location.state !== undefined && parsed.data.location.state !== existing.location?.state) ||
+        (parsed.data.location.country !== undefined &&
+          parsed.data.location.country !== existing.location?.country);
+      if (locTextChanged) {
+        delete merged.lat;
+        delete merged.lng;
+      }
+      updates.location = await enrichContactLocation(merged);
+    }
+
     await ref.update(updates);
 
-    const merged = { id: cid, ...snap.data(), ...updates } as Contact;
+    const merged = { ...existing, ...updates, id: cid } as Contact;
     const accountSnap = await db.doc(`ripAccounts/${accountId}`).get();
     const settings = (accountSnap.data()?.settings || {}) as AccountSettings;
     await syncContactEventsAndReminders(db, accountId, cid, merged, settings);
