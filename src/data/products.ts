@@ -34,7 +34,7 @@ export const products: Product[] = [
     tagline: "Your personal CRM for every relationship that matters",
     description:
       "An AI-powered relationship platform that helps you stay connected with family, friends, clients, donors, volunteers, and colleagues. Track contacts, never miss a birthday or anniversary, log interactions, and get daily reminders so important relationships stay warm.",
-    href: "https://rip-theta.vercel.app",
+    href: "/ai-relationship-manager",
     ctaLabel: "Try it free",
     status: "available",
     icon: "relationship",

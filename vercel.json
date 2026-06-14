@@ -1,0 +1,12 @@
+{
+  "crons": [
+    {
+      "path": "/api/arm/cron/reminders",
+      "schedule": "30 2 * * *"
+    },
+    {
+      "path": "/api/arm/cron/digest",
+      "schedule": "30 2 * * *"
+    }
+  ]
+}
