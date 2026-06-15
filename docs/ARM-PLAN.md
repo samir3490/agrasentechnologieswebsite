@@ -1,5 +1,7 @@
 # AI Relationship Manager — Build Plan
 
+**Related plans:** [SEO Plan](./SEO-PLAN.md) · [ARM Integrations](./ARM-INTEGRATIONS-SETUP.md) · [ARM Testing](./ARM-TESTING.md)
+
 **App URL:** https://agrasentechnologies.com/ai-relationship-manager  
 **Repo:** [agrasentechnologieswebsite](https://github.com/samir3490/agrasentechnologieswebsite)  
 **Firebase:** `agrasen-technologies` (`ripAccounts/`, `ripUsers/`)

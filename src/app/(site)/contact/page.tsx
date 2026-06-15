@@ -5,12 +5,14 @@ import ScrollReveal from "@/components/ScrollReveal";
 import GradientOrb from "@/components/GradientOrb";
 import SectionHeading from "@/components/SectionHeading";
 import HubSpotForm from "@/components/HubSpotForm";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact | Agrasen Technologies",
+export const metadata: Metadata = pageMetadata({
+  title: "Contact | IT Consultant Orlando FL — Agrasen Technologies",
   description:
-    "Get in touch with Agrasen Technologies for IT consulting, web development, SEO, and business solutions. Located in Orlando, FL.",
-};
+    "Contact Agrasen Technologies for IT consulting, QuickBase development, Smartsheet solutions, and web services. Orlando, FL — serving clients nationwide.",
+  path: "/contact",
+});
 
 const contactCards = [
   {

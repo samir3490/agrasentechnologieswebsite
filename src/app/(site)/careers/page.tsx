@@ -5,12 +5,14 @@ import ScrollReveal from "@/components/ScrollReveal";
 import GradientOrb from "@/components/GradientOrb";
 import SectionHeading from "@/components/SectionHeading";
 import HubSpotForm from "@/components/HubSpotForm";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Careers | Agrasen Technologies",
+export const metadata: Metadata = pageMetadata({
+  title: "Careers | IT Jobs Orlando FL — Agrasen Technologies",
   description:
-    "Join Agrasen Technologies. Explore career opportunities in IT consulting, application development, QuickBase, Smartsheet, and low-code solutions. Apply today.",
-};
+    "Join Agrasen Technologies. Explore careers in IT consulting, QuickBase development, Smartsheet, and low-code solutions. Apply today.",
+  path: "/careers",
+});
 
 const CAREERS_FORM_ID = "d4953ed8-9916-4643-8eff-788ee1708b92";
 

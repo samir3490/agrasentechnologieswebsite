@@ -5,18 +5,14 @@ import ScrollReveal from "@/components/ScrollReveal";
 import SectionHeading from "@/components/SectionHeading";
 import { ProductIconSvg } from "@/components/ProductIcon";
 import { products, productsPage } from "@/data/products";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Products | Agrasen Technologies",
+export const metadata: Metadata = pageMetadata({
+  title: "Products | Software by Agrasen Technologies",
   description:
     "Explore software products from Agrasen Technologies, including AI Relationship Manager — an AI-powered personal CRM for contacts, birthdays, reminders, and relationship intelligence.",
-  alternates: { canonical: "https://agrasentechnologies.com/products" },
-  openGraph: {
-    title: "Products | Agrasen Technologies",
-    url: "https://agrasentechnologies.com/products",
-    type: "website",
-  },
-};
+  path: "/products",
+});
 
 export default function ProductsPage() {
   return (

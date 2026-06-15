@@ -3,12 +3,14 @@ import Link from "next/link";
 import ParticleField from "@/components/ParticleField";
 import ScrollReveal from "@/components/ScrollReveal";
 import GradientOrb from "@/components/GradientOrb";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Terms of Service | Agrasen Technologies",
   description:
     "Read the Terms of Service for Agrasen Technologies. These terms govern your use of our website and IT consulting services.",
-};
+  path: "/terms-of-service",
+});
 
 const sections = [
   {

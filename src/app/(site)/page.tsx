@@ -1,8 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import ParticleField from "@/components/ParticleField";
 import ScrollReveal from "@/components/ScrollReveal";
 import GradientOrb from "@/components/GradientOrb";
 import SectionHeading from "@/components/SectionHeading";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Agrasen Technologies | IT Consulting & Application Development Orlando FL",
+  description:
+    "Orlando-based IT consulting and application development on QuickBase, Smartsheet, and low-code platforms. Over 15 years helping businesses nationwide.",
+  path: "/",
+});
 
 const stats = [
   { value: "15+", label: "Years Experience" },

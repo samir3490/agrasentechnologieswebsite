@@ -3,12 +3,14 @@ import Link from "next/link";
 import GradientOrb from "@/components/GradientOrb";
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionHeading from "@/components/SectionHeading";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About | Agrasen Technologies",
+export const metadata: Metadata = pageMetadata({
+  title: "About | Agrasen Technologies — IT Consulting Orlando FL",
   description:
     "Learn about Agrasen Technologies — an Orlando-based IT consulting firm founded by Samir Agrawal with over 15 years of experience in enterprise technology, QuickBase, Smartsheet, and low-code solutions.",
-};
+  path: "/about",
+});
 
 const milestones = [
   {

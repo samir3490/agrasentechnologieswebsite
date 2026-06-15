@@ -5,7 +5,7 @@ import GradientOrb from "@/components/GradientOrb";
 import ScrollReveal from "@/components/ScrollReveal";
 import { ProductIconSvg } from "@/components/ProductIcon";
 import { getProductById, products } from "@/data/products";
-import { SITE_URL } from "@/lib/site-url";
+import { pageMetadata } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -21,19 +21,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!product) return { title: "Product Not Found" };
 
   const description = product.seoDescription ?? product.description;
-  const url = `${SITE_URL}/products/${product.id}`;
 
-  return {
+  return pageMetadata({
     title: `${product.name} | Agrasen Technologies`,
     description,
-    alternates: { canonical: url },
-    openGraph: {
-      title: `${product.name} | Agrasen Technologies`,
-      description,
-      url,
-      type: "website",
-    },
-  };
+    path: `/products/${product.id}`,
+  });
 }
 
 export default async function ProductDetailPage({ params }: Props) {

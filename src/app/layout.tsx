@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { SITE_URL } from "@/lib/site-url";
+import { ogImageUrl, SITE } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -29,16 +30,28 @@ export const metadata: Metadata = {
     title: "Agrasen Technologies | IT Consulting & Application Development",
     description:
       "Innovative IT consulting, application development, and strategic business solutions with over 15 years of experience.",
-    url: "https://agrasentechnologies.com",
-    siteName: "Agrasen Technologies",
-    locale: "en_US",
+    url: SITE_URL,
+    siteName: SITE.name,
+    locale: SITE.locale,
     type: "website",
+    images: [
+      {
+        url: ogImageUrl(),
+        width: 1200,
+        height: 630,
+        alt: `${SITE.name} — ${SITE.tagline}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Agrasen Technologies | IT Consulting & Application Development",
     description:
       "Innovative IT consulting, application development, and strategic business solutions with over 15 years of experience.",
+    images: [ogImageUrl()],
+  },
+  alternates: {
+    canonical: SITE_URL,
   },
   robots: {
     index: true,

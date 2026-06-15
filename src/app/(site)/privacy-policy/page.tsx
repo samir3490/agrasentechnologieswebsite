@@ -3,12 +3,14 @@ import Link from "next/link";
 import ParticleField from "@/components/ParticleField";
 import ScrollReveal from "@/components/ScrollReveal";
 import GradientOrb from "@/components/GradientOrb";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy | Agrasen Technologies",
   description:
     "Learn how Agrasen Technologies collects, uses, and protects your personal information. Read our full privacy policy.",
-};
+  path: "/privacy-policy",
+});
 
 const sections = [
   {

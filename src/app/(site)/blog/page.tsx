@@ -7,12 +7,14 @@ import GradientOrb from "@/components/GradientOrb";
 import SectionHeading from "@/components/SectionHeading";
 import NewsletterForm from "./NewsletterForm";
 import { posts } from "@/data/posts";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Blog | Agrasen Technologies",
+export const metadata: Metadata = pageMetadata({
+  title: "Blog | IT Consulting & Technology Insights",
   description:
-    "Insights and articles on IT strategy, business growth, productivity, and technology trends from Agrasen Technologies.",
-};
+    "Insights on IT strategy, QuickBase, Smartsheet, AI, productivity, and business technology from Agrasen Technologies.",
+  path: "/blog",
+});
 
 export default function BlogPage() {
   return (

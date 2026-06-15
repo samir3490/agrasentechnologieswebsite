@@ -3,12 +3,15 @@ import Link from "next/link";
 import GradientOrb from "@/components/GradientOrb";
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionHeading from "@/components/SectionHeading";
+import JsonLd from "@/components/JsonLd";
+import { pageMetadata, servicesJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services | Agrasen Technologies",
+export const metadata: Metadata = pageMetadata({
+  title: "Services | QuickBase, Smartsheet & IT Consulting",
   description:
-    "Explore the full range of IT services from Agrasen Technologies — IT consulting, application development, web design, UI/UX, SEO, mobile design, business mentoring, and branding.",
-};
+    "IT consulting, QuickBase and Smartsheet application development, web design, UI/UX, SEO, mobile design, business mentoring, and branding from Agrasen Technologies in Orlando, FL.",
+  path: "/services",
+});
 
 const services = [
   {
@@ -118,7 +121,9 @@ const processSteps = [
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen">
+    <>
+      <JsonLd data={servicesJsonLd()} />
+      <main className="min-h-screen">
       {/* Hero */}
       <section className="relative min-h-[40vh] flex items-center bg-bg-secondary overflow-hidden">
         <GradientOrb color1="#D4A017" color2="#E8C547" size={300} className="top-0 -right-32 opacity-40" delay={0} />
@@ -212,5 +217,6 @@ export default function ServicesPage() {
         </div>
       </section>
     </main>
+    </>
   );
 }

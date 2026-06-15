@@ -1,5 +1,7 @@
 # Agrasen Technologies — SEO Plan
 
+**Related plans:** [ARM Build Plan](./ARM-PLAN.md) · [ARM Integrations](./ARM-INTEGRATIONS-SETUP.md) · [ARM Testing](./ARM-TESTING.md)
+
 **Site:** https://agrasentechnologies.com  
 **Platform:** Next.js (Vercel)  
 **Last updated:** May 2026  
@@ -24,13 +26,13 @@
 | Open Graph (basic) | ✅ Root layout |
 | Twitter cards | ✅ Root layout |
 | Blog content & daily publishing | ✅ Active |
-| `robots.txt` | ❌ Missing (404) |
-| `sitemap.xml` | ❌ Missing (404) |
-| JSON-LD structured data | ❌ Missing |
-| Canonical URLs | ❌ Missing |
-| OG images (social preview) | ❌ Missing |
-| Google Search Console | ❓ Not verified |
-| Google Analytics | ❓ Unknown |
+| `robots.txt` | ✅ Live |
+| `sitemap.xml` | ✅ Live |
+| JSON-LD structured data | ✅ Organization, LocalBusiness, Service, BlogPosting |
+| Canonical URLs | ✅ All marketing pages |
+| OG images (social preview) | ✅ Dynamic /opengraph-image |
+| Google Search Console | ✅ Verified (per ARM plan) |
+| Google Analytics | ❓ Confirm HubSpot vs GA4 |
 
 ---
 
@@ -38,10 +40,10 @@
 
 ### Crawling & indexing
 
-- [ ] **P0** Add `robots.txt` (allow all, point to sitemap)
-- [ ] **P0** Add dynamic `sitemap.xml` (all static pages + blog posts)
-- [ ] **P0** Set `metadataBase` in root layout to `https://agrasentechnologies.com`
-- [ ] **P0** Add canonical URLs on every page
+- [x] **P0** Add `robots.txt` (allow all, point to sitemap)
+- [x] **P0** Add dynamic `sitemap.xml` (all static pages + blog posts)
+- [x] **P0** Set `metadataBase` in root layout to `https://agrasentechnologies.com`
+- [x] **P0** Add canonical URLs on every page
 - [ ] **P1** Submit sitemap to Google Search Console
 - [ ] **P1** Submit sitemap to Bing Webmaster Tools
 - [ ] **P1** Request indexing for homepage and key pages in Search Console
@@ -50,11 +52,11 @@
 
 ### Structured data (Schema.org)
 
-- [ ] **P0** Add `Organization` + `LocalBusiness` JSON-LD on homepage
+- [x] **P0** Add `Organization` + `LocalBusiness` JSON-LD on homepage
 - [ ] **P1** Add `WebSite` schema with `SearchAction` (optional)
-- [ ] **P1** Add `Service` schema on Services page
-- [ ] **P1** Add `Article` / `BlogPosting` schema on blog posts
-- [ ] **P2** Add `BreadcrumbList` schema on inner pages
+- [x] **P1** Add `Service` schema on Services page
+- [x] **P1** Add `Article` / `BlogPosting` schema on blog posts
+- [x] **P2** Add `BreadcrumbList` schema on inner pages
 - [ ] **P2** Add `JobPosting` schema on Careers page (if listing specific roles)
 - [ ] **P3** Add `FAQPage` schema if FAQ section is added later
 
@@ -78,9 +80,9 @@
 
 ### Homepage (`/`)
 
-- [ ] **P0** Add page-specific metadata (title, description with target keywords)
+- [x] **P0** Add page-specific metadata (title, description with target keywords)
 - [ ] **P1** Refine H1 to include primary keyword (e.g. "IT Consulting" or "QuickBase Development")
-- [ ] **P1** Add OG image for social sharing
+- [x] **P1** Add OG image for social sharing
 - [ ] **P2** Add internal links to Services, About, Blog, Contact in body content
 - [ ] **P2** Add location mention in copy: "Orlando, FL" + "serving clients nationwide"
 
@@ -109,8 +111,8 @@
 
 ### Blog (`/blog` + posts)
 
-- [ ] **P1** Ensure each post has unique title, description, and OG tags (partially done)
-- [ ] **P1** Add OG images per post (featured image as social preview)
+- [x] **P1** Ensure each post has unique title, description, and OG tags
+- [x] **P1** Add OG images per post (featured image as social preview)
 - [ ] **P1** Add internal links from blog posts to Services and Contact
 - [ ] **P2** Add author bio block with link to About page
 - [ ] **P2** Add related posts section at bottom of each article
@@ -222,11 +224,11 @@
 
 ## Quick wins (do this week)
 
-1. [ ] Add `sitemap.xml` and `robots.txt` in Next.js
-2. [ ] Set `metadataBase` + canonical URLs
-3. [ ] Add Organization / LocalBusiness JSON-LD
-4. [ ] Verify Google Search Console
-5. [ ] Create and upload default OG image
+1. [x] Add `sitemap.xml` and `robots.txt` in Next.js
+2. [x] Set `metadataBase` + canonical URLs
+3. [x] Add Organization / LocalBusiness JSON-LD
+4. [x] Verify Google Search Console
+5. [x] Create and upload default OG image
 6. [ ] Claim Google Business Profile
 
 ---
@@ -251,12 +253,11 @@
 |------|----------|-------|
 | May 2026 | Migrated from WordPress to Next.js on Vercel | Old sitemap/robots on Bigrock no longer apply |
 | May 2026 | Daily blog automation enabled | GitHub Actions publishes daily at 9:00 AM UTC |
+| May 2026 | SEO Phase 1 implemented | JSON-LD, OG image, canonicals, blog schema |
 | | | |
 
 ---
 
 ## Next step
 
-Start with **Phase 1 (Technical SEO)** — robots.txt, sitemap, structured data, and Search Console. These unblock everything else.
-
-When ready, ask to implement Phase 1 in code.
+**Phase 1 is done.** Move to **Phase 2** — service landing pages, Google Business Profile, and homepage keyword tuning. Or **Phase 7** — case studies and testimonials.
