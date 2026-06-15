@@ -54,7 +54,7 @@ export function pageMetadata({
   ogImage?: string;
 }): Metadata {
   const url = siteUrl(path);
-  const image = ogImage ? siteUrl(ogImage.startsWith("/") ? ogImage : `/${ogImage}`) : defaultOgImage.url;
+  const image = ogImage ? siteUrl(ogImage.startsWith("/") ? ogImage : `/${ogImage}`) : ogImageUrl();
   const images = [{ url: image, width: 1200, height: 630, alt: title }];
 
   return {

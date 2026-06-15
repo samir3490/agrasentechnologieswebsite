@@ -26,10 +26,12 @@ export default function SectionHeading({
           {label}
         </p>
       )}
-      <h2 className="text-4xl md:text-5xl font-bold gradient-text">{title}</h2>
+      <h2 className="text-4xl md:text-5xl font-bold gradient-text leading-snug pb-1">
+        {title}
+      </h2>
       {description && (
         <p
-          className={`mt-4 text-lg text-secondary max-w-2xl ${
+          className={`mt-4 text-lg text-text-secondary max-w-2xl ${
             centered ? "mx-auto" : ""
           }`}
         >
