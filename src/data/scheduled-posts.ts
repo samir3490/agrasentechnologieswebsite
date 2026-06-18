@@ -2,55 +2,6 @@ import { BlogPost } from "./posts";
 
 export const scheduledPosts: BlogPost[] = [
   {
-    slug: "rise-of-no-code-development",
-    title: "The Rise of No-Code Development: What Business Owners Need to Know",
-    date: "2026-06-18",
-    author: "Samir Agrawal",
-    category: "No-Code Development",
-    image: "/blog/blog-low-code.jpg",
-    excerpt:
-      "No-code development is empowering business owners to build applications without writing a single line of code. Here's what you need to know about its potential — and its limits.",
-    content: `
-<p>There's a quiet revolution happening in software development, and it doesn't involve hiring more programmers. No-code platforms are enabling business owners, operations managers, and department heads to build functional applications using visual interfaces — drag-and-drop components, pre-built logic blocks, and point-and-click configuration. No programming knowledge required.</p>
-
-<p>As someone who has spent years bridging the gap between business needs and technology solutions, I find this trend both exciting and worth approaching with clear eyes. Here's what every business owner should understand about no-code development.</p>
-
-<h2>What Exactly Is No-Code?</h2>
-<p>No-code platforms provide visual development environments where you build applications by assembling pre-built components rather than writing code. Think of it like building with LEGO blocks — each piece has a defined function, and you snap them together to create something useful. Platforms like Bubble, Airtable, Glide, and Zapier have made it possible to build websites, mobile apps, databases, and automated workflows without touching a code editor.</p>
-
-<p>This is different from low-code platforms (like Power Apps or Mendix), which still allow or require some coding for advanced functionality. No-code is truly aimed at people with zero programming background.</p>
-
-<h2>Who Is No-Code For?</h2>
-<p>No-code is ideal for:</p>
-<ul>
-<li><strong>Small business owners</strong> who need internal tools but can't justify a full development team</li>
-<li><strong>Entrepreneurs</strong> who want to validate an idea with a working prototype before investing in custom development</li>
-<li><strong>Department leads</strong> who need specific workflow tools that IT hasn't prioritized</li>
-<li><strong>Startups</strong> looking to launch an MVP quickly and iterate based on user feedback</li>
-</ul>
-
-<p>The common thread? People who understand their problem deeply but don't have the technical skills — or budget — to build a traditional software solution.</p>
-
-<h2>Popular No-Code Platforms in 2026</h2>
-<p><strong>Bubble</strong> remains the leader for building web applications. It's surprisingly powerful, with database management, user authentication, and responsive design built in. <strong>Airtable</strong> is the go-to for database-driven applications and internal tools. <strong>Glide</strong> excels at turning spreadsheets into mobile apps. <strong>Zapier</strong> and <strong>Make</strong> are the automation kings, connecting thousands of apps without code. And <strong>Webflow</strong> dominates the no-code website space, producing professional-quality sites that rival custom-built ones.</p>
-
-<h2>The Real Limitations</h2>
-<p>Here's where I need to be honest, because the no-code marketing can be overly optimistic:</p>
-
-<ul>
-<li><strong>Scalability:</strong> No-code apps work well for hundreds or even thousands of users, but if you're building something that needs to handle massive scale, you'll eventually hit performance walls.</li>
-<li><strong>Customization ceiling:</strong> You can only build what the platform's components allow. Unique, complex features that don't fit the platform's paradigm are either impossible or require painful workarounds.</li>
-<li><strong>Vendor lock-in:</strong> Your application lives on the platform. If the platform changes pricing, shuts down, or removes features, you're at their mercy. You typically can't export your app and run it elsewhere.</li>
-<li><strong>Security and compliance:</strong> For industries with strict regulatory requirements (healthcare, finance), no-code platforms may not provide the level of control you need over data handling and security.</li>
-</ul>
-
-<h2>When to Go Custom</h2>
-<p>No-code is perfect for internal tools, MVPs, and applications with straightforward requirements. But when your needs involve complex integrations, high-security requirements, massive scale, or deeply unique functionality, custom development is still the right path. The smartest approach? Start with no-code to validate the concept, then invest in custom development when you've proven the value.</p>
-
-<p>No-code isn't replacing developers — it's empowering everyone else. And that's a good thing for business.</p>
-`,
-  },
-  {
     slug: "cybersecurity-best-practices-small-business",
     title: "Cybersecurity Best Practices Every Small Business Should Follow",
     date: "2026-06-25",
