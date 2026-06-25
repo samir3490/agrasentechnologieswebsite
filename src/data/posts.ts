@@ -11,6 +11,69 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    slug: "cybersecurity-best-practices-small-business",
+    title: "Cybersecurity Best Practices Every Small Business Should Follow",
+    date: "2026-06-25",
+    author: "Samir Agrawal",
+    category: "Cybersecurity",
+    image: "/blog/blog-cybersecurity.jpg",
+    excerpt:
+      "Small businesses are prime targets for cyberattacks — and most aren't prepared. Here are the essential cybersecurity practices that can protect your business without breaking the bank.",
+    content: `
+<p>Here's a statistic that should keep every small business owner up at night: nearly half of all cyberattacks target small businesses, yet the majority of small businesses have no formal cybersecurity plan. The misconception that "we're too small to be a target" is exactly what attackers count on. Small businesses often have weaker defenses, valuable data, and less ability to recover from a breach.</p>
+
+<p>The good news? You don't need an enterprise security budget to protect your business. Here are the essential practices that every small business should implement — starting today.</p>
+
+<h2>1. Enforce Strong Password Policies</h2>
+<p>Weak passwords remain the number one entry point for attackers. It's embarrassing how many breaches trace back to "Password123" or a reused credential from a previous leak. Every business should enforce:</p>
+<ul>
+<li>Minimum 14-character passwords with a mix of letters, numbers, and symbols</li>
+<li>Unique passwords for every account — no reuse across services</li>
+<li>A business-grade password manager (like 1Password or Bitwarden) so employees don't have to remember dozens of complex passwords</li>
+<li>Regular checks against known breach databases</li>
+</ul>
+
+<h2>2. Implement Multi-Factor Authentication (MFA)</h2>
+<p>If there's one single action that provides the most security improvement per dollar spent, it's MFA. By requiring a second form of verification — a code from an authenticator app, a hardware key, or a biometric scan — you make stolen passwords almost useless. Enable MFA on every system that supports it: email, cloud storage, financial accounts, CRM, and administrative tools. No exceptions.</p>
+
+<p>And please — use authenticator apps or hardware keys, not SMS-based verification. SIM-swapping attacks have made SMS codes unreliable.</p>
+
+<h2>3. Train Your Employees</h2>
+<p>Technology alone can't protect you if your team doesn't know what to watch for. Phishing emails have become incredibly sophisticated — AI-generated messages that mimic your CEO's writing style, fake invoices from real vendors, and urgent "security alerts" that trick even savvy employees. Regular security awareness training should cover:</p>
+<ul>
+<li>How to identify phishing emails and suspicious links</li>
+<li>The importance of verifying unusual requests, especially those involving money or data</li>
+<li>Safe browsing habits and the risks of public Wi-Fi</li>
+<li>What to do when something looks wrong (and creating a culture where reporting isn't punished)</li>
+</ul>
+
+<h2>4. Maintain Regular Backups</h2>
+<p>Ransomware attacks continue to devastate small businesses, and the best defense is a solid backup strategy. Follow the 3-2-1 rule:</p>
+<ul>
+<li><strong>3</strong> copies of your data</li>
+<li><strong>2</strong> different storage types (local drive and cloud, for example)</li>
+<li><strong>1</strong> copy stored offsite or in a separate cloud environment</li>
+</ul>
+
+<p>Critically, test your backups regularly. A backup you haven't tested is a backup you can't trust. I've seen businesses discover — during an actual emergency — that their backups were corrupted or incomplete. Don't let that be you.</p>
+
+<h2>5. Develop an Incident Response Plan</h2>
+<p>Despite your best efforts, breaches can happen. What separates businesses that survive from those that don't is preparation. Every small business should have a documented incident response plan that answers:</p>
+<ul>
+<li>Who is responsible for what when an incident occurs?</li>
+<li>How do we contain the breach and prevent further damage?</li>
+<li>Who do we notify — customers, partners, regulators?</li>
+<li>How do we recover systems and data?</li>
+<li>What do we learn from the incident to prevent recurrence?</li>
+</ul>
+
+<p>You don't need a 50-page document. A clear, concise plan that your team has actually reviewed and practiced is worth more than a comprehensive plan gathering dust in a drawer.</p>
+
+<h2>Start Today, Not Tomorrow</h2>
+<p>Cybersecurity isn't a one-time project — it's an ongoing practice. But these five fundamentals will dramatically reduce your risk. The investment is modest, the impact is significant, and the alternative — a devastating breach — is a cost no small business can afford.</p>
+`,
+  },
+  {
     slug: "rise-of-no-code-development",
     title: "The Rise of No-Code Development: What Business Owners Need to Know",
     date: "2026-06-18",
