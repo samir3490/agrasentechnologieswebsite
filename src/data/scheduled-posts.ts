@@ -2,67 +2,6 @@ import { BlogPost } from "./posts";
 
 export const scheduledPosts: BlogPost[] = [
   {
-    slug: "digital-transformation-step-by-step",
-    title: "Digital Transformation: A Step-by-Step Guide for Traditional Businesses",
-    date: "2026-07-02",
-    author: "Samir Agrawal",
-    category: "Digital Transformation",
-    image: "/blog/blog-cloud-computing.jpg",
-    excerpt:
-      "Digital transformation doesn't have to be overwhelming. Here's a practical, step-by-step approach for traditional businesses ready to modernize — without losing what makes them great.",
-    content: `
-<p>Digital transformation. It's one of the most overused — and most misunderstood — terms in business today. For many traditional business owners, it conjures images of massive budgets, disruptive overhauls, and technology projects that never seem to end. But here's the truth: digital transformation doesn't have to be a big-bang event. In fact, the most successful transformations are incremental, strategic, and deeply tied to real business outcomes.</p>
-
-<p>After guiding dozens of traditional businesses through this process, here's the step-by-step approach that actually works.</p>
-
-<h2>Step 1: Assess Where You Are</h2>
-<p>Before you can plan where you're going, you need an honest assessment of where you stand. This means auditing:</p>
-<ul>
-<li><strong>Current technology:</strong> What systems and tools are you using today? What's working, what's outdated, and what's being held together by workarounds?</li>
-<li><strong>Processes:</strong> Which business processes are manual, paper-based, or dependent on specific people's knowledge?</li>
-<li><strong>Data:</strong> Where does your data live? Is it accessible, accurate, and connected — or siloed in spreadsheets and filing cabinets?</li>
-<li><strong>Team capabilities:</strong> How comfortable is your team with technology? What skills gaps exist?</li>
-</ul>
-<p>This assessment isn't about judgment — it's about clarity. You can't build a roadmap without knowing your starting point.</p>
-
-<h2>Step 2: Define Your Strategy</h2>
-<p>Digital transformation should be driven by business goals, not technology trends. Ask yourself: What are the biggest pain points in our business? Where are we losing money, time, or customers? What would the ideal customer experience look like?</p>
-
-<p>Common strategic priorities include reducing operational costs, improving customer experience, enabling data-driven decisions, expanding to new markets, or simply making the team more productive. Pick two or three priorities — trying to transform everything at once is a recipe for failure.</p>
-
-<h2>Step 3: Select the Right Technology</h2>
-<p>This is where many businesses stumble. The temptation is to chase the newest, shiniest tool. Resist it. Instead, choose technology based on:</p>
-<ul>
-<li><strong>Fit:</strong> Does it solve your specific problems?</li>
-<li><strong>Integration:</strong> Does it work with your existing systems?</li>
-<li><strong>Scalability:</strong> Will it grow with your business?</li>
-<li><strong>Usability:</strong> Will your team actually use it?</li>
-<li><strong>Total cost of ownership:</strong> What does it really cost — including implementation, training, and ongoing maintenance?</li>
-</ul>
-<p>Sometimes the right technology is a simple cloud-based tool. Sometimes it's a custom application. Often, it's a combination. The key is matching the solution to the problem, not the other way around.</p>
-
-<h2>Step 4: Implement in Phases</h2>
-<p>The biggest mistake I see is trying to do everything at once. Phased implementation reduces risk, allows for learning, and builds momentum. Start with a pilot — a single department, a single process, or a single customer touchpoint. Prove the value, gather feedback, refine the approach, and then expand.</p>
-
-<p>Each phase should have clear success metrics. How will you know if this phase worked? Cost savings? Time saved? Customer satisfaction scores? Error reduction? Define it upfront so you can measure it honestly.</p>
-
-<h2>Step 5: Manage the Change</h2>
-<p>This is the step that separates successful transformations from expensive failures. Technology implementation is the easy part — getting people to embrace new ways of working is the hard part. Effective change management includes:</p>
-<ul>
-<li>Clear communication about <em>why</em> the change is happening and how it benefits each team</li>
-<li>Hands-on training, not just documentation</li>
-<li>Champions within each department who advocate for the new tools</li>
-<li>Patience and support during the learning curve</li>
-<li>Feedback loops so employees feel heard</li>
-</ul>
-
-<p>People don't resist change because they're stubborn — they resist change when they don't understand it or feel unprepared for it. Invest in your people as much as you invest in your technology.</p>
-
-<h2>The Payoff</h2>
-<p>Done right, digital transformation doesn't erase what makes your business great — it amplifies it. Your expertise, your relationships, your reputation — those remain. Technology simply removes the friction, inefficiency, and limitations that hold you back. And that's a transformation worth making.</p>
-`,
-  },
-  {
     slug: "cloud-computing-aws-azure-google",
     title: "Understanding Cloud Computing: AWS, Azure, and Google Cloud Compared",
     date: "2026-07-09",
