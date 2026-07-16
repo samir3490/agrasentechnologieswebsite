@@ -2,53 +2,6 @@ import { BlogPost } from "./posts";
 
 export const scheduledPosts: BlogPost[] = [
   {
-    slug: "ai-tools-boost-team-productivity",
-    title: "How to Use AI Tools to Boost Your Team's Productivity",
-    date: "2026-07-16",
-    author: "Samir Agrawal",
-    category: "Artificial Intelligence",
-    image: "/blog/blog-productivity-tools.jpg",
-    excerpt:
-      "AI productivity tools have moved from novelty to necessity. Here are practical ways to integrate AI into your team's daily workflow — without the hype.",
-    content: `
-<p>Every week, a new AI tool promises to revolutionize how you work. Most of that is marketing noise. But beneath the hype, there are genuinely useful AI tools that can make your team measurably more productive — if you deploy them thoughtfully. Having helped teams across industries integrate AI into their workflows, here are the tools and strategies that actually deliver results.</p>
-
-<h2>Writing and Communication: ChatGPT and Jasper</h2>
-<p>Let's start with the most immediately impactful category. AI writing assistants like ChatGPT and Jasper can dramatically reduce the time your team spends on routine communication. Drafting emails, writing reports, creating proposals, summarizing meeting notes, generating social media content — these are tasks that consume hours every week and AI handles them well.</p>
-
-<p>The key is using AI as a <em>starting point</em>, not a finished product. Have the AI generate a first draft, then let your team refine it with their expertise, brand voice, and personal touch. In my experience, this approach cuts writing time by 50-70% while maintaining quality.</p>
-
-<h2>Development: GitHub Copilot</h2>
-<p>For teams that include developers, GitHub Copilot is a genuine productivity multiplier. It suggests code completions, generates functions from natural language descriptions, and handles boilerplate code that would otherwise eat into development time. Studies consistently show 30-55% productivity improvements for developers using Copilot.</p>
-
-<p>But here's the important caveat: Copilot makes experienced developers faster; it doesn't make inexperienced developers better. The suggestions still need review by someone who understands the codebase, security implications, and best practices. Use it as an accelerator, not a replacement for skill.</p>
-
-<h2>Knowledge Management: Notion AI</h2>
-<p>If your team uses Notion (and many teams should), Notion AI adds a powerful layer of intelligence to your knowledge base. It can summarize long documents, extract action items from meeting notes, generate content based on your existing documentation, and answer questions about your team's collected knowledge. The real value is reducing the time spent searching for information — one of the biggest hidden productivity drains in any organization.</p>
-
-<h2>Automation: Zapier and Make</h2>
-<p>AI-enhanced automation tools like Zapier and Make are where productivity gains compound. These platforms connect your apps and automate repetitive workflows — when a new lead fills out a form, automatically create a CRM record, send a welcome email, notify the sales team, and add a follow-up task. What once required manual effort across four different tools now happens instantly.</p>
-
-<p>The AI enhancements in these platforms make automation setup easier (natural language workflow descriptions) and smarter (conditional logic that adapts based on content). Start by identifying your team's most repetitive, time-consuming workflows and automate them one by one.</p>
-
-<h2>Practical Tips for AI Adoption</h2>
-
-<h3>Start Small and Specific</h3>
-<p>Don't try to "AI-ify" everything at once. Pick one specific workflow where your team spends disproportionate time, introduce an AI tool for that workflow, measure the results, and expand from there.</p>
-
-<h3>Invest in Training</h3>
-<p>The difference between a team that uses AI effectively and one that doesn't is training. Spend time teaching your team how to write good prompts, how to evaluate AI output critically, and how to integrate AI tools into their existing workflows.</p>
-
-<h3>Set Clear Guidelines</h3>
-<p>Establish policies about what's appropriate for AI use. Sensitive customer data, confidential strategy documents, and regulated content may need different rules than routine internal communication.</p>
-
-<h3>Measure Actual Impact</h3>
-<p>Track time saved, output quality, and team satisfaction before and after AI tool adoption. This data helps you justify continued investment and identify where AI is truly helping versus where it's just novelty.</p>
-
-<p>AI tools are most powerful when they remove friction from your team's best work — not when they replace the work itself. Focus on augmentation, not replacement, and the productivity gains will follow.</p>
-`,
-  },
-  {
     slug: "future-of-remote-work-tools",
     title: "The Future of Remote Work: Tools and Technologies to Watch",
     date: "2026-07-23",
