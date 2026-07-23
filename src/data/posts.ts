@@ -16,7 +16,7 @@ export const posts: BlogPost[] = [
     date: "2026-07-23",
     author: "Samir Agrawal",
     category: "Remote Work",
-    image: "/blog/blog-productivity-tools.jpg",
+    image: "/blog/blog-remote-work.jpg",
     excerpt:
       "Remote and hybrid work are here to stay. Here are the tools and technologies that are shaping the next evolution of distributed teams — and what smart businesses should invest in now.",
     content: `
@@ -68,7 +68,7 @@ export const posts: BlogPost[] = [
     date: "2026-07-16",
     author: "Samir Agrawal",
     category: "Artificial Intelligence",
-    image: "/blog/blog-productivity-tools.jpg",
+    image: "/blog/blog-ai-productivity.jpg",
     excerpt:
       "AI productivity tools have moved from novelty to necessity. Here are practical ways to integrate AI into your team's daily workflow — without the hype.",
     content: `
@@ -183,7 +183,7 @@ export const posts: BlogPost[] = [
     date: "2026-07-02",
     author: "Samir Agrawal",
     category: "Digital Transformation",
-    image: "/blog/blog-cloud-computing.jpg",
+    image: "/blog/blog-digital-transformation.jpg",
     excerpt:
       "Digital transformation doesn't have to be overwhelming. Here's a practical, step-by-step approach for traditional businesses ready to modernize — without losing what makes them great.",
     content: `
@@ -307,7 +307,7 @@ export const posts: BlogPost[] = [
     date: "2026-06-18",
     author: "Samir Agrawal",
     category: "No-Code Development",
-    image: "/blog/blog-low-code.jpg",
+    image: "/blog/blog-no-code.jpg",
     excerpt:
       "No-code development is empowering business owners to build applications without writing a single line of code. Here's what you need to know about its potential — and its limits.",
     content: `
@@ -356,7 +356,7 @@ export const posts: BlogPost[] = [
     date: "2026-06-11",
     author: "Samir Agrawal",
     category: "Artificial Intelligence",
-    image: "/blog/ai-wisdom.jpg",
+    image: "/blog/blog-ai-chatbots.jpg",
     excerpt:
       "AI chatbots have evolved from clunky scripts to intelligent conversational agents. Here's how they're transforming customer service — and where human agents still matter most.",
     content: `
@@ -400,7 +400,7 @@ export const posts: BlogPost[] = [
     date: "2026-06-04",
     author: "Samir Agrawal",
     category: "Tools Comparison",
-    image: "/blog/blog-productivity-tools.jpg",
+    image: "/blog/blog-quickbase-smartsheet.jpg",
     excerpt:
       "QuickBase and Smartsheet are both powerful work management platforms, but they serve different needs. Here's an honest comparison to help you choose the right tool for your business.",
     content: `
