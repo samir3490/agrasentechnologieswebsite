@@ -11,6 +11,59 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    slug: "seo-in-2026",
+    title: "SEO in 2026: What's Changed and How to Stay Ahead",
+    date: "2026-07-30",
+    author: "Samir Agrawal",
+    category: "SEO",
+    image: "/blog/blog-seo.jpg",
+    excerpt:
+      "SEO has evolved dramatically with AI-driven search, voice queries, and new ranking signals. Here's what's changed in 2026 and how to adapt your strategy for modern search.",
+    content: `
+<p>If you're still doing SEO the same way you were in 2023, you're falling behind. Search engine optimization has undergone more change in the past two years than in the previous decade — driven by AI-powered search experiences, evolving ranking signals, and fundamental shifts in how people find information. As someone who advises businesses on digital strategy, here's what you need to understand about SEO in 2026.</p>
+
+<h2>AI-Driven Search Is Here</h2>
+<p>The biggest shift is how search engines present results. Google's AI Overviews (formerly Search Generative Experience), Bing's Copilot integration, and emerging AI search tools like Perplexity are changing the game fundamentally. Instead of showing a list of links, search engines now synthesize answers directly — pulling from multiple sources to provide comprehensive responses at the top of the page.</p>
+
+<p>What does this mean for your business? Traditional "rank #1 for a keyword" thinking is incomplete. You need to be a source that AI trusts, cites, and references. This means your content must be authoritative, well-structured, factually accurate, and clearly attributed to credible authors. Thin, keyword-stuffed pages are not just ineffective — they're invisible.</p>
+
+<h2>E-E-A-T Is Non-Negotiable</h2>
+<p>Experience, Expertise, Authoritativeness, and Trustworthiness — Google's E-E-A-T framework — has gone from a guideline to a gatekeeper. Search engines are aggressively filtering for content quality, and businesses that invest in genuine expertise are winning. Practically, this means:</p>
+<ul>
+<li>Content should be written by (or clearly attributed to) people with real experience in the subject</li>
+<li>Author bios, credentials, and LinkedIn profiles matter more than ever</li>
+<li>Original research, case studies, and first-hand insights outperform generic overviews</li>
+<li>Your website needs clear trust signals — about pages, contact information, privacy policies, and secure hosting</li>
+</ul>
+
+<h2>Voice Search and Conversational Queries</h2>
+<p>With smart speakers, AI assistants, and voice-enabled devices everywhere, voice search continues to grow. Voice queries are longer, more conversational, and often phrased as questions. Your content strategy should include FAQ sections, conversational headings, and natural language that matches how people actually speak — not how they type.</p>
+
+<p>Local businesses should pay particular attention. A significant portion of voice searches are local intent queries: "best IT consultant near me," "cybersecurity services in [city]," "QuickBase developer nearby." Ensuring your Google Business Profile is complete, accurate, and actively managed is fundamental.</p>
+
+<h2>Core Web Vitals Still Matter</h2>
+<p>Google's Core Web Vitals — measuring loading performance, interactivity, and visual stability — remain important ranking signals. A beautiful website with slow load times and janky interactions will be penalized. In 2026, the bar has risen:</p>
+<ul>
+<li><strong>Largest Contentful Paint (LCP):</strong> Under 2.5 seconds — ideally under 1.5</li>
+<li><strong>Interaction to Next Paint (INP):</strong> Under 200 milliseconds</li>
+<li><strong>Cumulative Layout Shift (CLS):</strong> Under 0.1</li>
+</ul>
+<p>Invest in technical performance. Optimize images, minimize JavaScript, use modern hosting, and test regularly with tools like PageSpeed Insights and Lighthouse.</p>
+
+<h2>Content Strategy for 2026</h2>
+<p>The winning content strategy in 2026 isn't about volume — it's about depth and usefulness. Here's what works:</p>
+<ul>
+<li><strong>Comprehensive, well-structured content</strong> that thoroughly answers specific questions</li>
+<li><strong>Original perspectives</strong> that AI can't generate from existing sources</li>
+<li><strong>Regular updates</strong> to keep content current and accurate</li>
+<li><strong>Multi-format content:</strong> text, video, infographics, and interactive elements that serve different user preferences</li>
+<li><strong>Topical authority:</strong> clusters of related content that demonstrate deep expertise in your niche</li>
+</ul>
+
+<p>SEO in 2026 rewards businesses that genuinely serve their audience. The tactics have evolved, but the core principle hasn't changed: create real value for real people, and the rankings will follow.</p>
+`,
+  },
+  {
     slug: "future-of-remote-work-tools",
     title: "The Future of Remote Work: Tools and Technologies to Watch",
     date: "2026-07-23",
