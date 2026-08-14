@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import GradientOrb from "@/components/GradientOrb";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -7,30 +9,59 @@ import JsonLd from "@/components/JsonLd";
 import { pageMetadata, servicesJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Services | QuickBase, Smartsheet & IT Consulting",
+  title: "Services | QuickBase Development & Low-Code Applications",
   description:
-    "IT consulting, QuickBase and Smartsheet application development, web design, UI/UX, SEO, mobile design, business mentoring, and branding from Agrasen Technologies in Orlando, FL.",
+    "Custom QuickBase applications, low-code systems, and Smartsheet solutions from Agrasen Technologies in Orlando, FL — plus IT consulting, web design, and SEO.",
   path: "/services",
 });
 
-const services = [
+const services: {
+  title: string;
+  description: string;
+  image?: string;
+  icon: ReactNode;
+}[] = [
   {
-    title: "IT Consulting",
+    title: "QuickBase Development",
     description:
-      "Driving Project Success with Expert IT Consultation. Bridging the gap between technical and non-technical teams is crucial for project success. From requirement gathering to project execution within strict timelines, we ensure seamless coordination and delivery.",
+      "Custom QuickBase applications built around your process — not a generic template. We design tables, workflows, roles, dashboards, and automations so operations, project, and field teams work in one system instead of scattered spreadsheets.",
+    image: "/services/service-quickbase.jpg",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-        <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z" />
+        <path d="M3.75 6A2.25 2.25 0 016 3.75h4.5A2.25 2.25 0 0112.75 6v4.5a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 10.5V6zM3.75 17.25A2.25 2.25 0 016 15h4.5a2.25 2.25 0 012.25 2.25v4.5A2.25 2.25 0 0110.5 24H6a2.25 2.25 0 01-2.25-2.25v-4.5zM15 6a2.25 2.25 0 012.25-2.25H21A2.25 2.25 0 0123.25 6v4.5A2.25 2.25 0 0121 12.75h-3.75A2.25 2.25 0 0115 10.5V6z" />
       </svg>
     ),
   },
   {
-    title: "Application Development",
+    title: "Low-Code Applications",
     description:
-      "Custom solutions built on QuickBase, Smartsheet, and other low-code platforms. We create powerful business applications that streamline workflows and boost productivity.",
+      "When you need business software in weeks, not a year-long custom build. We use low-code platforms to ship apps your team can actually run — forms, approvals, reporting, and integrations — then iterate as the process changes.",
+    image: "/services/service-low-code.jpg",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
         <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    ),
+  },
+  {
+    title: "Smartsheet Solutions",
+    description:
+      "Connected Smartsheet workspaces, automations, and reporting. We turn shared sheets into reliable operating systems for projects, vendors, and capacity — with the dashboards leadership actually checks.",
+    image: "/services/service-smartsheet.jpg",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <path d="M3.375 5.25h17.25v13.5H3.375V5.25zM3.375 9.75h17.25M3.375 14.25h17.25M9.75 5.25v13.5M14.25 5.25v13.5" />
+      </svg>
+    ),
+  },
+  {
+    title: "IT Consulting",
+    description:
+      "Driving project success with expert IT consultation. Bridging the gap between technical and non-technical teams — from requirement gathering to delivery on a timeline.",
+    image: "/services/service-it-consulting.jpg",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z" />
       </svg>
     ),
   },
@@ -100,22 +131,22 @@ const processSteps = [
   {
     step: 1,
     title: "Discovery",
-    description: "Understand your business needs",
+    description: "Map the workflows you run in sheets, email, and tribal knowledge",
   },
   {
     step: 2,
-    title: "Strategy",
-    description: "Create a tailored solution plan",
+    title: "Platform",
+    description: "Choose QuickBase, Smartsheet, or another low-code fit",
   },
   {
     step: 3,
-    title: "Execution",
-    description: "Build and deliver with precision",
+    title: "Build",
+    description: "Ship the app, dashboards, and automations your team will use",
   },
   {
     step: 4,
     title: "Support",
-    description: "Ongoing optimization and growth",
+    description: "Iterate as the process changes — without starting over",
   },
 ];
 
@@ -140,7 +171,7 @@ export default function ServicesPage() {
               Our Services
             </h1>
             <p className="mt-4 text-lg text-text-secondary max-w-2xl">
-              Comprehensive IT solutions tailored to your business — from consulting and development to design, branding, and strategic mentorship.
+              Custom QuickBase applications and low-code systems first — then the consulting, design, and web work that keep them useful.
             </p>
           </ScrollReveal>
         </div>
@@ -151,19 +182,32 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             label="What We Do"
-            title="Full-Spectrum IT Services"
-            description="Each engagement is shaped around your unique business goals."
+            title="QuickBase and Low-Code Applications"
+            description="Each engagement starts with the work your team does today — then we build the app around it."
           />
 
           <div className="mt-14 grid md:grid-cols-2 gap-6">
             {services.map((s, i) => (
               <ScrollReveal key={s.title} delay={i * 0.08}>
-                <div className="glass rounded-2xl p-8 h-full group hover:border-accent/50 hover:scale-[1.02] transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,160,23,0.08)]">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors duration-300">
-                    {s.icon}
+                <div className="glass rounded-2xl overflow-hidden h-full group hover:border-accent/50 hover:scale-[1.02] transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,160,23,0.08)]">
+                  {s.image ? (
+                    <div className="relative h-48">
+                      <Image
+                        src={s.image}
+                        alt={s.title}
+                        fill
+                        className="object-cover"
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                      />
+                    </div>
+                  ) : null}
+                  <div className="p-8">
+                    <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors duration-300">
+                      {s.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold text-text-primary">{s.title}</h3>
+                    <p className="mt-3 text-text-secondary leading-relaxed">{s.description}</p>
                   </div>
-                  <h3 className="text-xl font-semibold text-text-primary">{s.title}</h3>
-                  <p className="mt-3 text-text-secondary leading-relaxed">{s.description}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -205,7 +249,7 @@ export default function ServicesPage() {
               Let&apos;s Build Something Great Together
             </h2>
             <p className="mt-4 text-text-secondary text-lg max-w-xl mx-auto">
-              Tell us about your project and we&apos;ll show you what&apos;s possible.
+              Tell us the process you want to replace — we&apos;ll show you the QuickBase or low-code path.
             </p>
             <Link
               href="/contact"

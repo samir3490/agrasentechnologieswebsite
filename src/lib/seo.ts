@@ -5,9 +5,9 @@ import { SITE_URL } from "@/lib/site-url";
 export const SITE = {
   name: "Agrasen Technologies",
   legalName: "Agrasen Technologies Inc.",
-  tagline: "IT Consulting & Application Development",
+  tagline: "QuickBase & Low-Code Applications",
   description:
-    "Agrasen Technologies delivers IT consulting, QuickBase & Smartsheet development, and strategic business solutions. Based in Orlando, FL with over 15 years of experience.",
+    "Agrasen Technologies builds custom QuickBase applications, Smartsheet solutions, and other low-code systems. Based in Orlando, FL with over 15 years of experience.",
   locale: "en_US",
   address: {
     streetAddress: "1317 Edgewater Drive Suite 536",
@@ -22,8 +22,10 @@ export const SITE = {
 } as const;
 
 export const MARKETING_SERVICES = [
+  "QuickBase Development",
+  "Low-Code Applications",
+  "Smartsheet Solutions",
   "IT Consulting",
-  "Application Development",
   "Web Design",
   "UI/UX Design",
   "SEO Optimization",
@@ -144,8 +146,8 @@ export function servicesJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "IT Consulting Services",
-    description: "Professional IT consulting and development services from Agrasen Technologies.",
+    name: "QuickBase and Low-Code Services",
+    description: "Custom QuickBase applications, low-code systems, and IT consulting from Agrasen Technologies.",
     url: siteUrl("/services"),
     itemListElement: MARKETING_SERVICES.map((name, index) => ({
       "@type": "ListItem",

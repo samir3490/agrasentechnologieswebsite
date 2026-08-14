@@ -11,25 +11,25 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Agrasen Technologies | IT Consulting & Application Development",
+  title: "Agrasen Technologies | QuickBase & Low-Code Applications",
   description:
-    "Agrasen Technologies delivers innovative IT consulting, application development on QuickBase & Smartsheet, and strategic business solutions. Based in Orlando, FL with over 15 years of industry experience.",
+    "Custom QuickBase applications, Smartsheet solutions, and other low-code systems from Agrasen Technologies. Based in Orlando, FL with over 15 years of experience.",
   keywords: [
-    "IT consulting",
-    "application development",
     "QuickBase",
+    "QuickBase development",
+    "low-code applications",
+    "low-code development",
     "Smartsheet",
+    "IT consulting",
     "Orlando",
     "Florida",
-    "web development",
-    "business solutions",
-    "digital transformation",
+    "application development",
     "Agrasen Technologies",
   ],
   openGraph: {
-    title: "Agrasen Technologies | IT Consulting & Application Development",
+    title: "Agrasen Technologies | QuickBase & Low-Code Applications",
     description:
-      "Innovative IT consulting, application development, and strategic business solutions with over 15 years of experience.",
+      "Custom QuickBase applications and low-code systems with over 15 years of experience.",
     url: SITE_URL,
     siteName: SITE.name,
     locale: SITE.locale,
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Agrasen Technologies | IT Consulting & Application Development",
+    title: "Agrasen Technologies | QuickBase & Low-Code Applications",
     description:
-      "Innovative IT consulting, application development, and strategic business solutions with over 15 years of experience.",
+      "Custom QuickBase applications and low-code systems with over 15 years of experience.",
     images: [ogImageUrl()],
   },
   alternates: {

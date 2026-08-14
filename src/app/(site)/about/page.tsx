@@ -6,9 +6,9 @@ import SectionHeading from "@/components/SectionHeading";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About | Agrasen Technologies — IT Consulting Orlando FL",
+  title: "About | QuickBase & Low-Code — Agrasen Technologies",
   description:
-    "Learn about Agrasen Technologies — an Orlando-based IT consulting firm founded by Samir Agrawal with over 15 years of experience in enterprise technology, QuickBase, Smartsheet, and low-code solutions.",
+    "Agrasen Technologies is an Orlando firm that builds custom QuickBase applications, Smartsheet solutions, and other low-code systems. Founded by Samir Agrawal.",
   path: "/about",
 });
 
@@ -23,7 +23,7 @@ const milestones = [
   },
   {
     label: "Agrasen Technologies",
-    description: "Founded in 2014, Orlando FL — delivering IT consulting & low-code solutions",
+    description: "Founded in 2014, Orlando FL — QuickBase, Smartsheet, and low-code applications",
   },
 ];
 
@@ -86,7 +86,7 @@ export default function AboutPage() {
               About Agrasen Technologies
             </h1>
             <p className="mt-4 text-lg text-text-secondary max-w-2xl">
-              Over 15 years of IT expertise — helping businesses transform through technology, strategy, and low-code innovation.
+              Over 15 years building QuickBase applications and low-code systems for teams who have outgrown spreadsheets.
             </p>
           </ScrollReveal>
         </div>
@@ -194,7 +194,7 @@ export default function AboutPage() {
               Ready to Discuss Your Project?
             </h2>
             <p className="mt-4 text-text-secondary text-lg max-w-xl mx-auto">
-              Schedule a free consultation and let&apos;s explore how we can help your business grow.
+              Tell us the workflow you want to automate — we&apos;ll map it to QuickBase or another low-code fit.
             </p>
             <Link
               href="/contact"

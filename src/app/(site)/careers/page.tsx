@@ -8,7 +8,7 @@ import HubSpotForm from "@/components/HubSpotForm";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Careers | IT Jobs Orlando FL — Agrasen Technologies",
+  title: "Careers | QuickBase & Low-Code Jobs — Agrasen Technologies",
   description:
     "Join Agrasen Technologies. Explore careers in IT consulting, QuickBase development, Smartsheet, and low-code solutions. Apply today.",
   path: "/careers",
@@ -150,7 +150,7 @@ export default function CareersPage() {
           <SectionHeading
             label="Why Agrasen"
             title="Why Work With Us"
-            description="For over 15 years, we've helped businesses transform through technology. Our team thrives on solving complex problems with practical, high-quality solutions."
+            description="For over 15 years, we've built QuickBase applications and low-code systems for teams who need software that matches how they work."
           />
 
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

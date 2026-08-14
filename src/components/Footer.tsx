@@ -17,11 +17,11 @@ const quickLinks = [
 ];
 
 const services = [
+  "QuickBase Development",
+  "Low-Code Applications",
+  "Smartsheet Solutions",
   "IT Consulting",
   "Web Design",
-  "UI/UX",
-  "SEO",
-  "Mobile Design",
 ];
 
 export default function Footer() {
@@ -35,13 +35,12 @@ export default function Footer() {
                 Agrasen Technologies
               </span>
               <span className="block text-xs tracking-[0.25em] uppercase text-accent mt-0.5">
-                IT Consulting Services
+                QuickBase &amp; Low-Code
               </span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Delivering innovative IT consulting, application development, and
-              strategic business solutions with over 15 years of industry
-              experience.
+              Custom QuickBase applications, Smartsheet solutions, and low-code
+              systems — with over 15 years of industry experience.
             </p>
             <div className="flex items-center gap-4 pt-2">
               <a

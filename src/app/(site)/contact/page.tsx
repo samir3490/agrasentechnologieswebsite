@@ -8,9 +8,9 @@ import HubSpotForm from "@/components/HubSpotForm";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Contact | IT Consultant Orlando FL — Agrasen Technologies",
+  title: "Contact | QuickBase & Low-Code — Agrasen Technologies",
   description:
-    "Contact Agrasen Technologies for IT consulting, QuickBase development, Smartsheet solutions, and web services. Orlando, FL — serving clients nationwide.",
+    "Contact Agrasen Technologies for QuickBase development, low-code applications, Smartsheet solutions, and IT consulting. Orlando, FL — serving clients nationwide.",
   path: "/contact",
 });
 
@@ -112,7 +112,7 @@ export default function ContactPage() {
               Get In Touch
             </h1>
             <p className="mt-4 text-lg text-text-secondary max-w-xl mx-auto">
-              Let&apos;s discuss how we can help transform your business
+              Tell us about the QuickBase app or low-code workflow you want to build.
             </p>
           </ScrollReveal>
         </div>

@@ -103,10 +103,11 @@ export default function ContactForm() {
             className={inputClasses}
           >
             <option value="">Select a subject</option>
+            <option value="QuickBase Development">QuickBase Development</option>
+            <option value="Low-Code Applications">Low-Code Applications</option>
+            <option value="Smartsheet Solutions">Smartsheet Solutions</option>
             <option value="IT Consulting">IT Consulting</option>
             <option value="Web Development">Web Development</option>
-            <option value="SEO">SEO</option>
-            <option value="Business Mentoring">Business Mentoring</option>
             <option value="Other">Other</option>
           </select>
         </div>

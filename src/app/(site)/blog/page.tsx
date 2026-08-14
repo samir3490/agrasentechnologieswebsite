@@ -10,9 +10,9 @@ import { posts } from "@/data/posts";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Blog | IT Consulting & Technology Insights",
+  title: "Blog | QuickBase, Low-Code & Technology Insights",
   description:
-    "Insights on IT strategy, QuickBase, Smartsheet, AI, productivity, and business technology from Agrasen Technologies.",
+    "Insights on QuickBase, low-code applications, Smartsheet, AI, and business technology from Agrasen Technologies.",
   path: "/blog",
 });
 
@@ -42,8 +42,7 @@ export default function BlogPage() {
               Insights &amp; Articles
             </h1>
             <p className="mt-4 text-lg text-text-secondary max-w-xl mx-auto">
-              Sharing our knowledge on IT strategy, productivity, and building
-              resilient businesses
+              Practical notes on QuickBase, low-code apps, Smartsheet, and running a tighter operation.
             </p>
           </ScrollReveal>
         </div>

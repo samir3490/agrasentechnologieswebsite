@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import ParticleField from "@/components/ParticleField";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -7,9 +8,9 @@ import SectionHeading from "@/components/SectionHeading";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Agrasen Technologies | IT Consulting & Application Development Orlando FL",
+  title: "Agrasen Technologies | QuickBase & Low-Code Applications Orlando FL",
   description:
-    "Orlando-based IT consulting and application development on QuickBase, Smartsheet, and low-code platforms. Over 15 years helping businesses nationwide.",
+    "Custom QuickBase applications, Smartsheet solutions, and low-code systems from Agrasen Technologies in Orlando, FL. Over 15 years helping businesses nationwide.",
   path: "/",
 });
 
@@ -22,20 +23,38 @@ const stats = [
 
 const services = [
   {
-    title: "IT Consulting",
-    description: "Strategic IT guidance for project success",
+    title: "QuickBase Development",
+    description: "Custom apps, workflows, and dashboards on QuickBase",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15A2.25 2.25 0 002.25 6.75v10.5A2.25 2.25 0 004.5 19.5z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h4.5A2.25 2.25 0 0112.75 6v4.5a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 10.5V6zM3.75 17.25A2.25 2.25 0 016 15h4.5a2.25 2.25 0 012.25 2.25v4.5A2.25 2.25 0 0110.5 24H6a2.25 2.25 0 01-2.25-2.25v-4.5zM15 6a2.25 2.25 0 012.25-2.25H21A2.25 2.25 0 0123.25 6v4.5A2.25 2.25 0 0121 12.75h-3.75A2.25 2.25 0 0115 10.5V6z" />
       </svg>
     ),
   },
   {
-    title: "Application Development",
-    description: "Custom solutions on QuickBase & Smartsheet",
+    title: "Low-Code Applications",
+    description: "Ship business software faster — without the wait of custom code",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h4.5A2.25 2.25 0 0112.75 6v4.5a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 10.5V6zM3.75 17.25A2.25 2.25 0 016 15h4.5a2.25 2.25 0 012.25 2.25v4.5A2.25 2.25 0 0110.5 24H6a2.25 2.25 0 01-2.25-2.25v-4.5zM15 6a2.25 2.25 0 012.25-2.25H21A2.25 2.25 0 0123.25 6v4.5A2.25 2.25 0 0121 12.75h-3.75A2.25 2.25 0 0115 10.5V6z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    ),
+  },
+  {
+    title: "Smartsheet Solutions",
+    description: "Connected sheets, automations, and reporting your teams will use",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.375 5.25h17.25v13.5H3.375V5.25zM3.375 9.75h17.25M3.375 14.25h17.25M9.75 5.25v13.5M14.25 5.25v13.5" />
+      </svg>
+    ),
+  },
+  {
+    title: "IT Consulting",
+    description: "Strategic guidance from requirements through delivery",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15A2.25 2.25 0 002.25 6.75v10.5A2.25 2.25 0 004.5 19.5z" />
       </svg>
     ),
   },
@@ -49,15 +68,6 @@ const services = [
     ),
   },
   {
-    title: "UI/UX Design",
-    description: "Intuitive experiences users love",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
-      </svg>
-    ),
-  },
-  {
     title: "SEO Optimization",
     description: "Higher rankings, more traffic",
     icon: (
@@ -66,22 +76,13 @@ const services = [
       </svg>
     ),
   },
-  {
-    title: "Business Mentoring",
-    description: "Expert guidance for growth",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
-      </svg>
-    ),
-  },
 ];
 
 const checkItems = [
   "GE Lighting & Universal Music Group Alumni",
-  "QuickBase & Smartsheet Experts",
-  "Full-Stack IT Solutions",
-  "Orlando, FL Based — Serving Globally",
+  "QuickBase & Smartsheet specialists",
+  "Low-code applications built around your process",
+  "Orlando, FL based — serving clients nationwide",
 ];
 
 export default function Home() {
@@ -108,22 +109,22 @@ export default function Home() {
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
           <ScrollReveal delay={0.1}>
             <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium border border-border text-accent bg-accent/5 mb-8">
-              Innovating Since 2014
+              QuickBase &amp; Low-Code Since 2014
             </span>
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tight">
-              Transforming Business Through
+              QuickBase Apps Built
               <br />
-              <span className="gradient-text">Intelligent Technology</span>
+              <span className="gradient-text">Around How You Work</span>
             </h1>
           </ScrollReveal>
 
           <ScrollReveal delay={0.3}>
             <p className="mt-6 text-lg md:text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
-              We deliver cutting-edge IT consulting, application development, and strategic
-              solutions that drive measurable growth for businesses worldwide.
+              We design custom QuickBase applications and other low-code systems that
+              replace spreadsheets, automate workflows, and give your team one place to work.
             </p>
           </ScrollReveal>
 
@@ -165,8 +166,8 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             label="What We Do"
-            title="Our Core Services"
-            description="From strategy to execution, we provide end-to-end technology solutions that empower businesses to innovate, scale, and lead their industries."
+            title="QuickBase, Low-Code, and More"
+            description="Start with the application your operations actually need — then the consulting, design, and web work that support it."
             centered
           />
 
@@ -193,54 +194,29 @@ export default function Home() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: Decorative Panel */}
           <ScrollReveal direction="left">
-            <div className="relative rounded-2xl p-[1px] bg-gradient-to-br from-accent to-accent-secondary">
-              <div className="glass rounded-2xl p-10 flex flex-col items-center justify-center min-h-[400px] relative overflow-hidden">
-                <div className="absolute inset-0 opacity-10">
-                  <svg className="w-full h-full" viewBox="0 0 200 200" fill="none">
-                    <circle cx="40" cy="40" r="2" fill="#D4A017" />
-                    <circle cx="80" cy="30" r="1.5" fill="#B8860B" />
-                    <circle cx="120" cy="50" r="2" fill="#D4A017" />
-                    <circle cx="160" cy="35" r="1" fill="#B8860B" />
-                    <circle cx="60" cy="80" r="1.5" fill="#D4A017" />
-                    <circle cx="100" cy="90" r="2" fill="#B8860B" />
-                    <circle cx="140" cy="75" r="1.5" fill="#D4A017" />
-                    <circle cx="30" cy="120" r="2" fill="#B8860B" />
-                    <circle cx="70" cy="130" r="1" fill="#D4A017" />
-                    <circle cx="110" cy="140" r="2" fill="#B8860B" />
-                    <circle cx="150" cy="125" r="1.5" fill="#D4A017" />
-                    <circle cx="50" cy="160" r="1.5" fill="#B8860B" />
-                    <circle cx="90" cy="170" r="2" fill="#D4A017" />
-                    <circle cx="130" cy="165" r="1" fill="#B8860B" />
-                    <circle cx="170" cy="155" r="2" fill="#D4A017" />
-                    <line x1="40" y1="40" x2="80" y2="30" stroke="#D4A017" strokeWidth="0.3" />
-                    <line x1="80" y1="30" x2="120" y2="50" stroke="#B8860B" strokeWidth="0.3" />
-                    <line x1="120" y1="50" x2="160" y2="35" stroke="#D4A017" strokeWidth="0.3" />
-                    <line x1="60" y1="80" x2="100" y2="90" stroke="#B8860B" strokeWidth="0.3" />
-                    <line x1="100" y1="90" x2="140" y2="75" stroke="#D4A017" strokeWidth="0.3" />
-                    <line x1="40" y1="40" x2="60" y2="80" stroke="#D4A017" strokeWidth="0.3" />
-                    <line x1="80" y1="30" x2="100" y2="90" stroke="#B8860B" strokeWidth="0.3" />
-                    <line x1="120" y1="50" x2="140" y2="75" stroke="#D4A017" strokeWidth="0.3" />
-                    <line x1="30" y1="120" x2="70" y2="130" stroke="#B8860B" strokeWidth="0.3" />
-                    <line x1="70" y1="130" x2="110" y2="140" stroke="#D4A017" strokeWidth="0.3" />
-                    <line x1="110" y1="140" x2="150" y2="125" stroke="#B8860B" strokeWidth="0.3" />
-                    <line x1="50" y1="160" x2="90" y2="170" stroke="#D4A017" strokeWidth="0.3" />
-                    <line x1="90" y1="170" x2="130" y2="165" stroke="#B8860B" strokeWidth="0.3" />
-                    <line x1="130" y1="165" x2="170" y2="155" stroke="#D4A017" strokeWidth="0.3" />
-                  </svg>
-                </div>
-                <p className="text-5xl font-bold gradient-text relative z-10">15+</p>
-                <p className="mt-3 text-xl text-text-primary font-semibold relative z-10">
-                  Years of IT Consulting
+            <div className="relative rounded-2xl overflow-hidden min-h-[400px]">
+              <Image
+                src="/services/quickbase-office-sign.jpg"
+                alt="Agrasen Technologies QuickBase consulting"
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+              <div className="relative z-10 flex flex-col justify-end min-h-[400px] p-10">
+                <p className="text-5xl font-bold text-white">15+</p>
+                <p className="mt-3 text-xl text-white font-semibold">
+                  Years building QuickBase apps
                 </p>
-                <div className="mt-6 flex gap-3 relative z-10">
-                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20">
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-white/15 text-white border border-white/25">
                     QuickBase
                   </span>
-                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-accent-secondary/10 text-accent-secondary border border-accent-secondary/20">
+                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-white/15 text-white border border-white/25">
                     Smartsheet
                   </span>
-                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20">
-                    Full-Stack
+                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-white/15 text-white border border-white/25">
+                    Low-Code
                   </span>
                 </div>
               </div>
@@ -251,15 +227,15 @@ export default function Home() {
           <div>
             <SectionHeading
               label="About Us"
-              title="Driving Growth Through Technology"
+              title="The Apps Your Operations Run On"
               centered={false}
             />
             <ScrollReveal delay={0.2}>
               <p className="mt-6 text-text-secondary leading-relaxed">
-                Founded by industry veterans with experience at GE Lighting and Universal Music Group,
-                Agrasen Technologies has been at the forefront of IT consulting since 2014. We combine
-                deep technical expertise with a genuine understanding of business challenges to deliver
-                solutions that create lasting impact.
+                Founded by industry veterans from GE Lighting and Universal Music Group,
+                Agrasen Technologies has been building QuickBase applications and low-code
+                systems since 2014. We learn how your teams actually work, then turn that
+                into software they will use — without a year-long custom build.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
@@ -322,13 +298,13 @@ export default function Home() {
         <div className="relative z-10 max-w-3xl mx-auto text-center">
           <ScrollReveal>
             <h2 className="text-3xl md:text-5xl font-bold text-text-primary">
-              Ready to Transform Your Business?
+              Ready to Build on QuickBase?
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="mt-4 text-lg text-text-secondary max-w-xl mx-auto">
-              Let&apos;s discuss how our expertise can help you achieve your technology goals
-              and drive meaningful results.
+              Tell us the workflows you want to automate. We&apos;ll show you what&apos;s possible
+              in QuickBase and other low-code platforms.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
