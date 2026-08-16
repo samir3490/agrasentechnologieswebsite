@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { SITE_URL } from "@/lib/site-url";
-import { ogImageUrl, SITE } from "@/lib/seo";
+import { ogImageUrl, rssAlternateTypes, SITE } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -52,6 +52,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: SITE_URL,
+    types: rssAlternateTypes(),
   },
   robots: {
     index: true,

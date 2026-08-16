@@ -38,8 +38,22 @@ export function siteUrl(path = ""): string {
   return path ? `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}` : SITE_URL;
 }
 
+export const RSS_FEED_PATH = "/blog/rss.xml";
+
 export function ogImageUrl(path = "/opengraph-image"): string {
   return siteUrl(path);
+}
+
+/** Keep RSS discovery on every page even when child metadata sets a canonical. */
+export function rssAlternateTypes(): NonNullable<Metadata["alternates"]>["types"] {
+  return {
+    "application/rss+xml": [
+      {
+        url: siteUrl(RSS_FEED_PATH),
+        title: `${SITE.name} Blog`,
+      },
+    ],
+  };
 }
 
 export function pageMetadata({
@@ -62,7 +76,10 @@ export function pageMetadata({
   return {
     title,
     description,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      types: rssAlternateTypes(),
+    },
     openGraph: {
       title,
       description,
