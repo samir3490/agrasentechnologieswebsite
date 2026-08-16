@@ -40,4 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# blog publish job status (local / Actions workspace only)
+.blog-publish-status.json
+
 .vercel

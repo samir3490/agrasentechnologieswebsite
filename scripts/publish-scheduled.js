@@ -5,16 +5,36 @@ console.log("Today is " + today);
 
 const scheduledPath = "src/data/scheduled-posts.ts";
 const postsPath = "src/data/posts.ts";
-
-let scheduled = fs.readFileSync(scheduledPath, "utf8");
-let posts = fs.readFileSync(postsPath, "utf8");
+const statusPath = ".blog-publish-status.json";
 
 const postBlockRegex = /  \{[\s\S]*?\n  \}/g;
 const dateRegex = /date:\s*"(\d{4}-\d{2}-\d{2})"/;
 
+function writeStatus(status) {
+  fs.writeFileSync(statusPath, JSON.stringify({ ...status, date: today }, null, 2));
+  console.log("Wrote " + statusPath + " (" + status.reason + ")");
+}
+
+function extractMeta(block) {
+  return {
+    title: (block.match(/title:\s*"([^"]+)"/) || [])[1] || "Untitled",
+    slug: (block.match(/slug:\s*"([^"]+)"/) || [])[1] || "",
+    date: (block.match(dateRegex) || [])[1] || today,
+  };
+}
+
+let scheduled = fs.readFileSync(scheduledPath, "utf8");
+let posts = fs.readFileSync(postsPath, "utf8");
+
 const allBlocks = scheduled.match(postBlockRegex) || [];
 
 if (allBlocks.length === 0) {
+  writeStatus({
+    reason: "queue_empty",
+    published: [],
+    remaining: 0,
+    emptyQueue: true,
+  });
   console.log("No scheduled posts found.");
   process.exit(0);
 }
@@ -35,6 +55,12 @@ for (const block of allBlocks) {
 }
 
 if (toPublish.length === 0) {
+  writeStatus({
+    reason: "nothing_due",
+    published: [],
+    remaining: toKeep.length,
+    emptyQueue: false,
+  });
   console.log("No posts to publish today");
   process.exit(0);
 }
@@ -58,4 +84,12 @@ posts = posts.replace(
 );
 fs.writeFileSync(postsPath, posts);
 
-console.log("Published " + toPublish.length + " post(s)");
+const published = toPublish.map(extractMeta);
+writeStatus({
+  reason: "published",
+  published,
+  remaining: toKeep.length,
+  emptyQueue: toKeep.length === 0,
+});
+
+console.log("Published " + toPublish.length + " post(s); " + toKeep.length + " remaining");

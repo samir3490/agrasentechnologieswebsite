@@ -33,9 +33,25 @@ jobs:
       - name: Commit and push if changed
         run: |
           if ! git diff --quiet; then
-            git add -A
+            git add src/data/scheduled-posts.ts src/data/posts.ts
             git commit -m "Publish scheduled blog post(s)"
             git push
           else
             echo "No changes to commit"
           fi
+
+      - name: Install nodemailer for SMTP fallback
+        run: npm install nodemailer@9 --no-save
+        continue-on-error: true
+
+      - name: Email publish / empty-queue notification
+        env:
+          BLOG_NOTIFY_TO: samir.agrawal@agrasentechnologies.com
+          NEXT_PUBLIC_APP_URL: https://agrasentechnologies.com
+          EMAIL_FROM: ${{ secrets.BLOG_EMAIL_FROM }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+        run: node scripts/notify-blog-email.js
