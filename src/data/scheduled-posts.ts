@@ -6,69 +6,6 @@ import { BlogPost } from "./posts";
  */
 export const scheduledPosts: BlogPost[] = [
   {
-    slug: "quickbase-formulas-explained",
-    title: "QuickBase Formulas Explained: Calculate, Validate, and Automate Without Code",
-    date: "2026-08-20",
-    author: "Samir Agrawal",
-    category: "QuickBase",
-    image: "/blog/blog-qb-formulas.jpg",
-    excerpt:
-      "Learn how QuickBase formulas power calculated fields, validation, and smarter apps — and when to bring in an expert to design them the right way.",
-    content: `
-<p>If your QuickBase app still depends on someone updating totals by hand, you are leaving one of its strongest features unused. <strong>QuickBase formulas</strong> let you calculate, validate, and derive values automatically — so the app stays accurate even when your team is moving fast.</p>
-
-<p>This guide explains what QuickBase formulas are, where they shine, and how to use them without creating a maintenance nightmare.</p>
-
-<h2>What Are QuickBase Formulas?</h2>
-<p>QuickBase formulas are field-level expressions that compute a result from other fields, related records, or conditions. Instead of exporting to Excel for math, the calculation lives inside the app. When source data changes, formula results update with it.</p>
-
-<p>Common formula use cases include:</p>
-<ul>
-<li>Totals, margins, and remaining balances</li>
-<li>Due dates, aging, and SLA clocks</li>
-<li>Status labels based on multiple conditions</li>
-<li>Data quality checks that flag incomplete records</li>
-<li>Summary values pulled from related child tables</li>
-</ul>
-
-<h2>Why Formulas Matter for Operations Teams</h2>
-<p>Spreadsheets break when five people edit them. Emails hide the latest number. A well-designed QuickBase formula puts one trusted answer in front of everyone — project managers, finance, field leads — at the same time.</p>
-
-<p>That single source of truth is usually the difference between an app people tolerate and an app people rely on.</p>
-
-<h2>Formula Types You Will Use Most</h2>
-<h3>Numeric and date formulas</h3>
-<p>Use these for money, quantities, durations, and deadlines. Example: remaining budget = approved budget minus sum of related expenses. Example: days open = today minus created date.</p>
-
-<h3>Text and conditional formulas</h3>
-<p>Use these for readable status strings and routing logic. Example: if amount is over a threshold and approval is blank, show "Needs finance review."</p>
-
-<h3>Summary and lookup-driven logic</h3>
-<p>Combine formula fields with relationships so parent records reflect child activity — open tickets, latest inspection date, or percent complete.</p>
-
-<h2>Best Practices for Maintainable QuickBase Formulas</h2>
-<ul>
-<li><strong>Name fields clearly.</strong> Future you should understand "Gross Margin %" without opening the formula editor.</li>
-<li><strong>Keep logic in layers.</strong> Prefer a few simple formulas over one giant nested expression.</li>
-<li><strong>Validate early.</strong> Catch missing required inputs before a record can move downstream.</li>
-<li><strong>Document edge cases.</strong> Zero quantities, blank dates, and cancelled statuses break more apps than complex math does.</li>
-<li><strong>Test with real scenarios.</strong> Build sample records for happy path and failure path before go-live.</li>
-</ul>
-
-<h2>Common Formula Mistakes</h2>
-<p>Teams often overbuild on day one — packing every rule into one field — then struggle to change anything later. Others hard-code business constants (tax rates, thresholds) instead of storing them in a settings table. Both patterns slow you down as the process evolves.</p>
-
-<p>Another frequent issue: calculating in reports only. Report-level math is useful for display, but operational decisions usually need the value stored on the record so automations and dashboards can use it too.</p>
-
-<h2>When to Get Help Building QuickBase Formulas</h2>
-<p>If your formulas are starting to look like software, that is a signal. Cross-table logic, multi-step pricing, or compliance calculations benefit from a structured app design — not a maze of one-off fields.</p>
-
-<p>At <strong>Agrasen Technologies</strong>, we design QuickBase applications where formulas, relationships, and workflows work together from the start. If you want calculated fields that stay trustworthy as your process grows, <a href="/contact">talk with our QuickBase team</a> about the app you need.</p>
-
-<p>Done well, QuickBase formulas quietly remove hours of manual checking every week — and give your team answers they can trust.</p>
-`,
-  },
-  {
     slug: "quickbase-dashboards-guide",
     title: "QuickBase Dashboards: Turn App Data Into Decisions Your Team Will Actually Use",
     date: "2026-08-27",
