@@ -6,61 +6,6 @@ import { BlogPost } from "./posts";
  */
 export const scheduledPosts: BlogPost[] = [
   {
-    slug: "quickbase-dashboards-guide",
-    title: "QuickBase Dashboards: Turn App Data Into Decisions Your Team Will Actually Use",
-    date: "2026-08-27",
-    author: "Samir Agrawal",
-    category: "QuickBase",
-    image: "/blog/blog-qb-dashboards.jpg",
-    excerpt:
-      "A practical guide to QuickBase dashboards — what to show, who to show it to, and how to avoid vanity metrics that nobody opens.",
-    content: `
-<p>A QuickBase app can store thousands of clean records and still fail if leaders cannot see what matters. That is where <strong>QuickBase dashboards</strong> earn their keep: they turn tables and reports into a daily operating view.</p>
-
-<p>Here is how to design dashboards people open on purpose — not once during training and never again.</p>
-
-<h2>What Is a QuickBase Dashboard?</h2>
-<p>A QuickBase dashboard is a customizable home screen that combines reports, charts, buttons, rich text, and sometimes embedded pages. Different roles can land on different dashboards, so operations, sales, and executives each see a relevant slice of the same underlying data.</p>
-
-<h2>Why Dashboards Drive Adoption</h2>
-<p>Most users will not navigate six tables before coffee. They want answers:</p>
-<ul>
-<li>What needs my attention today?</li>
-<li>Where are we blocked?</li>
-<li>Are we on track against the target?</li>
-</ul>
-
-<p>A strong dashboard answers those questions in under ten seconds. That speed is what turns QuickBase from "another system" into the place work starts.</p>
-
-<h2>What Belongs on a High-Performing Dashboard</h2>
-<h3>Action queues</h3>
-<p>Lists of records waiting on the current user — approvals, overdue tasks, missing documents. If someone can click and work, the dashboard is earning its space.</p>
-
-<h3>Trend and KPI widgets</h3>
-<p>Charts for volume, cycle time, win rate, or open risk. Keep the set small. Five charts with a story beat fifteen charts with noise.</p>
-
-<h3>Shortcuts and intake</h3>
-<p>Buttons to create the right record type, open a filtered report, or launch a guided process. Reduce hunting.</p>
-
-<h2>Role-Based Dashboards Beat One Mega Screen</h2>
-<p>Executives need outcomes. Coordinators need queues. Field users need the next job. Trying to serve all three on one page creates clutter and distrust. In QuickBase, give each role a home that matches their job — backed by the same governed data model.</p>
-
-<h2>Dashboard Design Mistakes to Avoid</h2>
-<ul>
-<li>Showing raw tables with no filters or ownership</li>
-<li>Mixing vanity metrics with operational alerts</li>
-<li>Forgetting mobile-friendly layout for field teams</li>
-<li>Building charts before the underlying reports are trustworthy</li>
-<li>Never reviewing usage — if nobody clicks it, redesign it</li>
-</ul>
-
-<h2>How Agrasen Technologies Builds QuickBase Dashboards</h2>
-<p>Dashboards only work when the data model, reports, and permissions underneath them are solid. <strong>Agrasen Technologies</strong> builds QuickBase applications with role-based dashboards as part of the delivery — not a decorative afterthought. If your team needs a QuickBase dashboard they will actually run the business from, <a href="/contact">schedule a consultation</a>.</p>
-
-<p>The goal is simple: open QuickBase, know what to do next, and trust the numbers on the screen.</p>
-`,
-  },
-  {
     slug: "quickbase-pipelines-integration",
     title: "QuickBase Pipelines Explained: Connect Apps and Move Data Automatically",
     date: "2026-09-03",
