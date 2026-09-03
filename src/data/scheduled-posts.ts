@@ -6,55 +6,6 @@ import { BlogPost } from "./posts";
  */
 export const scheduledPosts: BlogPost[] = [
   {
-    slug: "quickbase-pipelines-integration",
-    title: "QuickBase Pipelines Explained: Connect Apps and Move Data Automatically",
-    date: "2026-09-03",
-    author: "Samir Agrawal",
-    category: "QuickBase",
-    image: "/blog/blog-qb-pipelines.jpg",
-    excerpt:
-      "Understand QuickBase Pipelines — how they sync systems, reduce copy-paste work, and when a custom pipeline design is worth the investment.",
-    content: `
-<p>Most QuickBase apps do not live alone. Orders start in another system. HR lives in a different tool. Finance wants a nightly export. <strong>QuickBase Pipelines</strong> exist to connect those worlds without turning your team into full-time copy-paste operators.</p>
-
-<p>This article explains what Pipelines are good for, how to think about them, and how to avoid fragile integrations.</p>
-
-<h2>What Are QuickBase Pipelines?</h2>
-<p>QuickBase Pipelines is an integration and automation layer for moving data and triggering actions between QuickBase and other applications. Think of a pipeline as a sequence of steps: watch for an event, transform the data if needed, then create, update, or notify somewhere else.</p>
-
-<h2>Problems Pipelines Solve Well</h2>
-<ul>
-<li>Creating a QuickBase record when a form is submitted in another tool</li>
-<li>Syncing status changes to Slack, Teams, or email stakeholders</li>
-<li>Pushing approved records into accounting or ERP systems</li>
-<li>Enriching QuickBase data from an external lookup</li>
-<li>Scheduled sync jobs that keep two systems aligned</li>
-</ul>
-
-<p>If your current "integration" is a person downloading CSVs every Friday, Pipelines are usually a better long-term answer.</p>
-
-<h2>Pipeline Design Principles</h2>
-<h3>Start with the business event</h3>
-<p>Do not start with "connect System A to System B." Start with "when a contract is approved, finance needs a billable record within an hour." The event defines the trigger, fields, and failure handling.</p>
-
-<h3>Map fields deliberately</h3>
-<p>Ambiguous mappings create silent data debt. Define required fields, formats, and what happens when a value is missing.</p>
-
-<h3>Plan for failure</h3>
-<p>APIs time out. Users enter bad data. Build logging, retries, and an exception queue humans can clear — not a black box that fails quietly.</p>
-
-<h2>Pipelines vs In-App Automations</h2>
-<p>Use in-app automations for work that stays inside QuickBase. Use Pipelines when another system is involved, or when the orchestration spans multiple apps. Mixing those responsibilities without a plan is how teams end up with duplicate notifications and conflicting updates.</p>
-
-<h2>When Custom Pipeline Architecture Matters</h2>
-<p>A single simple sync can be configured quickly. A multi-step process with approvals, identity matching, and audit requirements needs architecture: staging tables, idempotent updates, and clear ownership.</p>
-
-<p><strong>Agrasen Technologies</strong> designs and implements QuickBase Pipelines as part of complete application delivery — so integrations support the process instead of fighting it. If you need QuickBase connected cleanly to the rest of your stack, <a href="/contact">get in touch</a>.</p>
-
-<p>Good pipelines feel boring in the best way: data arrives, statuses stay aligned, and nobody asks who forgot to update the spreadsheet.</p>
-`,
-  },
-  {
     slug: "quickbase-automations-guide",
     title: "QuickBase Automations: Cut Manual Follow-Ups and Keep Work Moving",
     date: "2026-09-10",
