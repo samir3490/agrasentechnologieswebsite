@@ -6,53 +6,6 @@ import { BlogPost } from "./posts";
  */
 export const scheduledPosts: BlogPost[] = [
   {
-    slug: "quickbase-automations-guide",
-    title: "QuickBase Automations: Cut Manual Follow-Ups and Keep Work Moving",
-    date: "2026-09-10",
-    author: "Samir Agrawal",
-    category: "QuickBase",
-    image: "/blog/blog-qb-automations.jpg",
-    excerpt:
-      "Learn how QuickBase automations trigger actions from record changes — and how to design them so your team gets fewer reminders and faster handoffs.",
-    content: `
-<p>Every growing QuickBase app eventually hits the same wall: people forget the next step. Approvals stall. Statuses sit unchanged. Someone was supposed to send a reminder. <strong>QuickBase automations</strong> exist to remove that friction.</p>
-
-<p>Here is a practical view of what automations can do and how to design them so they help instead of spam.</p>
-
-<h2>What Are QuickBase Automations?</h2>
-<p>Automations watch for conditions in your app — a field change, a new record, a schedule — and then perform actions such as editing records, sending notifications, or kicking off related updates. Used well, they enforce your process without a manager chasing every item.</p>
-
-<h2>High-Value Automation Examples</h2>
-<ul>
-<li>When status becomes "Submitted," assign an owner and set a due date</li>
-<li>When an approval is denied, notify the submitter with the reason field</li>
-<li>When a record is overdue, escalate to a secondary role</li>
-<li>When all checklist items are complete, advance the parent project status</li>
-<li>Nightly cleanup jobs that archive old drafts or flag stale records</li>
-</ul>
-
-<h2>Design Automations Around Outcomes</h2>
-<p>Write the outcome first: "No submitted request sits unassigned for more than one hour." Then implement the trigger and action that guarantee it. Automations built around vague goals ("keep people informed") tend to create noise.</p>
-
-<h2>Guardrails That Prevent Automation Chaos</h2>
-<ul>
-<li><strong>One owner per process step.</strong> Ambiguous assignment rules create duplicate work.</li>
-<li><strong>Quiet hours and batching.</strong> Not every update needs an instant email at 11 p.m.</li>
-<li><strong>Idempotent updates.</strong> Re-running a rule should not create five child records.</li>
-<li><strong>Visible audit trail.</strong> Users should understand why a field changed.</li>
-<li><strong>Test in a sandbox copy.</strong> Broken automations scale mistakes instantly.</li>
-</ul>
-
-<h2>Automations, Workflows, and Pipelines — How They Fit</h2>
-<p>Automations are excellent inside QuickBase. Workflows (approvals and structured stages) define how a record is allowed to move. Pipelines connect outside systems. Healthy apps use each tool for the job it fits — not one giant automation that tries to do everything.</p>
-
-<h2>Build Automations That Match How You Work</h2>
-<p>Template automations rarely match real operations. <strong>Agrasen Technologies</strong> builds QuickBase automations as part of custom apps shaped around your handoffs, SLAs, and roles. If manual follow-ups are slowing your team down, <a href="/contact">ask us to review your QuickBase process</a>.</p>
-
-<p>The best automation is the one nobody notices — because the work simply keeps moving.</p>
-`,
-  },
-  {
     slug: "quickbase-workflows-approvals",
     title: "QuickBase Workflows and Approvals: Route Work Without the Email Chains",
     date: "2026-09-17",
