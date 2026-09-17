@@ -6,56 +6,6 @@ import { BlogPost } from "./posts";
  */
 export const scheduledPosts: BlogPost[] = [
   {
-    slug: "quickbase-workflows-approvals",
-    title: "QuickBase Workflows and Approvals: Route Work Without the Email Chains",
-    date: "2026-09-17",
-    author: "Samir Agrawal",
-    category: "QuickBase",
-    image: "/blog/blog-qb-workflows.jpg",
-    excerpt:
-      "See how QuickBase workflows and approvals replace messy email chains with clear stages, owners, and audit-ready handoffs.",
-    content: `
-<p>Email is a terrible workflow engine. Messages get buried, decisions lack context, and nobody can answer "where is this stuck?" without a scavenger hunt. <strong>QuickBase workflows</strong> fix that by making stages, owners, and approvals part of the record itself.</p>
-
-<p>This guide covers how to think about workflow design in QuickBase so processes stay visible and accountable.</p>
-
-<h2>What Workflow Means in QuickBase</h2>
-<p>In practice, a QuickBase workflow is the combination of statuses, permissions, forms, automations, and approval steps that move a record from intake to done. The record carries history. The dashboard shows bottlenecks. Managers stop asking for status updates because the app already knows.</p>
-
-<h2>Core Building Blocks of a Strong Workflow</h2>
-<ul>
-<li><strong>Clear stages</strong> — Draft, Submitted, In Review, Approved, Rejected, Complete</li>
-<li><strong>Ownership rules</strong> — who acts in each stage</li>
-<li><strong>Entry and exit criteria</strong> — what must be true to advance</li>
-<li><strong>Approval paths</strong> — single approver, sequential, or conditional by amount/risk</li>
-<li><strong>Notifications</strong> — the right person, at the right time, with a link to the record</li>
-</ul>
-
-<h2>Approval Patterns That Work in Real Companies</h2>
-<h3>Threshold-based approvals</h3>
-<p>Spend under $1,000 auto-routes to a manager. Over that amount adds finance. Over a higher amount adds an executive. QuickBase can encode those rules so people are not guessing.</p>
-
-<h3>Parallel and sequential reviews</h3>
-<p>Some processes need legal and operations to review together. Others need operations first, then finance. Model the real path — do not force every request through the same chain.</p>
-
-<h2>Make the Workflow Visible</h2>
-<p>A workflow nobody can see will be bypassed. Use dashboards for "waiting on me," reports for aging by stage, and record history for audits. When auditors or customers ask what happened, the answer should be in QuickBase — not in someone's inbox.</p>
-
-<h2>Workflow Mistakes That Kill Adoption</h2>
-<ul>
-<li>Too many stages that mirror an org chart instead of the work</li>
-<li>Approvals without comments or rejection reasons</li>
-<li>Allowing edits that bypass required checks</li>
-<li>No SLA or escalation when a stage sits idle</li>
-</ul>
-
-<h2>How Agrasen Technologies Implements QuickBase Workflows</h2>
-<p>We map your real process first, then build the QuickBase workflow, forms, and automations around it. Subtle but important: the goal is not a prettier email chain — it is an application your team can run. If you need approvals and handoffs you can trust, <a href="/contact">contact Agrasen Technologies</a> to design your QuickBase workflow.</p>
-
-<p>When workflow lives in the app, status meetings get shorter — and accountability gets clearer.</p>
-`,
-  },
-  {
     slug: "quickbase-forms-user-experience",
     title: "QuickBase Forms Best Practices: Capture Clean Data and Faster Intake",
     date: "2026-09-24",
