@@ -6,52 +6,6 @@ import { BlogPost } from "./posts";
  */
 export const scheduledPosts: BlogPost[] = [
   {
-    slug: "quickbase-forms-user-experience",
-    title: "QuickBase Forms Best Practices: Capture Clean Data and Faster Intake",
-    date: "2026-09-24",
-    author: "Samir Agrawal",
-    category: "QuickBase",
-    image: "/blog/blog-qb-forms.jpg",
-    excerpt:
-      "Improve QuickBase forms so users submit complete requests the first time — with practical UX tips that raise data quality and adoption.",
-    content: `
-<p>Your QuickBase data model can be perfect and still fail if the form feels confusing. <strong>QuickBase forms</strong> are where users decide whether the app helps them or slows them down.</p>
-
-<p>Here is how to design forms that collect better data with less training.</p>
-
-<h2>Why Form Design Is an SEO-and-Operations Issue</h2>
-<p>Internally, bad forms create incomplete records and rework. Externally, if you publish intake experiences for partners or customers, clarity affects conversion the same way a landing page does. Either way, form UX is part of application ROI.</p>
-
-<h2>Principles of Effective QuickBase Forms</h2>
-<ul>
-<li><strong>Ask only what you need now.</strong> Progressive disclosure beats a 40-field wall.</li>
-<li><strong>Group related fields.</strong> Sections for requester info, request details, and attachments reduce cognitive load.</li>
-<li><strong>Use dynamic form rules.</strong> Show fields only when they matter — equipment details after someone chooses "Hardware," for example.</li>
-<li><strong>Prefer choices over free text</strong> when you will report on the field later.</li>
-<li><strong>Make required fields obvious</strong> and validate early.</li>
-</ul>
-
-<h2>Role-Specific Forms Beat One Giant Layout</h2>
-<p>Creators, approvers, and admins need different views of the same record. QuickBase lets you tailor forms by role so approvers are not distracted by intake-only fields, and submitters never see internal scoring.</p>
-
-<h2>Mobile and Field Considerations</h2>
-<p>If technicians or inspectors use QuickBase on site, large tap targets, fewer columns, and photo attachments matter more than dense desktop layouts. Test the form on the device your team actually uses.</p>
-
-<h2>Data Quality Tactics That Pay Off</h2>
-<ul>
-<li>Default values for known context (requestor, location, today's date)</li>
-<li>Lookups that prevent duplicate customer or asset entry</li>
-<li>Formula-backed warnings when combinations do not make sense</li>
-<li>Attachment requirements for high-risk request types</li>
-</ul>
-
-<h2>Get Forms That Match Your Process</h2>
-<p>Form polish is not cosmetic when it changes completion rates. <strong>Agrasen Technologies</strong> builds QuickBase forms as part of end-to-end app design — intake through approval. If your team is fighting the form instead of finishing the work, <a href="/contact">let us help redesign it</a>.</p>
-
-<p>Clean forms create clean data. Clean data is what makes every dashboard and automation trustworthy.</p>
-`,
-  },
-  {
     slug: "quickbase-reports-guide",
     title: "QuickBase Reports: Build Views Your Managers Can Trust",
     date: "2026-10-01",
