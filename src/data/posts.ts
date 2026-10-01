@@ -11,6 +11,61 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    slug: "quickbase-reports-guide",
+    title: "QuickBase Reports: Build Views Your Managers Can Trust",
+    date: "2026-10-01",
+    author: "Samir Agrawal",
+    category: "QuickBase",
+    image: "/blog/blog-qb-reports.jpg",
+    excerpt:
+      "A practical guide to QuickBase reports — table, summary, and chart views that answer real business questions without spreadsheet exports.",
+    content: `
+<p>If leaders still export QuickBase data to Excel every Monday, the reporting layer is not doing its job. <strong>QuickBase reports</strong> should answer recurring questions inside the app — filtered, shared, and permission-aware.</p>
+
+<p>This guide covers how to build reports people bookmark.</p>
+
+<h2>Types of QuickBase Reports Worth Mastering</h2>
+<ul>
+<li><strong>Table reports</strong> for working lists and queues</li>
+<li><strong>Summary reports</strong> for totals, averages, and counts by group</li>
+<li><strong>Chart reports</strong> for trends and comparisons</li>
+<li><strong>Calendar and timeline-style views</strong> when dates drive the work</li>
+</ul>
+
+<p>Most mature apps use a mix: operational lists for doers, summaries for managers, charts for leadership reviews.</p>
+
+<h2>Start From the Question, Not the Columns</h2>
+<p>Bad reports start with "show all fields." Good reports start with a question:</p>
+<ul>
+<li>Which requests are overdue by owner?</li>
+<li>What is average cycle time by request type this quarter?</li>
+<li>Where did volume spike last week?</li>
+</ul>
+
+<p>Name the report after the question. Future users will find it faster, and you will resist stuffing unrelated columns into it.</p>
+
+<h2>Filters, Sorting, and Saved Personalization</h2>
+<p>Teach users to save personalized filters for "My open items" while admins maintain company-standard reports for KPIs. That balance keeps governance intact without blocking individual productivity.</p>
+
+<h2>Report Performance and Trust</h2>
+<p>Wide reports across huge tables feel slow and invite exports. Narrow the default columns, index the fields you filter on (as your plan allows), and push heavy calculations into well-designed formula or summary fields when appropriate.</p>
+
+<p>Trust also means consistent definitions. If "active project" means three different things in three reports, dashboards will contradict each other.</p>
+
+<h2>Common Reporting Mistakes</h2>
+<ul>
+<li>Duplicating the same report for every team instead of using dynamic filters</li>
+<li>Mixing raw operational lists with executive summaries on one screen</li>
+<li>Leaving obsolete reports in shared menus until nobody knows which is current</li>
+</ul>
+
+<h2>Reports Built for How You Manage</h2>
+<p><strong>Agrasen Technologies</strong> designs QuickBase reports and dashboards around the decisions your managers make weekly. If you want reporting that replaces the Monday spreadsheet ritual, <a href="/contact">start a conversation with our team</a>.</p>
+
+<p>When reports are clear, meetings get shorter — because the app already answered the first round of questions.</p>
+`,
+  },
+  {
     slug: "quickbase-forms-user-experience",
     title: "QuickBase Forms Best Practices: Capture Clean Data and Faster Intake",
     date: "2026-09-24",
