@@ -11,6 +11,58 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    slug: "quickbase-table-relationships",
+    title: "QuickBase Table Relationships: Model Your Business Without Spreadsheet Chaos",
+    date: "2026-10-08",
+    author: "Samir Agrawal",
+    category: "QuickBase",
+    image: "/blog/blog-qb-relationships.jpg",
+    excerpt:
+      "Learn how QuickBase relationships connect customers, projects, and tasks into one system — and why this data model is the foundation of scalable apps.",
+    content: `
+<p>Spreadsheets flatten the world. Real businesses do not. Customers have projects. Projects have tasks. Tasks have files and approvals. <strong>QuickBase relationships</strong> let you model those links so every record knows how it connects to the rest of the business.</p>
+
+<p>Get relationships right and everything else — formulas, reports, automations — gets easier.</p>
+
+<h2>What Are Table Relationships in QuickBase?</h2>
+<p>A relationship connects a parent table to a child table. One customer can have many projects. One project can have many tasks. Lookups bring parent details down to the child. Summary fields roll child activity up to the parent.</p>
+
+<p>That structure is the core reason QuickBase outperforms "smart spreadsheets" for operational systems.</p>
+
+<h2>Relationship Patterns You Will Use Constantly</h2>
+<ul>
+<li>Customer → Projects → Tasks</li>
+<li>Vendor → Purchase Orders → Line Items</li>
+<li>Asset → Work Orders → Parts Used</li>
+<li>Employee → Time Entries → Approvals</li>
+</ul>
+
+<h2>How Relationships Unlock Better Apps</h2>
+<ul>
+<li>Open a customer and see every related project without hunting</li>
+<li>Summarize open tasks or spend automatically on the parent</li>
+<li>Filter reports across related data with consistent keys</li>
+<li>Automate child updates when a parent status changes</li>
+</ul>
+
+<h2>Data Modeling Tips That Save Months Later</h2>
+<ul>
+<li><strong>Normalize early.</strong> Do not copy customer address onto every project if it belongs on the customer.</li>
+<li><strong>Use stable keys.</strong> Prefer record IDs or governed codes over names that change.</li>
+<li><strong>Define cardinality on purpose.</strong> Many-to-many often needs a junction table.</li>
+<li><strong>Name relationships clearly</strong> so builders understand parent vs child at a glance.</li>
+</ul>
+
+<h2>Signs Your Relationship Model Needs Work</h2>
+<p>Duplicate customer records, conflicting totals, and reports that only work after manual cleanup are usually data-model problems — not "user training" problems. Fixing them later is harder than designing them once.</p>
+
+<h2>Agrasen Technologies and QuickBase Data Models</h2>
+<p>We start most QuickBase engagements by mapping entities and relationships to how your operation actually runs. <strong>Agrasen Technologies</strong> builds that model into a maintainable app — then layers forms, workflows, and dashboards on top. If your current app feels like connected spreadsheets, <a href="/contact">we can help reshape it</a>.</p>
+
+<p>Strong relationships are invisible when they work — and painfully obvious when they do not.</p>
+`,
+  },
+  {
     slug: "quickbase-reports-guide",
     title: "QuickBase Reports: Build Views Your Managers Can Trust",
     date: "2026-10-01",
