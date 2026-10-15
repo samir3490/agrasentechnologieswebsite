@@ -11,6 +11,53 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    slug: "quickbase-email-notifications-alerts",
+    title: "QuickBase Email Notifications and Alerts: Notify the Right People at the Right Time",
+    date: "2026-10-15",
+    author: "Samir Agrawal",
+    category: "QuickBase",
+    image: "/blog/blog-qb-notifications.jpg",
+    excerpt:
+      "Design QuickBase email notifications and alerts that drive action — without flooding inboxes or missing critical updates.",
+    content: `
+<p>Notifications can make a QuickBase app feel alive — or make users mute everything. The difference is design. <strong>QuickBase email notifications and alerts</strong> should create action, not noise.</p>
+
+<p>Here is how to get the balance right.</p>
+
+<h2>When Notifications Help</h2>
+<ul>
+<li>A record is assigned to someone new</li>
+<li>An approval is requested or decided</li>
+<li>An SLA is about to breach</li>
+<li>A high-priority status changes</li>
+<li>A daily digest summarizes what still needs attention</li>
+</ul>
+
+<h2>Notification Design Rules</h2>
+<ul>
+<li><strong>One purpose per alert.</strong> Mixed messages get ignored.</li>
+<li><strong>Put the action in the subject and first line.</strong> "Approve PO-1042" beats "QuickBase update."</li>
+<li><strong>Link straight to the record.</strong> Extra navigation kills response time.</li>
+<li><strong>Include only the fields needed to decide.</strong> Details live in the app.</li>
+<li><strong>Prefer digests for low-urgency volume.</strong> Not every field edit deserves a ping.</li>
+</ul>
+
+<h2>Email vs In-App vs Chat Alerts</h2>
+<p>Email is durable and auditable. In-app notifications help active users. Chat tools are great for urgent team awareness. Mature QuickBase solutions often use more than one channel — with clear rules for which events go where.</p>
+
+<h2>Avoiding Alert Fatigue</h2>
+<p>If users receive twenty emails for one approval chain, they will filter your domain. Consolidate steps, suppress self-notifications when someone edits their own record, and revisit alert rules quarterly as the process changes.</p>
+
+<h2>Compliance and Professional Tone</h2>
+<p>Customer-facing or regulated processes may need carefully worded templates and logged delivery. Treat notification copy as part of the product, not an afterthought.</p>
+
+<h2>Notifications Built Into Your QuickBase App</h2>
+<p><strong>Agrasen Technologies</strong> configures notification strategy alongside workflows and automations so alerts reinforce the process. If your team is missing updates — or drowning in them — <a href="/contact">ask us to tune your QuickBase alerts</a>.</p>
+
+<p>The right notification is the one that gets a decision made faster.</p>
+`,
+  },
+  {
     slug: "quickbase-table-relationships",
     title: "QuickBase Table Relationships: Model Your Business Without Spreadsheet Chaos",
     date: "2026-10-08",
