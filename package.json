@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "test:arm-smoke": "node scripts/arm-smoke-test.mjs"
+    "test:arm-smoke": "node scripts/arm-smoke-test.mjs",
+    "optimize-images": "node scripts/optimize-images.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

@@ -62,6 +62,7 @@ export default function BlogPage() {
                         alt={post.title}
                         fill
                         className="object-cover"
+                        sizes="(min-width: 768px) 50vw, 100vw"
                       />
                     </div>
                   )}

@@ -103,6 +103,7 @@ export default async function BlogPostPage({ params }: Props) {
                     alt={post.title}
                     fill
                     className="object-cover"
+                    sizes="(min-width: 768px) 768px, 100vw"
                     priority
                   />
                 </div>
