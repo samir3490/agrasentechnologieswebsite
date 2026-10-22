@@ -6,54 +6,6 @@ import { BlogPost } from "./posts";
  */
 export const scheduledPosts: BlogPost[] = [
   {
-    slug: "quickbase-roles-permissions",
-    title: "QuickBase Roles and Permissions: Secure Access Without Slowing the Business",
-    date: "2026-10-22",
-    author: "Samir Agrawal",
-    category: "QuickBase",
-    image: "/blog/blog-qb-roles.jpg",
-    excerpt:
-      "Set up QuickBase roles and permissions so people see what they need — and nothing they should not — without turning IT into a bottleneck.",
-    content: `
-<p>Security theater helps nobody. Neither does an app where everyone can edit everything. <strong>QuickBase roles and permissions</strong> let you open the app widely while still protecting sensitive fields, records, and admin controls.</p>
-
-<p>This guide covers a practical approach to access design.</p>
-
-<h2>Why Roles Matter in QuickBase</h2>
-<p>Roles determine what users can see and do: tables, fields, reports, dashboards, and sometimes individual records. Done well, a sales rep never sees internal cost fields, a vendor sees only their own records, and admins retain governance.</p>
-
-<h2>A Simple Role Model That Scales</h2>
-<ul>
-<li><strong>Requesters</strong> — create and track their own items</li>
-<li><strong>Operators</strong> — work queues across a team</li>
-<li><strong>Approvers</strong> — decide and comment</li>
-<li><strong>Managers</strong> — broader reporting visibility</li>
-<li><strong>Admins</strong> — structure, automations, and user access</li>
-</ul>
-
-<p>Start here, then split roles only when a real conflict appears. Too many roles become harder to audit than too few.</p>
-
-<h2>Field-Level and Record-Level Thinking</h2>
-<p>Sometimes the table is fine to open, but a field is not — salary, margin, or personal data. Other times the table is sensitive and users should only see records they own or records in their region. QuickBase supports both styles; choose based on risk, not habit.</p>
-
-<h2>Permissions and User Experience</h2>
-<p>Hidden buttons and denied saves frustrate people when the UI still teases actions they cannot complete. Align forms and dashboards with role capabilities so the app feels intentional.</p>
-
-<h2>Governance Habits That Prevent Drift</h2>
-<ul>
-<li>Review role membership quarterly</li>
-<li>Document why each elevated role exists</li>
-<li>Separate builder access from day-to-day business roles</li>
-<li>Test critical paths as each major role before release</li>
-</ul>
-
-<h2>Secure QuickBase Apps From Agrasen Technologies</h2>
-<p>Access control is part of application architecture, not a final checkbox. <strong>Agrasen Technologies</strong> designs QuickBase roles and permissions with your org chart and compliance needs in mind. If you need an app that is open enough to use and closed enough to trust, <a href="/contact">talk with us</a>.</p>
-
-<p>Good permissions are quiet. People simply work inside the right boundaries.</p>
-`,
-  },
-  {
     slug: "quickbase-charts-kpis",
     title: "QuickBase Charts and KPIs: Visualize Performance Without Another BI Tool",
     date: "2026-10-29",
