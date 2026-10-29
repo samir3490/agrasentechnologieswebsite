@@ -11,6 +11,54 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    slug: "quickbase-charts-kpis",
+    title: "QuickBase Charts and KPIs: Visualize Performance Without Another BI Tool",
+    date: "2026-10-29",
+    author: "Samir Agrawal",
+    category: "QuickBase",
+    image: "/blog/blog-qb-charts.jpg",
+    excerpt:
+      "Use QuickBase charts and KPIs to track performance inside the app your team already lives in — with tips for metrics that drive action.",
+    content: `
+<p>Not every KPI needs a separate business intelligence stack. For operational metrics tied directly to how work is done, <strong>QuickBase charts and KPIs</strong> can put performance in front of the people who can change it.</p>
+
+<p>Here is how to choose metrics and visualizations that change behavior.</p>
+
+<h2>What to Chart in QuickBase</h2>
+<ul>
+<li>Throughput: records completed per week</li>
+<li>Cycle time: average days from submission to approval</li>
+<li>Backlog: open items by stage or owner</li>
+<li>Quality: rejection rate or rework count</li>
+<li>SLA health: percent on-time vs late</li>
+</ul>
+
+<p>If a metric cannot influence a decision this month, it probably does not belong on the primary dashboard.</p>
+
+<h2>Chart Types and When to Use Them</h2>
+<ul>
+<li><strong>Bar charts</strong> for comparisons across categories</li>
+<li><strong>Line charts</strong> for trends over time</li>
+<li><strong>Stacked views</strong> when composition matters</li>
+<li><strong>Simple number widgets</strong> for single critical KPIs</li>
+</ul>
+
+<h2>Define the Metric Once</h2>
+<p>Write a one-line definition for each KPI and reuse it everywhere. "Open requests" should not mean something different on the executive dashboard than it does on the team queue. QuickBase reporting is only as aligned as your definitions.</p>
+
+<h2>Pair Charts With Action Lists</h2>
+<p>A red KPI without a drill-down is just anxiety. Place the chart next to a report of the records causing the problem. That pairing is how operational dashboards outperform slide-deck analytics.</p>
+
+<h2>When You Still Need a BI Tool</h2>
+<p>Cross-system financial analytics, heavy statistical models, or company-wide semantic layers may belong in Power BI or similar tools. Use QuickBase charts for the operational loop; reserve enterprise BI for enterprise questions.</p>
+
+<h2>KPI Dashboards From Agrasen Technologies</h2>
+<p><strong>Agrasen Technologies</strong> builds QuickBase apps where KPIs, charts, and work queues share the same trustworthy data model. If you want performance visible where work happens, <a href="/contact">request a QuickBase consultation</a>.</p>
+
+<p>Charts should not decorate the app. They should change what the team does next.</p>
+`,
+  },
+  {
     slug: "quickbase-roles-permissions",
     title: "QuickBase Roles and Permissions: Secure Access Without Slowing the Business",
     date: "2026-10-22",
