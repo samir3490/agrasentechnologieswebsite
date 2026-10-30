@@ -17,6 +17,7 @@ export const metadata: Metadata = pageMetadata({
 
 const services: {
   id: string;
+  href?: string;
   title: string;
   description: string;
   image?: string;
@@ -24,6 +25,7 @@ const services: {
 }[] = [
   {
     id: "quickbase-development",
+    href: "/services/quickbase-development",
     title: "QuickBase Development",
     description:
       "Custom QuickBase applications built around your process — not a generic template. We design tables, workflows, roles, dashboards, and automations so operations, project, and field teams work in one system instead of scattered spreadsheets.",
@@ -36,6 +38,7 @@ const services: {
   },
   {
     id: "low-code-applications",
+    href: "/services/low-code-applications",
     title: "Low-Code Applications",
     description:
       "When you need business software in weeks, not a year-long custom build. We use low-code platforms to ship apps your team can actually run — forms, approvals, reporting, and integrations — then iterate as the process changes.",
@@ -48,6 +51,7 @@ const services: {
   },
   {
     id: "smartsheet-solutions",
+    href: "/services/smartsheet-solutions",
     title: "Smartsheet Solutions",
     description:
       "Connected Smartsheet workspaces, automations, and reporting. We turn shared sheets into reliable operating systems for projects, vendors, and capacity — with the dashboards leadership actually checks.",
@@ -250,6 +254,11 @@ export default function ServicesPage() {
                     </div>
                     <h3 className="text-xl font-semibold text-text-primary">{s.title}</h3>
                     <p className="mt-3 text-text-secondary leading-relaxed">{s.description}</p>
+                    {s.href ? (
+                      <Link href={s.href} className="inline-block mt-4 text-sm font-semibold text-accent hover:underline">
+                        Open {s.title} page
+                      </Link>
+                    ) : null}
                   </div>
                 </div>
               </ScrollReveal>

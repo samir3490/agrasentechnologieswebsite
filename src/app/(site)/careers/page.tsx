@@ -281,6 +281,8 @@ export default function CareersPage() {
                 <HubSpotForm
                   id="hs-careers-form"
                   formId={CAREERS_FORM_ID}
+                  eventName="careers_submit"
+                  source="careers_page"
                 />
               </div>
             </ScrollReveal>

@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
+import { trackFormSubmit } from "@/lib/analytics";
+
 declare global {
   interface Window {
     hbspt?: {
@@ -12,6 +14,7 @@ declare global {
           region: string;
           target: string;
           css?: string;
+          onFormSubmitted?: () => void;
         }) => void;
       };
     };
@@ -26,9 +29,13 @@ const SCRIPT_SRC = "//js.hsforms.net/forms/embed/v2.js";
 export default function HubSpotForm({
   id = "hs-contact",
   formId = DEFAULT_FORM_ID,
+  eventName = "generate_lead",
+  source = "website",
 }: {
   id?: string;
   formId?: string;
+  eventName?: string;
+  source?: string;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const createdRef = useRef(false);
@@ -44,6 +51,9 @@ export default function HubSpotForm({
         formId,
         region: REGION,
         target: `#${id}`,
+        onFormSubmitted: () => {
+          trackFormSubmit({ eventName, formId, source });
+        },
       });
     };
 
@@ -71,7 +81,7 @@ export default function HubSpotForm({
     script.async = true;
     script.onload = createForm;
     document.head.appendChild(script);
-  }, [id, formId]);
+  }, [id, formId, eventName, source]);
 
   return (
     <div

@@ -12,12 +12,20 @@ export default function BlogPostCta() {
         around how your team already works. {FREE_REVIEW_OFFER} and we&apos;ll map the
         fastest path from spreadsheet to a system people will actually use.
       </p>
-      <Link
-        href="/contact"
-        className="inline-block mt-6 px-6 py-3 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-accent to-accent-secondary hover:opacity-90 transition-opacity"
-      >
-        {FREE_REVIEW_OFFER}
-      </Link>
+      <div className="mt-6 flex flex-col sm:flex-row gap-3">
+        <Link
+          href="/contact"
+          className="inline-block px-6 py-3 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-accent to-accent-secondary hover:opacity-90 transition-opacity text-center"
+        >
+          {FREE_REVIEW_OFFER}
+        </Link>
+        <Link
+          href="/services/quickbase-development"
+          className="inline-block px-6 py-3 rounded-lg text-sm font-semibold border border-border text-text-primary hover:border-accent hover:text-accent transition-colors text-center"
+        >
+          QuickBase development
+        </Link>
+      </div>
     </div>
   );
 }

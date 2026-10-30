@@ -18,9 +18,9 @@ const quickLinks = [
 ];
 
 const services = [
-  { href: "/services#quickbase-development", label: "QuickBase Development" },
-  { href: "/services#low-code-applications", label: "Low-Code Applications" },
-  { href: "/services#smartsheet-solutions", label: "Smartsheet Solutions" },
+  { href: "/services/quickbase-development", label: "QuickBase Development" },
+  { href: "/services/low-code-applications", label: "Low-Code Applications" },
+  { href: "/services/smartsheet-solutions", label: "Smartsheet Solutions" },
   { href: "/services#it-consulting", label: "IT Consulting" },
   { href: "/services#web-design", label: "Web Design" },
 ];

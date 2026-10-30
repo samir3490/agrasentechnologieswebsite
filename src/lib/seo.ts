@@ -35,6 +35,19 @@ export const MARKETING_SERVICES = [
   "Branding & Identity",
 ] as const;
 
+export const MARKETING_SERVICE_PATHS: Record<(typeof MARKETING_SERVICES)[number], string> = {
+  "QuickBase Development": "/services/quickbase-development",
+  "Low-Code Applications": "/services/low-code-applications",
+  "Smartsheet Solutions": "/services/smartsheet-solutions",
+  "IT Consulting": "/services#it-consulting",
+  "Web Design": "/services#web-design",
+  "UI/UX Design": "/services#ui-ux-design",
+  "SEO Optimization": "/services#seo-optimization",
+  "Mobile Design": "/services#mobile-design",
+  "Business Management Mentoring": "/services#business-management-mentoring",
+  "Branding & Identity": "/services#branding-identity",
+};
+
 export function siteUrl(path = ""): string {
   return path ? `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}` : SITE_URL;
 }
@@ -186,9 +199,34 @@ export function servicesJsonLd() {
           url: SITE_URL,
         },
         areaServed: SITE.areaServed,
-        url: siteUrl("/services"),
+        url: siteUrl(MARKETING_SERVICE_PATHS[name]),
       },
     })),
+  };
+}
+
+export function serviceJsonLd({
+  name,
+  description,
+  path,
+}: {
+  name: string;
+  description: string;
+  path: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name,
+    description,
+    url: siteUrl(path),
+    provider: {
+      "@type": "Organization",
+      name: SITE.legalName,
+      url: SITE_URL,
+    },
+    areaServed: SITE.areaServed,
+    serviceType: name,
   };
 }
 

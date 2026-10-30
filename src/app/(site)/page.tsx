@@ -24,7 +24,7 @@ const stats = [
 const services = [
   {
     title: "QuickBase Development",
-    href: "/services#quickbase-development",
+    href: "/services/quickbase-development",
     description: "Custom apps, workflows, and dashboards on QuickBase",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
@@ -34,7 +34,7 @@ const services = [
   },
   {
     title: "Low-Code Applications",
-    href: "/services#low-code-applications",
+    href: "/services/low-code-applications",
     description: "Ship business software faster — without the wait of custom code",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
@@ -44,7 +44,7 @@ const services = [
   },
   {
     title: "Smartsheet Solutions",
-    href: "/services#smartsheet-solutions",
+    href: "/services/smartsheet-solutions",
     description: "Connected sheets, automations, and reporting your teams will use",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
