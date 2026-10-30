@@ -154,7 +154,7 @@ Agrasen Technologies does not sell personal information. To submit a privacy req
 Agrasen Technologies Inc.
 1317 Edgewater Drive Suite 536
 Orlando, FL 32804
-Email: samir dot agrawal at agrasentechnologies dot com`,
+Email: samir.agrawal@agrasentechnologies.com`,
   },
 ];
 

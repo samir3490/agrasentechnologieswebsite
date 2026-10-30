@@ -45,10 +45,10 @@ export default function HubSpotModal({ isOpen, onClose }: HubSpotModalProps) {
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h2 className="text-2xl font-bold text-text-primary">
-                  Get a Quote
+                  Free 30-Minute Workflow Review
                 </h2>
                 <p className="text-sm text-text-secondary mt-1">
-                  Tell us about your project and we&apos;ll get back to you
+                  Tell us the process you want to replace. We&apos;ll get back
                   within 24 hours.
                 </p>
               </div>

@@ -24,6 +24,7 @@ const stats = [
 const services = [
   {
     title: "QuickBase Development",
+    href: "/services#quickbase-development",
     description: "Custom apps, workflows, and dashboards on QuickBase",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
@@ -33,6 +34,7 @@ const services = [
   },
   {
     title: "Low-Code Applications",
+    href: "/services#low-code-applications",
     description: "Ship business software faster — without the wait of custom code",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
@@ -42,6 +44,7 @@ const services = [
   },
   {
     title: "Smartsheet Solutions",
+    href: "/services#smartsheet-solutions",
     description: "Connected sheets, automations, and reporting your teams will use",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
@@ -51,6 +54,7 @@ const services = [
   },
   {
     title: "IT Consulting",
+    href: "/services#it-consulting",
     description: "Strategic guidance from requirements through delivery",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
@@ -60,6 +64,7 @@ const services = [
   },
   {
     title: "Web Design",
+    href: "/services#web-design",
     description: "Modern websites that convert visitors",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
@@ -69,6 +74,7 @@ const services = [
   },
   {
     title: "SEO Optimization",
+    href: "/services#seo-optimization",
     description: "Higher rankings, more traffic",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
@@ -134,7 +140,7 @@ export default function Home() {
                 href="/contact"
                 className="px-8 py-3.5 rounded-lg bg-accent text-white font-semibold hover:bg-accent/90 transition-colors"
               >
-                Get Started
+                Book a Free Review
               </Link>
               <a
                 href="#services"
@@ -174,15 +180,18 @@ export default function Home() {
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, i) => (
               <ScrollReveal key={service.title} delay={i * 0.1}>
-                <div className="glass rounded-2xl p-6 h-full hover:border-accent/50 transition-colors group">
-                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center text-accent mb-4 group-hover:bg-accent/20 transition-colors">
-                    {service.icon}
+                <Link href={service.href} className="block h-full">
+                  <div className="glass rounded-2xl p-6 h-full hover:border-accent/50 transition-colors group">
+                    <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center text-accent mb-4 group-hover:bg-accent/20 transition-colors">
+                      {service.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold text-text-primary">{service.title}</h3>
+                    <p className="mt-2 text-sm text-text-secondary leading-relaxed">
+                      {service.description}
+                    </p>
+                    <p className="mt-4 text-sm font-semibold text-accent">Learn more</p>
                   </div>
-                  <h3 className="text-lg font-semibold text-text-primary">{service.title}</h3>
-                  <p className="mt-2 text-sm text-text-secondary leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
+                </Link>
               </ScrollReveal>
             ))}
           </div>
@@ -303,8 +312,8 @@ export default function Home() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="mt-4 text-lg text-text-secondary max-w-xl mx-auto">
-              Tell us the workflows you want to automate. We&apos;ll show you what&apos;s possible
-              in QuickBase and other low-code platforms.
+              Book a free 30-minute workflow review. We&apos;ll map the process you want
+              to replace and show you what&apos;s possible in QuickBase.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
@@ -312,7 +321,7 @@ export default function Home() {
               href="/contact"
               className="inline-block mt-8 px-8 py-3.5 rounded-lg bg-accent text-white font-semibold hover:bg-accent/90 transition-colors"
             >
-              Schedule a Consultation
+              Book a Free Review
             </Link>
           </ScrollReveal>
         </div>

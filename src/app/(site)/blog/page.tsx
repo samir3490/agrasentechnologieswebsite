@@ -5,6 +5,7 @@ import ParticleField from "@/components/ParticleField";
 import ScrollReveal from "@/components/ScrollReveal";
 import GradientOrb from "@/components/GradientOrb";
 import SectionHeading from "@/components/SectionHeading";
+import BlogPostCta from "@/components/BlogPostCta";
 import NewsletterForm from "./NewsletterForm";
 import { posts } from "@/data/posts";
 import { pageMetadata } from "@/lib/seo";
@@ -98,6 +99,12 @@ export default function BlogPage() {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="pb-8">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <BlogPostCta />
         </div>
       </section>
 

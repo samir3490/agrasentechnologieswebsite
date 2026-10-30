@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { products } from "@/data/products";
+import { CONTACT_EMAIL, CONTACT_MAILTO, SOCIAL_LINKS } from "@/lib/contact";
 
 const legalLinks = [
   { href: "/privacy-policy", label: "Privacy Policy" },
@@ -17,11 +18,11 @@ const quickLinks = [
 ];
 
 const services = [
-  "QuickBase Development",
-  "Low-Code Applications",
-  "Smartsheet Solutions",
-  "IT Consulting",
-  "Web Design",
+  { href: "/services#quickbase-development", label: "QuickBase Development" },
+  { href: "/services#low-code-applications", label: "Low-Code Applications" },
+  { href: "/services#smartsheet-solutions", label: "Smartsheet Solutions" },
+  { href: "/services#it-consulting", label: "IT Consulting" },
+  { href: "/services#web-design", label: "Web Design" },
 ];
 
 export default function Footer() {
@@ -44,7 +45,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-4 pt-2">
               <a
-                href="https://linkedin.com"
+                href={SOCIAL_LINKS.linkedinCompany}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-accent transition-colors"
@@ -59,22 +60,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://x.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-accent transition-colors"
-                aria-label="X (Twitter)"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </a>
-              <a
-                href="https://github.com"
+                href={SOCIAL_LINKS.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-accent transition-colors"
@@ -146,10 +132,13 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Services</h3>
             <ul className="space-y-2.5">
               {services.map((service) => (
-                <li key={service}>
-                  <span className="text-gray-400 text-sm">
-                    {service}
-                  </span>
+                <li key={service.label}>
+                  <Link
+                    href={service.href}
+                    className="text-gray-400 text-sm hover:text-white transition-colors"
+                  >
+                    {service.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -181,9 +170,15 @@ export default function Footer() {
                 <br />
                 Orlando, FL 32804
               </p>
-              <p className="hover:text-accent transition-colors">
-                samir dot agrawal at agrasentechnologies dot com
-              </p>
+              <a
+                href={CONTACT_MAILTO}
+                className="block hover:text-accent transition-colors"
+              >
+                {CONTACT_EMAIL}
+              </a>
+              <Link href="/contact" className="block hover:text-accent transition-colors">
+                Book a free 30-minute workflow review
+              </Link>
             </div>
           </div>
         </div>

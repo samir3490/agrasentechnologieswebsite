@@ -6,6 +6,7 @@ import ParticleField from "@/components/ParticleField";
 import ScrollReveal from "@/components/ScrollReveal";
 import GradientOrb from "@/components/GradientOrb";
 import JsonLd from "@/components/JsonLd";
+import BlogPostCta from "@/components/BlogPostCta";
 import { posts } from "@/data/posts";
 import { blogPostingJsonLd, breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
@@ -118,6 +119,10 @@ export default async function BlogPostPage({ params }: Props) {
             </ScrollReveal>
 
             <ScrollReveal delay={0.2}>
+              <BlogPostCta />
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.25}>
               <div className="mt-12 pt-8 border-t border-border">
                 <Link
                   href="/blog"

@@ -6,7 +6,7 @@ import GradientOrb from "@/components/GradientOrb";
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionHeading from "@/components/SectionHeading";
 import JsonLd from "@/components/JsonLd";
-import { pageMetadata, servicesJsonLd } from "@/lib/seo";
+import { faqPageJsonLd, pageMetadata, servicesJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Services | QuickBase Development & Low-Code Applications",
@@ -16,12 +16,14 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const services: {
+  id: string;
   title: string;
   description: string;
   image?: string;
   icon: ReactNode;
 }[] = [
   {
+    id: "quickbase-development",
     title: "QuickBase Development",
     description:
       "Custom QuickBase applications built around your process — not a generic template. We design tables, workflows, roles, dashboards, and automations so operations, project, and field teams work in one system instead of scattered spreadsheets.",
@@ -33,6 +35,7 @@ const services: {
     ),
   },
   {
+    id: "low-code-applications",
     title: "Low-Code Applications",
     description:
       "When you need business software in weeks, not a year-long custom build. We use low-code platforms to ship apps your team can actually run — forms, approvals, reporting, and integrations — then iterate as the process changes.",
@@ -44,6 +47,7 @@ const services: {
     ),
   },
   {
+    id: "smartsheet-solutions",
     title: "Smartsheet Solutions",
     description:
       "Connected Smartsheet workspaces, automations, and reporting. We turn shared sheets into reliable operating systems for projects, vendors, and capacity — with the dashboards leadership actually checks.",
@@ -55,6 +59,7 @@ const services: {
     ),
   },
   {
+    id: "it-consulting",
     title: "IT Consulting",
     description:
       "Driving project success with expert IT consultation. Bridging the gap between technical and non-technical teams — from requirement gathering to delivery on a timeline.",
@@ -66,6 +71,7 @@ const services: {
     ),
   },
   {
+    id: "web-design",
     title: "Web Design / Interactive",
     description:
       "Crafting Stunning Digital Experiences. Your website is your brand's first impression. We design modern, user-centric websites that capture attention and convert visitors into customers.",
@@ -76,6 +82,7 @@ const services: {
     ),
   },
   {
+    id: "ui-ux-design",
     title: "UI/UX Design",
     description:
       "Creating Intuitive and Engaging Experiences. We focus on understanding user behavior to design interfaces that offer seamless navigation and intuitive user experiences.",
@@ -86,6 +93,7 @@ const services: {
     ),
   },
   {
+    id: "seo-optimization",
     title: "SEO Optimization",
     description:
       "Maximizing Visibility, Driving Traffic. We take a strategic approach to SEO, customizing solutions to fit your business goals. From on-page optimization to advanced strategies.",
@@ -96,6 +104,7 @@ const services: {
     ),
   },
   {
+    id: "mobile-design",
     title: "Mobile Design",
     description:
       "Designing for a Mobile-First World. With a large portion of web traffic coming from mobile devices, we ensure your website delivers a seamless experience across all screen sizes.",
@@ -106,6 +115,7 @@ const services: {
     ),
   },
   {
+    id: "business-management-mentoring",
     title: "Business Management Mentoring",
     description:
       "Empowering Businesses with Expert Mentorship in sales, leadership, revenue growth, and team management.",
@@ -116,6 +126,7 @@ const services: {
     ),
   },
   {
+    id: "branding-identity",
     title: "Branding & Identity",
     description:
       "Building Brands That Resonate. Your brand is more than just a logo — it's the perception customers have about you.",
@@ -124,6 +135,34 @@ const services: {
         <path d="M7 21a4 4 0 0 1-4-4V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v12a4 4 0 0 1-4 4zm0 0h12a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 0 1 2.828 0l2.829 2.829a2 2 0 0 1 0 2.828l-8.486 8.485M7 17h.01" />
       </svg>
     ),
+  },
+];
+
+const faqs = [
+  {
+    question: "What is included in the free 30-minute workflow review?",
+    answer:
+      "We map the process you run today in spreadsheets, email, or tribal knowledge, identify what should live in QuickBase or another low-code tool, and outline a practical next step. There is no obligation to start a project.",
+  },
+  {
+    question: "Can you move our work from Excel or Google Sheets into QuickBase?",
+    answer:
+      "Yes. Most engagements start with the sheets you already use. We design tables, relationships, roles, and dashboards so the app matches the real workflow instead of forcing a generic template.",
+  },
+  {
+    question: "How long does a typical QuickBase project take?",
+    answer:
+      "It depends on the process. Smaller workflow apps can ship in weeks; larger multi-team systems take longer. Discovery is the first step so we size the work before you commit to a build.",
+  },
+  {
+    question: "Do you only work with companies in Orlando?",
+    answer:
+      "Agrasen Technologies is based in Orlando, FL and works with teams nationwide on QuickBase, Smartsheet, and other low-code applications.",
+  },
+  {
+    question: "What platforms do you build on?",
+    answer:
+      "QuickBase is the primary platform. We also build Smartsheet solutions and other low-code applications when that is the better fit, plus the consulting and web work around those systems.",
   },
 ];
 
@@ -154,6 +193,7 @@ export default function ServicesPage() {
   return (
     <>
       <JsonLd data={servicesJsonLd()} />
+      <JsonLd data={faqPageJsonLd(faqs)} />
       <main className="min-h-screen">
       {/* Hero */}
       <section className="relative min-h-[40vh] flex items-center bg-bg-secondary overflow-hidden">
@@ -189,7 +229,10 @@ export default function ServicesPage() {
           <div className="mt-14 grid md:grid-cols-2 gap-6">
             {services.map((s, i) => (
               <ScrollReveal key={s.title} delay={i * 0.08}>
-                <div className="glass rounded-2xl overflow-hidden h-full group hover:border-accent/50 hover:scale-[1.02] transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,160,23,0.08)]">
+                <div
+                  id={s.id}
+                  className="scroll-mt-24 glass rounded-2xl overflow-hidden h-full group hover:border-accent/50 hover:scale-[1.02] transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,160,23,0.08)]"
+                >
                   {s.image ? (
                     <div className="relative h-48">
                       <Image
@@ -241,12 +284,38 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="py-20 lg:py-28">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            label="FAQ"
+            title="QuickBase and Low-Code Questions"
+            description="Straight answers before you book a review."
+          />
+          <div className="mt-10 space-y-4">
+            {faqs.map((faq, i) => (
+              <ScrollReveal key={faq.question} delay={i * 0.06}>
+                <details className="glass rounded-2xl p-6 group">
+                  <summary className="cursor-pointer list-none text-lg font-semibold text-text-primary flex items-start justify-between gap-4">
+                    {faq.question}
+                    <span className="text-accent text-xl leading-none group-open:rotate-45 transition-transform">
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 text-text-secondary leading-relaxed">{faq.answer}</p>
+                </details>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 lg:py-28 border-t border-accent/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal>
             <h2 className="text-3xl sm:text-4xl font-bold gradient-text">
-              Let&apos;s Build Something Great Together
+              Book a Free 30-Minute Workflow Review
             </h2>
             <p className="mt-4 text-text-secondary text-lg max-w-xl mx-auto">
               Tell us the process you want to replace — we&apos;ll show you the QuickBase or low-code path.
@@ -255,7 +324,7 @@ export default function ServicesPage() {
               href="/contact"
               className="inline-block mt-8 px-8 py-3 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-accent to-accent-secondary hover:opacity-90 transition-opacity duration-200"
             >
-              Start a Conversation
+              Book a Free Review
             </Link>
           </ScrollReveal>
         </div>

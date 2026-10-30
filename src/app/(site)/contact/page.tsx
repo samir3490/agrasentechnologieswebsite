@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import ParticleField from "@/components/ParticleField";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -6,15 +7,22 @@ import GradientOrb from "@/components/GradientOrb";
 import SectionHeading from "@/components/SectionHeading";
 import HubSpotForm from "@/components/HubSpotForm";
 import { pageMetadata } from "@/lib/seo";
+import { CONTACT_EMAIL, CONTACT_MAILTO } from "@/lib/contact";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact | QuickBase & Low-Code — Agrasen Technologies",
   description:
-    "Contact Agrasen Technologies for QuickBase development, low-code applications, Smartsheet solutions, and IT consulting. Orlando, FL — serving clients nationwide.",
+    "Book a free 30-minute QuickBase workflow review with Agrasen Technologies. Orlando, FL — serving clients nationwide.",
   path: "/contact",
 });
 
-const contactCards = [
+const contactCards: {
+  key: string;
+  icon: ReactNode;
+  label: string;
+  lines: string[];
+  href?: string;
+}[] = [
   {
     key: "address",
     icon: (
@@ -62,7 +70,8 @@ const contactCards = [
       </svg>
     ),
     label: "Email Us",
-    lines: ["samir dot agrawal at agrasentechnologies dot com"],
+    lines: [CONTACT_EMAIL],
+    href: CONTACT_MAILTO,
   },
   {
     key: "hours",
@@ -109,10 +118,10 @@ export default function ContactPage() {
               <span className="text-accent">Contact</span>
             </nav>
             <h1 className="text-5xl md:text-6xl font-bold gradient-text">
-              Get In Touch
+              Book a Free Workflow Review
             </h1>
             <p className="mt-4 text-lg text-text-secondary max-w-xl mx-auto">
-              Tell us about the QuickBase app or low-code workflow you want to build.
+              30 minutes to map the process you want to replace — then we&apos;ll show you the QuickBase or low-code path.
             </p>
           </ScrollReveal>
         </div>
@@ -127,7 +136,7 @@ export default function ContactPage() {
               <SectionHeading
                 label="Contact Info"
                 title="Let's Start a Conversation"
-                description="Reach out through any of the channels below and our team will get back to you within 24 hours."
+                description="Book a free 30-minute workflow review. We typically reply within 24 hours."
                 centered={false}
               />
 
@@ -142,14 +151,24 @@ export default function ContactPage() {
                         <h3 className="font-semibold text-text-primary mb-1">
                           {card.label}
                         </h3>
-                        {card.lines.map((line) => (
+                        {card.lines.map((line) =>
+                          card.href ? (
+                            <a
+                              key={line}
+                              href={card.href}
+                              className="text-sm text-accent hover:underline"
+                            >
+                              {line}
+                            </a>
+                          ) : (
                             <p
                               key={line}
                               className="text-sm text-text-secondary"
                             >
                               {line}
                             </p>
-                        ))}
+                          )
+                        )}
                       </div>
                     </div>
                   </ScrollReveal>
@@ -161,7 +180,7 @@ export default function ContactPage() {
             <ScrollReveal delay={0.15} direction="right">
               <div className="glass rounded-2xl p-6 sm:p-8">
                 <h3 className="text-xl font-semibold text-text-primary mb-6">
-                  Send Us a Message
+                  Request your free review
                 </h3>
                 <HubSpotForm id="hs-contact-page" />
               </div>

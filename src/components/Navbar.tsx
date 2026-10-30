@@ -76,7 +76,7 @@ export default function Navbar() {
               onClick={() => setQuoteOpen(true)}
               className="px-5 py-2 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-accent to-accent-secondary hover:opacity-90 transition-opacity duration-200 cursor-pointer"
             >
-              Get a Quote
+              Free Review
             </button>
           </div>
 
@@ -142,7 +142,7 @@ export default function Navbar() {
                   onClick={() => { setQuoteOpen(true); setMobileOpen(false); }}
                   className="inline-block mt-4 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-accent to-accent-secondary cursor-pointer"
                 >
-                  Get a Quote
+                  Free Review
                 </button>
               </motion.div>
             </div>

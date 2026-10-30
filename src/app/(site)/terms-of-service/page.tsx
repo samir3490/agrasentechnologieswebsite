@@ -132,7 +132,7 @@ For active service engagements, material changes to project-specific terms will 
 Agrasen Technologies Inc.
 1317 Edgewater Drive Suite 536
 Orlando, FL 32804
-Email: samir dot agrawal at agrasentechnologies dot com`,
+Email: samir.agrawal@agrasentechnologies.com`,
   },
 ];
 

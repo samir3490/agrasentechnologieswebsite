@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { BlogPost } from "@/data/posts";
+import { CONTACT_EMAIL, SOCIAL_LINKS } from "@/lib/contact";
 import { SITE_URL } from "@/lib/site-url";
 
 export const SITE = {
@@ -126,11 +127,16 @@ export function siteJsonLdGraph() {
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "customer service",
+          email: CONTACT_EMAIL,
           url: siteUrl("/contact"),
           availableLanguage: "English",
         },
         areaServed: SITE.areaServed,
-        sameAs: [],
+        sameAs: [
+          SOCIAL_LINKS.linkedinCompany,
+          SOCIAL_LINKS.linkedinPerson,
+          SOCIAL_LINKS.github,
+        ],
       },
       {
         "@type": "LocalBusiness",
@@ -145,6 +151,8 @@ export function siteJsonLdGraph() {
         },
         parentOrganization: { "@id": orgId },
         priceRange: "$$",
+        email: CONTACT_EMAIL,
+        sameAs: [SOCIAL_LINKS.linkedinCompany],
       },
       {
         "@type": "WebSite",
@@ -211,6 +219,21 @@ export function blogPostingJsonLd(post: BlogPost) {
     mainEntityOfPage: url,
     url,
     articleSection: post.category,
+  };
+}
+
+export function faqPageJsonLd(faqs: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
   };
 }
 
