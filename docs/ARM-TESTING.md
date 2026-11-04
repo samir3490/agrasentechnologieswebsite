@@ -1,5 +1,21 @@
 # AI Relationship Manager — Testing
 
+## Operator usage panel
+
+URL: https://agrasentechnologies.com/ai-relationship-manager/operator  
+
+Sign in with `ADMIN_PASSWORD` (or `ARM_OPERATOR_PASSWORD` if set on Vercel).
+
+Shows:
+- Totals: users, workspaces, contacts, free vs paid
+- Signups last 7 / 30 days
+- Workspace table (plan, contact usage, members)
+- Users list
+- Cross-workspace recent audit activity
+- Workspace detail drawer (members, contacts sample, audit log)
+
+---
+
 ## Automated tests
 
 ```bash

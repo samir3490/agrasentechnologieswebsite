@@ -148,6 +148,7 @@ Each **workspace** is independent: its own plan, contact limit, and API connecti
 - [x] GitHub Actions CI for ARM unit tests
 - [x] Privacy policy section for ARM product data
 - [x] Platform integration setup guide — [ARM-INTEGRATIONS-SETUP.md](./ARM-INTEGRATIONS-SETUP.md)
+- [x] Operator usage panel (`/ai-relationship-manager/operator`) — users, free/paid workspaces, activity
 - [ ] Push notifications (future)
 - [ ] WhatsApp Business API (future — optional enterprise)
 

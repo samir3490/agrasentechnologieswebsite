@@ -30,6 +30,7 @@ function shouldSkipRateLimit(pathname: string) {
   return (
     pathname.startsWith("/api/arm/billing/webhook") ||
     pathname.startsWith("/api/arm/cron/") ||
+    pathname.startsWith("/api/arm/operator/") ||
     pathname.includes("/integrations/google-calendar/callback")
   );
 }
