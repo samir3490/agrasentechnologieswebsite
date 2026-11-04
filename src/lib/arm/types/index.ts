@@ -17,7 +17,7 @@ export type RelationshipType =
 
 export type InteractionType = "call" | "message" | "meeting" | "event" | "email";
 
-export interface RipUser {
+export interface ArmUser {
   email: string;
   displayName?: string;
   defaultAccountId?: string;
@@ -40,7 +40,7 @@ export interface AccountSettings {
 export type EventType = "birthday" | "anniversary";
 export type ReminderStatus = "pending" | "sent" | "dismissed";
 
-export interface RipEvent {
+export interface ArmEvent {
   id: string;
   accountId: string;
   contactId: string;
@@ -84,7 +84,7 @@ export interface DailyDigest {
   generatedAt: string;
 }
 
-export interface RipAccount {
+export interface ArmAccount {
   id: string;
   name: string;
   slug: string;

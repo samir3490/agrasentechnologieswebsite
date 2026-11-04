@@ -4,7 +4,7 @@
 
 **App URL:** https://agrasentechnologies.com/ai-relationship-manager  
 **Repo:** [agrasentechnologieswebsite](https://github.com/samir3490/agrasentechnologieswebsite)  
-**Firebase:** `agrasen-technologies` (`ripAccounts/`, `ripUsers/`)
+**Firebase:** `agrasen-technologies` (ARM data in `ripAccounts/` / `ripUsers/` — legacy collection IDs, still in use)
 
 Legend: `[x]` done · `[ ]` not done · `[ ]` **YOUR ACTION** = you must configure or verify
 
@@ -16,7 +16,7 @@ Legend: `[x]` done · `[ ]` not done · `[ ]` **YOUR ACTION** = you must configu
 - [x] Routes under `/ai-relationship-manager`
 - [x] API under `/api/arm/`
 - [x] Deployed to agrasentechnologies.com
-- [x] Products page links to internal app (not rip-theta.vercel.app)
+- [x] Products page links to internal ARM app
 - [x] Webpack build + `firebase-admin` v13 for Vercel
 - [x] Firebase client env vars on Vercel
 - [x] Firebase Admin credentials on Vercel
@@ -34,7 +34,7 @@ Legend: `[x]` done · `[ ]` not done · `[ ]` **YOUR ACTION** = you must configu
 - [x] Interaction logging
 - [x] Dashboard + contact list/search
 - [x] Free plan contact limit (100)
-- [x] Firestore security rules for RIP namespaces
+- [x] Firestore security rules for ARM namespaces
 
 ---
 
@@ -193,9 +193,11 @@ Platform operator env vars are **optional defaults** — customers can use 100% 
 
 ## Deprecated / optional cleanup
 
-- [ ] Retire or redirect `rip-theta.vercel.app` — see [RIP-THETA-REDIRECT.md](./RIP-THETA-REDIRECT.md)
+- [x] Removed unused RIP naming from app code / docs (product is ARM only)
 - [x] Post-onboarding welcome banner → setup checklist + add contact
 - [x] Align user-facing email/digest copy to “AI Relationship Manager”
+- [ ] Optional later: migrate Firestore `ripAccounts` / `ripUsers` → `armAccounts` / `armUsers` (data migration required)
+- [ ] Optional: delete old standalone RIP Vercel project if it still exists
 
 ---
 

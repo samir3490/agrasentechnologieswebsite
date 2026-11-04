@@ -1,4 +1,4 @@
-import type { Contact, RipEvent, Reminder, AccountSettings } from "@/lib/arm/types";
+import type { Contact, ArmEvent, Reminder, AccountSettings } from "@/lib/arm/types";
 import { DEFAULT_REMINDER_INTERVALS } from "@/lib/arm/constants/plans";
 import { getNextOccurrence, parseMonthDay, startOfDay, toDateKey } from "./dates";
 
@@ -12,8 +12,8 @@ export function buildEventsFromContact(
   contactId: string,
   contact: Pick<Contact, "firstName" | "lastName" | "nickname" | "birthday" | "anniversary">,
   settings: AccountSettings
-): RipEvent[] {
-  const events: RipEvent[] = [];
+): ArmEvent[] {
+  const events: ArmEvent[] = [];
   const name = contactDisplayName(contact);
   const intervals = settings.reminderIntervals?.length
     ? settings.reminderIntervals
@@ -57,7 +57,7 @@ export function buildEventsFromContact(
 }
 
 export function buildRemindersForEvent(
-  event: RipEvent,
+  event: ArmEvent,
   settings: AccountSettings,
   from: Date = new Date()
 ): Reminder[] {

@@ -17,7 +17,8 @@ describe("health score", () => {
   });
 
   it("enriches contact with score and label", () => {
-    const enriched = enrichContactHealth({ lastInteractionAt: "2026-06-01T12:00:00Z" });
+    const recent = new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString();
+    const enriched = enrichContactHealth({ lastInteractionAt: recent });
     expect(enriched.healthLabel).toBe("strong");
     expect(enriched.healthScore).toBeGreaterThan(80);
   });

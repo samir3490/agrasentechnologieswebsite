@@ -45,21 +45,33 @@ interface AuthContextValue {
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
-const CURRENT_ACCOUNT_KEY = "rip_current_account_id";
+const CURRENT_ACCOUNT_KEY = "arm_current_account_id";
+const LEGACY_ACCOUNT_KEY = "rip_current_account_id";
+
+function readStoredAccountId() {
+  if (typeof window === "undefined") return null;
+  const current = localStorage.getItem(CURRENT_ACCOUNT_KEY);
+  if (current) return current;
+  const legacy = localStorage.getItem(LEGACY_ACCOUNT_KEY);
+  if (legacy) {
+    localStorage.setItem(CURRENT_ACCOUNT_KEY, legacy);
+    localStorage.removeItem(LEGACY_ACCOUNT_KEY);
+    return legacy;
+  }
+  return null;
+}
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [accountsLoading, setAccountsLoading] = useState(true);
   const [accounts, setAccounts] = useState<AccountMembership[]>([]);
-  const [currentAccountId, setCurrentAccountIdState] = useState<string | null>(() => {
-    if (typeof window === "undefined") return null;
-    return localStorage.getItem(CURRENT_ACCOUNT_KEY);
-  });
+  const [currentAccountId, setCurrentAccountIdState] = useState<string | null>(() => readStoredAccountId());
 
   const setCurrentAccountId = useCallback((id: string) => {
     setCurrentAccountIdState(id);
     localStorage.setItem(CURRENT_ACCOUNT_KEY, id);
+    localStorage.removeItem(LEGACY_ACCOUNT_KEY);
   }, []);
 
   const refreshAccounts = useCallback(async () => {
@@ -105,6 +117,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setAccountsLoading(false);
         setCurrentAccountIdState(null);
         localStorage.removeItem(CURRENT_ACCOUNT_KEY);
+        localStorage.removeItem(LEGACY_ACCOUNT_KEY);
       }
     });
   }, [refreshAccounts]);
@@ -112,6 +125,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (currentAccountId) {
       localStorage.setItem(CURRENT_ACCOUNT_KEY, currentAccountId);
+      localStorage.removeItem(LEGACY_ACCOUNT_KEY);
     }
   }, [currentAccountId]);
 
@@ -138,6 +152,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setAccounts([]);
     setCurrentAccountIdState(null);
     localStorage.removeItem(CURRENT_ACCOUNT_KEY);
+    localStorage.removeItem(LEGACY_ACCOUNT_KEY);
   };
 
   const sendPasswordReset = async (email: string) => {
