@@ -16,6 +16,8 @@ export default function robots(): MetadataRoute.Robots {
           "/ai-relationship-manager/settings",
           "/ai-relationship-manager/onboarding",
           "/ai-relationship-manager/login",
+          "/ai-relationship-manager/forgot-password",
+          "/ai-relationship-manager/reset-password",
         ],
       },
     ],

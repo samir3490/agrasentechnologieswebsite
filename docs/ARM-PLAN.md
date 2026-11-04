@@ -28,6 +28,7 @@ Legend: `[x]` done · `[ ]` not done · `[ ]` **YOUR ACTION** = you must configu
 ## Phase 1 — Core CRM (MVP)
 
 - [x] Google + email authentication
+- [x] Forgot / reset password (email link via Firebase Auth)
 - [x] Workspace onboarding
 - [x] Contact CRUD (personal / business / NGO fields)
 - [x] Interaction logging

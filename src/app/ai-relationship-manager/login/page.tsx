@@ -82,10 +82,19 @@ export default function LoginPage() {
             type="password"
             placeholder="Password"
             required
+            autoComplete="current-password"
             className="input-field"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <div className="flex justify-end">
+            <Link
+              href={armPath("/forgot-password")}
+              className="text-sm font-medium text-indigo-600 hover:text-indigo-700"
+            >
+              Forgot password?
+            </Link>
+          </div>
           <button type="submit" disabled={loading} className="btn-primary w-full py-3">
             {loading ? "Signing in..." : "Sign in"}
           </button>

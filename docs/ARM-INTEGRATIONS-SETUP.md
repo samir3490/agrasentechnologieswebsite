@@ -19,6 +19,32 @@ Customers can also use **100% their own keys** per workspace in Settings → Con
 - `GOOGLE_OAUTH_CLIENT_ID` + `GOOGLE_OAUTH_CLIENT_SECRET`
 - `NEXT_PUBLIC_APP_URL=https://agrasentechnologies.com`
 
+## Password reset (optional polish)
+
+Forgot password is live at `/ai-relationship-manager/forgot-password`.
+
+By default Firebase hosts the reset form. To use the in-app page instead:
+
+1. Firebase Console → Authentication → Templates → Password reset
+2. Customize action URL →  
+   `https://agrasentechnologies.com/ai-relationship-manager/reset-password`
+3. Save
+
+Email/password accounts can reset; Google-only accounts use Google sign-in (no password).
+
+## Password reset (optional polish)
+
+Forgot password is live at `/ai-relationship-manager/forgot-password`.
+
+By default Firebase hosts the reset form. To use the in-app page instead:
+
+1. Firebase Console → Authentication → Templates → Password reset
+2. Customize action URL →  
+   `https://agrasentechnologies.com/ai-relationship-manager/reset-password`
+3. Save
+
+Email/password accounts can reset; Google-only accounts use Google sign-in (no password).
+
 ## Optional enhancements
 
 | Variable | Enables |

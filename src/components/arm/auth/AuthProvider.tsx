@@ -17,10 +17,14 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
+  sendPasswordResetEmail,
+  confirmPasswordReset,
+  verifyPasswordResetCode,
   type User,
 } from "firebase/auth";
 import { getFirebaseAuth } from "@/lib/arm/firebase/client";
 import type { AccountMembership } from "@/lib/arm/types";
+import { SITE_URL } from "@/lib/site-url";
 
 interface AuthContextValue {
   user: User | null;
@@ -34,6 +38,9 @@ interface AuthContextValue {
   signup: (email: string, password: string) => Promise<void>;
   loginWithGoogle: () => Promise<void>;
   logout: () => Promise<void>;
+  sendPasswordReset: (email: string) => Promise<void>;
+  verifyResetCode: (oobCode: string) => Promise<string>;
+  confirmPasswordResetWithCode: (oobCode: string, newPassword: string) => Promise<void>;
   getIdToken: () => Promise<string | null>;
 }
 
@@ -133,6 +140,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.removeItem(CURRENT_ACCOUNT_KEY);
   };
 
+  const sendPasswordReset = async (email: string) => {
+    const continueUrl = `${SITE_URL}${armPath("/login")}`;
+    await sendPasswordResetEmail(getFirebaseAuth(), email.trim(), {
+      url: continueUrl,
+      handleCodeInApp: false,
+    });
+  };
+
+  const verifyResetCode = async (oobCode: string) => {
+    return verifyPasswordResetCode(getFirebaseAuth(), oobCode);
+  };
+
+  const confirmPasswordResetWithCode = async (oobCode: string, newPassword: string) => {
+    await confirmPasswordReset(getFirebaseAuth(), oobCode, newPassword);
+  };
+
   const currentAccount = useMemo(
     () => accounts.find((a) => a.id === currentAccountId) || accounts[0] || null,
     [accounts, currentAccountId]
@@ -152,6 +175,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         signup,
         loginWithGoogle,
         logout,
+        sendPasswordReset,
+        verifyResetCode,
+        confirmPasswordResetWithCode,
         getIdToken,
       }}
     >
