@@ -31,6 +31,7 @@ Legend: `[x]` done · `[ ]` not done · `[ ]` **YOUR ACTION** = you must configu
 - [x] Forgot / reset password (email link via Firebase Auth)
 - [x] Workspace onboarding
 - [x] Contact CRUD (personal / business / NGO fields)
+- [x] CSV contact import (template + bulk upload)
 - [x] Interaction logging
 - [x] Dashboard + contact list/search
 - [x] Free plan contact limit (100)

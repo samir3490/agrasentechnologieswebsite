@@ -1,71 +1,61 @@
 # ARM — Platform operator integration setup
 
-Configure these on **Vercel → agrasen-technologies → Settings → Environment Variables**.  
+Configure these on **Vercel → Agrasen Technologies site project → Settings → Environment Variables**  
+(the project that serves **agrasentechnologies.com** — not the old RIP project).
+
 Customers can also use **100% their own keys** per workspace in Settings → Connections (requires `INTEGRATIONS_ENCRYPTION_KEY`).
 
-## Required for full platform defaults
+## Do this next (in order)
 
-| Variable | Where to get it | Enables |
-|----------|-----------------|--------|
-| `INTEGRATIONS_ENCRYPTION_KEY` | Generate 32+ random chars | Saving workspace BYOK secrets |
-| `RESEND_API_KEY` + `EMAIL_FROM` | [resend.com](https://resend.com) | Reminder & digest emails |
-| `CRON_SECRET` | Random secret | Securing cron endpoints (optional if using Vercel cron header) |
+### 1. Required platform secrets
+
+| Variable | How to set |
+|----------|------------|
+| `INTEGRATIONS_ENCRYPTION_KEY` | 32+ random characters (required to save workspace API keys) |
+| `CRON_SECRET` | Random secret (optional but recommended) |
+| `RESEND_API_KEY` | From [resend.com](https://resend.com) |
+| `EMAIL_FROM` | e.g. `AI Relationship Manager <notifications@yourdomain.com>` (verified domain in Resend) |
 
 **Alternative email:** `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS`, `SMTP_PORT` instead of Resend.
+
+After adding vars → **Redeploy** the Agrasen project.
+
+### 2. Recommended
+
+| Variable | Enables |
+|----------|---------|
+| `NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN` | Map page |
+| `MAPBOX_ACCESS_TOKEN` | Server geocoding (can be the same token) |
+
+### 3. Optional
+
+| Variable | Enables |
+|----------|---------|
+| `OPENAI_API_KEY` / `OPENAI_MODEL` | Personalized AI (heuristics work without) |
+| `NEWS_API_KEY` | Richer news (RSS works without) |
+| `RAZORPAY_KEY_ID` / `RAZORPAY_KEY_SECRET` / `RAZORPAY_WEBHOOK_SECRET` | Billing |
+| `ALERT_EMAIL` | Platform error alerts |
+
+Razorpay webhook URL: `https://agrasentechnologies.com/api/arm/billing/webhook`  
+Event: `payment.captured`
 
 ## Already configured (you confirmed)
 
 - `NEXT_PUBLIC_FIREBASE_*` + `FIREBASE_ADMIN_*`
 - `GOOGLE_OAUTH_CLIENT_ID` + `GOOGLE_OAUTH_CLIENT_SECRET`
 - `NEXT_PUBLIC_APP_URL=https://agrasentechnologies.com`
+- `ARM_OPERATOR_PASSWORD` (operator panel)
 
 ## Password reset (optional polish)
 
-Forgot password is live at `/ai-relationship-manager/forgot-password`.
-
-By default Firebase hosts the reset form. To use the in-app page instead:
-
-1. Firebase Console → Authentication → Templates → Password reset
-2. Customize action URL →  
-   `https://agrasentechnologies.com/ai-relationship-manager/reset-password`
-3. Save
-
-Email/password accounts can reset; Google-only accounts use Google sign-in (no password).
-
-## Password reset (optional polish)
-
-Forgot password is live at `/ai-relationship-manager/forgot-password`.
-
-By default Firebase hosts the reset form. To use the in-app page instead:
-
-1. Firebase Console → Authentication → Templates → Password reset
-2. Customize action URL →  
-   `https://agrasentechnologies.com/ai-relationship-manager/reset-password`
-3. Save
-
-Email/password accounts can reset; Google-only accounts use Google sign-in (no password).
-
-## Optional enhancements
-
-| Variable | Enables |
-|----------|---------|
-| `OPENAI_API_KEY` | Personalized AI gifts/messages (heuristics work without) |
-| `OPENAI_MODEL` | Default `gpt-4o-mini` |
-| `NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN` | Map page |
-| `MAPBOX_ACCESS_TOKEN` | Server geocoding (can match public token) |
-| `NEWS_API_KEY` | NewsAPI.org (Google RSS works without) |
-| `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `RAZORPAY_WEBHOOK_SECRET` | Pro/Business billing |
-| `ALERT_EMAIL` | Platform error alerts |
-
-## Razorpay webhook
-
-URL: `https://agrasentechnologies.com/api/arm/billing/webhook`  
-Event: `payment.captured`
+1. Firebase Console → Authentication → Templates → Password reset  
+2. Action URL → `https://agrasentechnologies.com/ai-relationship-manager/reset-password`
 
 ## Verify after setup
 
-1. Sign in → **Settings → Setup checklist** → run each **Test** button
-2. Or call `/api/arm/platform/status` while authenticated (shows platform config flags)
-3. Run `npm run test:arm-smoke` from repo root
+1. Sign in → **Settings → Setup checklist** → run each **Test** button  
+2. Add a contact with birthday → confirm digest on dashboard  
+3. Operator panel → confirm activity appears  
+4. Optionally: `npm run test:arm-smoke`
 
-See [ARM-PLAN.md](./ARM-PLAN.md) for phase checklist.
+See [ARM-PLAN.md](./ARM-PLAN.md) and [ARM-TESTING.md](./ARM-TESTING.md).

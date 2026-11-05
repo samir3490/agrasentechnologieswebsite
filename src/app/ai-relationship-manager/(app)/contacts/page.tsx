@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useAuth } from "@/components/arm/auth/AuthProvider";
 import { ContactForm } from "@/components/arm/contacts/ContactForm";
+import { ContactImportPanel } from "@/components/arm/contacts/ContactImportPanel";
 import { HealthBadge } from "@/components/arm/contacts/HealthBadge";
 import { RELATIONSHIP_TYPES } from "@/lib/arm/constants/plans";
 import type { Contact } from "@/lib/arm/types";
@@ -16,6 +17,7 @@ function ContactsContent() {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(searchParams.get("new") === "1");
+  const [showImport, setShowImport] = useState(false);
   const [search, setSearch] = useState("");
   const [filterType, setFilterType] = useState(searchParams.get("relationshipType") || "");
 
@@ -63,10 +65,35 @@ function ContactsContent() {
           <h1 className="text-2xl font-bold text-slate-900">Contacts</h1>
           <p className="text-slate-500">{contacts.length} people in your network</p>
         </div>
-        <button type="button" onClick={() => setShowForm(true)} className="btn-primary">
-          Add contact
-        </button>
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => {
+              setShowImport(true);
+              setShowForm(false);
+            }}
+            className="btn-secondary"
+          >
+            Import CSV
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setShowForm(true);
+              setShowImport(false);
+            }}
+            className="btn-primary"
+          >
+            Add contact
+          </button>
+        </div>
       </div>
+
+      <ContactImportPanel
+        open={showImport}
+        onClose={() => setShowImport(false)}
+        onImported={loadContacts}
+      />
 
       <div className="flex flex-wrap gap-3">
         <input
@@ -100,8 +127,17 @@ function ContactsContent() {
       {loading ? (
         <p className="text-slate-500">Loading contacts...</p>
       ) : contacts.length === 0 ? (
-        <div className="glass-card rounded-2xl p-12 text-center">
-          <p className="text-slate-500">No contacts match your filters.</p>
+        <div className="glass-card rounded-2xl p-12 text-center space-y-4">
+          <p className="text-slate-500">No contacts yet — add one or import a CSV to get started.</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <button type="button" className="btn-primary" onClick={() => setShowForm(true)}>
+              Add contact
+            </button>
+            <button type="button" className="btn-secondary" onClick={() => setShowImport(true)}>
+              Import CSV
+            </button>
+          </div>
+          <p className="text-slate-500 text-sm">If you already have contacts, try clearing filters.</p>
         </div>
       ) : (
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

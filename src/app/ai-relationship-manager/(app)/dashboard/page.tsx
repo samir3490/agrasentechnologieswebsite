@@ -50,16 +50,21 @@ function DashboardContent() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      {showWelcome && (
+      {(showWelcome || (!loading && contactsTotal === 0)) && (
         <section className="glass-card rounded-2xl border border-indigo-200 bg-indigo-50/50 p-6">
-          <h2 className="font-semibold text-slate-900">Welcome to {currentAccount?.name}</h2>
+          <h2 className="font-semibold text-slate-900">
+            {showWelcome ? `Welcome to ${currentAccount?.name}` : "Get your network set up"}
+          </h2>
           <p className="mt-2 text-sm text-slate-600">
-            Add your first contact, then open Settings to connect email, calendar, and optional AI
-            tools — each step has a Test button so you know everything works.
+            Add people one by one or import a CSV. Then open Settings to connect email, calendar,
+            and optional AI tools — each step has a Test button.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <Link href={`${armPath("/contacts")}?new=1`} className="btn-primary py-2">
               Add first contact
+            </Link>
+            <Link href={armPath("/contacts")} className="btn-secondary py-2">
+              Import CSV
             </Link>
             <Link href={armPath("/settings")} className="btn-secondary py-2">
               Open setup checklist
