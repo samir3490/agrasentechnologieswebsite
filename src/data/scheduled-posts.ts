@@ -6,37 +6,6 @@ import { BlogPost } from "./posts";
  */
 export const scheduledPosts: BlogPost[] = [
   {
-    slug: "quickbase-vs-excel-operations",
-    title: "QuickBase vs Excel for Operations: When Spreadsheets Stop Being a System",
-    date: "2026-11-12",
-    author: "Samir Agrawal",
-    category: "QuickBase",
-    image: "/blog/blog-qb-relationships.jpg",
-    excerpt:
-      "Excel is a great scratchpad. It is a poor operating system. Here is how to tell when operations should move from spreadsheets into QuickBase.",
-    content: `
-<p>Most QuickBase projects do not start with a blank whiteboard. They start with a workbook that has become the unofficial system of record — and a team that is tired of broken formulas, missing rows, and Friday night version merges.</p>
-<p><strong>QuickBase vs Excel</strong> is not a religion argument. Excel is excellent for analysis, one-off models, and personal tracking. It fails as an operating system the moment several people must create, update, approve, and report on the same work.</p>
-<h2>Signals Your Spreadsheet Is the Bottleneck</h2>
-<ul>
-<li>Two people cannot edit safely at the same time</li>
-<li>Nobody trusts the total without a manual audit</li>
-<li>Approvals live in email because the sheet cannot enforce them</li>
-<li>A new hire needs a 90-minute walkthrough just to avoid breaking columns</li>
-<li>Leadership asks for a dashboard and someone copies cells into slides</li>
-</ul>
-<h2>What QuickBase Changes</h2>
-<p>QuickBase gives you tables, relationships, roles, forms, and history. A project belongs to a customer. A task belongs to a project. A field user sees their queue, not the whole company. That structure is why operations stabilize after a migration — not because the screens look nicer.</p>
-<h2>What Should Stay in Excel</h2>
-<p>Keep Excel for forecasts, one-time analysis, and models that change shape every week. Do not keep it for intake, assignments, SLAs, or anything you would be embarrassed to reconstruct from an inbox.</p>
-<h2>A Practical Migration Path</h2>
-<p>Map entities first (who, what, where, status). Design QuickBase tables around those entities. Bring history across in a controlled load. Run the new app beside the sheet until the team trusts the queue. Then retire the workbook on purpose — do not let it linger as a shadow system.</p>
-<h2>Agrasen Technologies Moves Operations Off Spreadsheets</h2>
-<p>We start with the sheets you already run, then build the QuickBase application around the real process. If Excel has become your operations platform, <a href="/services/quickbase-development">see how we build QuickBase apps</a> or <a href="/contact">book a free 30-minute workflow review</a>.</p>
-<p>Spreadsheets are a tool. They are not a company operating system.</p>
-`,
-  },
-  {
     slug: "quickbase-field-teams-mobile",
     title: "QuickBase for Field Teams: Status Updates Without the Office Wi-Fi Ritual",
     date: "2026-11-19",
