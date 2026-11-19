@@ -11,6 +11,36 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    slug: "quickbase-field-teams-mobile",
+    title: "QuickBase for Field Teams: Status Updates Without the Office Wi-Fi Ritual",
+    date: "2026-11-19",
+    author: "Samir Agrawal",
+    category: "QuickBase",
+    image: "/blog/blog-qb-forms.jpg",
+    excerpt:
+      "Field and job-site teams need short forms, clear queues, and offline-tolerant habits. Here is how to design QuickBase so people update work where the work happens.",
+    content: `
+<p>Office-designed apps fail in the field. Too many fields. Too many clicks. A form that assumes a laptop and a quiet hour. If technicians, inspectors, or project leads will not update the record on site, you do not have a system — you have a delayed data-entry job.</p>
+<p><strong>QuickBase for field teams</strong> works when the mobile path is a first-class design, not a leftover desktop screen.</p>
+<h2>Design the Field Path First</h2>
+<ul>
+<li>A queue of "my open jobs" — not a giant table</li>
+<li>Forms that ask only what must be captured now</li>
+<li>Photos and comments attached to the record, not a group text</li>
+<li>Status changes that take seconds, with required notes only when the change is risky</li>
+</ul>
+<h2>Roles Beat Shared Logins</h2>
+<p>Shared passwords look convenient and destroy accountability. Give each person a role that shows their jobs, hides salary or margin fields, and still lets a supervisor see the crew. QuickBase roles are how you keep the app open enough to use and closed enough to trust.</p>
+<h2>Exceptions Are the Real Product</h2>
+<p>The happy path is easy. The field is full of exceptions: access denied, weather, missing parts, a customer not on site. Build those outcomes as statuses with a reason — otherwise people will invent a side channel and the dashboard will lie.</p>
+<h2>Office and Field Have to Share One Record</h2>
+<p>Dispatchers, project managers, and technicians should not keep parallel trackers. One job record, many views. If the office still re-keys what the field already typed, the app is not done.</p>
+<h2>Agrasen Technologies Builds QuickBase for How Work Happens</h2>
+<p>We design field forms and office dashboards as one application. If your crew still texts photos and fills a spreadsheet at 6 p.m., <a href="/contact">book a free workflow review</a> and we will map a QuickBase path that fits a job site, not just a conference room.</p>
+<p>If it cannot be updated in the field, it will not be updated at all.</p>
+`,
+  },
+  {
     slug: "quickbase-vs-excel-operations",
     title: "QuickBase vs Excel for Operations: When Spreadsheets Stop Being a System",
     date: "2026-11-12",
